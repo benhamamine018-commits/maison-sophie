@@ -4,35 +4,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Maison Sophie | Caftan Marocain</title>
+<title>Maison Sophie | القفطان والجلابة</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#fbf9f5;color:#211b17;font-family:Tahoma,Arial}
-header{background:#211b17;color:white;padding:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
-.brand{font:26px Georgia;color:#e5c48e}
-nav a{color:white;text-decoration:none;margin:10px}
-.hero{background:linear-gradient(120deg,#211b17,#806342);color:white;text-align:center;padding:90px 20px}
-.hero h1{font:48px Georgia}
+body{margin:0;background:#faf7f1;color:#292018;font-family:Tahoma,Arial}
+header{background:#241b16;color:white;padding:20px;text-align:center}
+.logo{font:30px Georgia;color:#d9b779;letter-spacing:2px}
+nav{margin-top:15px}
+nav a{color:white;text-decoration:none;margin:12px}
+.hero{text-align:center;background:linear-gradient(120deg,#241b16,#80613e);color:white;padding:65px 15px}
+.hero h1{font-size:36px}
 .hero p{line-height:2}
-.btn{display:inline-block;background:#c49a5d;color:#211b17;padding:14px 25px;text-decoration:none;margin:10px}
-.intro{text-align:center;padding:40px}
-section{padding:35px 5%}
-h2{text-align:center;font:32px Georgia}
-.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
-.product{background:white;box-shadow:0 5px 20px #0001;padding-bottom:12px}
-.product img{width:100%;height:260px;object-fit:cover}
-.product h3{text-align:center;font-size:15px}
-.product a{display:block;text-align:center;background:#f4ecdf;color:#6d4e27;padding:12px;text-decoration:none;margin:10px}
-footer{background:#211b17;color:white;text-align:center;padding:35px}
-.whatsapp{position:fixed;bottom:20px;left:20px;background:#1eaa63;color:white;padding:15px 22px;border-radius:30px;text-decoration:none;z-index:5}
-@media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:600px){.grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:34px}}
+section{padding:30px 4%}
+h2{text-align:center;color:#805d35}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.product{background:white;padding:10px;box-shadow:0 3px 15px #0001}
+.product img{width:100%;height:230px;object-fit:cover;background:#eee}
+.product h3{text-align:center}
+select{width:100%;padding:12px;margin:5px 0;border:1px solid #c8b18c;background:white}
+.order{display:block;text-align:center;background:#1eaa63;color:white;text-decoration:none;padding:12px;margin-top:10px}
+footer{background:#241b16;color:white;text-align:center;padding:30px}
+@media(max-width:600px){.grid{grid-template-columns:repeat(2,1fr)}.product img{height:180px}}
 </style>
 </head>
 <body>
 
 <header>
-<div class="brand">MAISON SOPHIE</div>
+<div class="logo">MAISON SOPHIE</div>
 <nav>
 <a href="#home">الرئيسية</a>
 <a href="#women">النساء</a>
@@ -42,89 +40,95 @@ footer{background:#211b17;color:white;text-align:center;padding:35px}
 
 <div class="hero" id="home">
 <h1>أناقة مغربية أصيلة</h1>
-<p>اكتشفوا أجمل القفاطين والجلابيب المغربية</p>
-<a class="btn" href="#women">اكتشف المجموعة</a>
-</div>
-
-<div class="intro">
-<h2>مجموعتنا الجديدة</h2>
-<p>50 موديل للنساء والرجال</p>
+<p>قفاطين وجلابيب نسائية ورجالية<br>
+بيع وكراء لجميع المناسبات</p>
 </div>
 
 <section id="women">
-<h2>مجموعة النساء | 25 موديل</h2>
+<h2>مجموعة النساء</h2>
 <div class="grid" id="women-grid"></div>
 </section>
 
 <section id="men">
-<h2>مجموعة الرجال | 25 موديل</h2>
+<h2>مجموعة الرجال</h2>
 <div class="grid" id="men-grid"></div>
 </section>
 
 <footer>
-<h2>MAISON SOPHIE</h2>
-قفطان وجلابية مغربية
+<h2 style="color:#d9b779">MAISON SOPHIE</h2>
+<p>شكراً لزيارتكم</p>
 </footer>
-
-<a class="whatsapp" href="https://wa.me/212636101436" target="_blank">واتساب · اطلب الآن</a>
 
 <script>
 const women=[
-"قفطان ملكي","تكشيطة ذهبية","قفطان سهرة",
-"جلابة نسائية","قفطان زمردي","تكشيطة تقليدية",
-"قفطان أبيض","جلابة عصرية","قفطان مخملي",
-"قفطان مطرز","تكشيطة فاخرة","قفطان باستيل",
-"جلابة صيفية","قفطان مناسبات","قفطان حرير",
-"تكشيطة ملكية","جلابة مطرزة","قفطان أنيق",
-"قفطان أصيل","جلابة راقية","قفطان سهرة",
-"تكشيطة عصرية","قفطان ذهبي","جلابة تقليدية",
+"قفطان ملكي","تكشيطة ذهبية","قفطان سهرة","جلابة نسائية",
+"قفطان أخضر","تكشيطة تقليدية","قفطان أبيض","جلابة عصرية",
+"قفطان مخملي","قفطان مطرز","تكشيطة فاخرة","قفطان باستيل",
+"جلابة صيفية","قفطان مناسبات","قفطان حرير","تكشيطة ملكية",
+"جلابة مطرزة","قفطان أنيق","قفطان أصيل","جلابة راقية",
+"قفطان سهرة","تكشيطة عصرية","قفطان ذهبي","جلابة تقليدية",
 "قفطان Sophie"
 ];
 
 const men=[
-"جلابة بيضاء","جلابة شتوية","جلابة مطرزة",
-"جلابة كلاسيكية","جلابة كريمية","جلابة مناسبات",
-"جلابة أنيقة","جلابة صيفية","جلابة رمادية",
-"جلابة فاخرة","جلابة تقليدية","جلابة عصرية",
-"جلابة دافئة","جلابة راقية","جلابة بنية",
-"جلابة للمناسبات","جلابة يدوية","جلابة مغربية",
-"جلابة سوداء","جلابة رملية","جلابة فاخرة",
-"جلابة يومية","جلابة حديثة","جلابة أصيلة",
+"جلابة بيضاء","جلابة شتوية","جلابة مطرزة","جلابة كلاسيكية",
+"جلابة كريمية","جلابة مناسبات","جلابة أنيقة","جلابة صيفية",
+"جلابة رمادية","جلابة فاخرة","جلابة تقليدية","جلابة عصرية",
+"جلابة دافئة","جلابة راقية","جلابة بنية","جلابة للمناسبات",
+"جلابة يدوية","جلابة مغربية","جلابة سوداء","جلابة رملية",
+"جلابة فاخرة","جلابة يومية","جلابة حديثة","جلابة أصيلة",
 "جلابة Maison Sophie"
 ];
 
-function createProducts(names,target,type,query,offset){
-const grid=document.getElementById(target);
+function addProducts(names,id,category){
+const grid=document.getElementById(id);
 
 names.forEach((name,i)=>{
 const card=document.createElement("div");
 card.className="product";
 
 const img=document.createElement("img");
-img.loading="lazy";
+img.src="https://loremflickr.com/500/650/moroccan,caftan?lock="+(i+(category==="نساء"?10:50));
 img.alt=name;
-img.src=`https://loremflickr.com/640/820/${query}?lock=${offset+i+1}`;
+img.loading="lazy";
 
 const title=document.createElement("h3");
 title.textContent=name;
 
-const link=document.createElement("a");
-link.textContent="اطلب عبر واتساب";
-link.href="https://wa.me/212636101436?text="+
-encodeURIComponent("السلام عليكم، أريد الاستفسار عن "+name);
-link.target="_blank";
+const size=document.createElement("select");
+size.innerHTML='<option value="">اختر المقاس</option>'+
+["S","M","L","XL","XXL"].map(x=>`<option>${x}</option>`).join("");
 
-card.append(img,title,link);
+const type=document.createElement("select");
+type.innerHTML='<option value="">اختر نوع الطلب</option>'+
+'<option value="شراء">شراء</option>'+
+'<option value="كراء">كراء</option>';
+
+const button=document.createElement("a");
+button.className="order";
+button.textContent="اطلب عبر واتساب";
+button.href="#";
+
+button.onclick=function(e){
+e.preventDefault();
+if(!size.value||!type.value){
+alert("المرجو اختيار المقاس ونوع الطلب");
+return;
+}
+const message="السلام عليكم، أريد "+type.value+
+" الموديل: "+name+
+" | القسم: "+category+
+" | المقاس: "+size.value;
+window.open("https://wa.me/212636101436?text="+encodeURIComponent(message),"_blank");
+};
+
+card.append(img,title,size,type,button);
 grid.appendChild(card);
 });
 }
 
-createProducts(women,"women-grid","نسائي",
-"moroccan,caftan,woman",100);
-
-createProducts(men,"men-grid","رجالي",
-"moroccan,djellaba,man",200);
+addProducts(women,"women-grid","نساء");
+addProducts(men,"men-grid","رجال");
 </script>
-
 </body>
 </html>
