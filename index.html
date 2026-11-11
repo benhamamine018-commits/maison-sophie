@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison Sophie</title>
+<style>
+* {box-sizing:border-box}
+body {
+  margin:0;
+  font-family:Georgia,serif;
+  color:#30251f;
+  background:#faf6f0;
+}
+header {
+  padding:25px 15px;
+  text-align:center;
+  background:#fff;
+}
+header h1 {
+  letter-spacing:5px;
+  margin:0;
+  font-size:30px;
+}
+nav {
+  padding:16px;
+  text-align:center;
+  background:#e9ded2;
+}
+nav a {
+  color:#30251f;
+  text-decoration:none;
+  margin:0 12px;
+}
+.hero {
+  min-height:440px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px;
+  background:linear-gradient(#0004,#0004),
+  url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1400')
+  center/cover;
+  color:white;
+}
+.hero h2 {font-size:42px}
+.hero p {font-size:19px}
+.btn {
+  display:inline-block;
+  background:#fff;
+  color:#30251f;
+  padding:13px 25px;
+  text-decoration:none;
+  margin-top:15px;
+}
+section {
+  padding:55px 20px;
+  text-align:center;
+}
+.products {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:22px;
+  max-width:1000px;
+  margin:auto;
+}
+.products img {
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+.card {background:white;padding-bottom:20px}
+footer {
+  background:#30251f;
+  color:white;
+  text-align:center;
+  padding:30px;
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>MAISON SOPHIE</h1>
+<p>Élégance • Beauté • Art de vivre</p>
+</header>
+
+<nav>
+<a href="#home">Accueil</a>
+<a href="#about">À propos</a>
+<a href="#collection">Collection</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<div class="hero" id="home">
+<h2>Bienvenue chez Maison Sophie</h2>
+<p>L'élégance commence chez vous.</p>
+<a class="btn" href="#collection">Découvrir</a>
+</div>
+
+<section id="about">
+<h2>Notre univers</h2>
+<p>Maison Sophie vous invite à découvrir un univers élégant,
+raffiné et inspirant.</p>
+</section>
+
+<section id="collection">
+<h2>Notre collection</h2>
+<div class="products">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600">
+<h3>Décoration élégante</h3>
+<p>Beauté et harmonie</p>
+</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600">
+<h3>Art de vivre</h3>
+<p>Le charme des détails</p>
+</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600">
+<h3>Maison raffinée</h3>
+<p>Un style intemporel</p>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contactez-nous</h2>
+<p>Bienvenue dans notre univers Maison Sophie.</p>
+<a class="btn" href="mailto:contact@maisonsophie.com">
+Nous contacter
+</a>
+</section>
+
+<footer>
+<p>© 2026 Maison Sophie — Tous droits réservés</p>
+</footer>
+
+</body>
+  </html>
+  
