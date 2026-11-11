@@ -3,135 +3,128 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Maison Sophie | Haute Couture</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maison Sophie | Caftan Marocain</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#160e10;color:white;font-family:Arial}
-header{text-align:center;padding:25px;background:#10090b;border-bottom:1px solid #c9a45c}
-.logo{font-family:Georgia,serif;font-size:35px;color:#d9b66b}
-nav{display:flex;justify-content:center;gap:17px;flex-wrap:wrap;padding:18px;background:#28171b}
-nav a{color:#e4c77f;text-decoration:none}
-button,.order{background:#c9a45c;color:#190e0e;border:0;padding:11px 17px;border-radius:5px;text-decoration:none;cursor:pointer}
-.languages{text-align:center;padding:15px}
-.languages button{margin:4px}
-.hero{text-align:center;padding:110px 15px;background:linear-gradient(#0009,#000b),url('https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=1400') center/cover}
-.hero h1{font-family:Georgia,serif;font-size:42px;color:#e6c77e}
-.hero p{font-size:19px;line-height:1.8}
-section{text-align:center;padding:45px 15px}
-h2{color:#d9b66b}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:1100px;margin:25px auto}
-.card{background:#29191d;border:1px solid #806333;padding:12px;border-radius:9px}
-.card img{width:100%;height:280px;object-fit:cover;border-radius:5px}
-.card h3{color:#e4c77f}
-.card p{color:#ddd;line-height:1.7}
-.order{display:inline-block;margin:10px}
-.contact{background:#29191d}
-footer{text-align:center;padding:25px;background:#10090b;color:#d9b66b}
+body{margin:0;background:#fbf9f5;color:#211b17;font-family:Tahoma,Arial}
+header{background:#211b17;color:white;padding:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.brand{font:26px Georgia;color:#e5c48e}
+nav a{color:white;text-decoration:none;margin:10px}
+.hero{background:linear-gradient(120deg,#211b17,#806342);color:white;text-align:center;padding:90px 20px}
+.hero h1{font:48px Georgia}
+.hero p{line-height:2}
+.btn{display:inline-block;background:#c49a5d;color:#211b17;padding:14px 25px;text-decoration:none;margin:10px}
+.intro{text-align:center;padding:40px}
+section{padding:35px 5%}
+h2{text-align:center;font:32px Georgia}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.product{background:white;box-shadow:0 5px 20px #0001;padding-bottom:12px}
+.product img{width:100%;height:260px;object-fit:cover}
+.product h3{text-align:center;font-size:15px}
+.product a{display:block;text-align:center;background:#f4ecdf;color:#6d4e27;padding:12px;text-decoration:none;margin:10px}
+footer{background:#211b17;color:white;text-align:center;padding:35px}
+.whatsapp{position:fixed;bottom:20px;left:20px;background:#1eaa63;color:white;padding:15px 22px;border-radius:30px;text-decoration:none;z-index:5}
+@media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:34px}}
 </style>
 </head>
 <body>
 
 <header>
-<div class="logo">MAISON SOPHIE</div>
-<p>HAUTE COUTURE • CAFTAN • DJELLABA</p>
+<div class="brand">MAISON SOPHIE</div>
+<nav>
+<a href="#home">الرئيسية</a>
+<a href="#women">النساء</a>
+<a href="#men">الرجال</a>
+</nav>
 </header>
 
-<div class="languages">
-<button onclick="changeLang('ar')">العربية 🇲🇦</button>
-<button onclick="changeLang('fr')">Français 🇫🇷</button>
-<button onclick="changeLang('en')">English 🇬🇧</button>
-</div>
-
-<nav>
-<a href="#home" data-ar="الرئيسية" data-fr="Accueil" data-en="Home">الرئيسية</a>
-<a href="#caftan" data-ar="القفطان" data-fr="Caftans" data-en="Caftans">القفطان</a>
-<a href="#men" data-ar="الجلابة الرجالية" data-fr="Djellabas homme" data-en="Men's Djellabas">الجلابة الرجالية</a>
-<a href="#western" data-ar="الأزياء الغربية" data-fr="Mode occidentale" data-en="Western Fashion">الأزياء الغربية</a>
-<a href="#contact" data-ar="اتصل بنا" data-fr="Contact" data-en="Contact">اتصل بنا</a>
-</nav>
-
 <div class="hero" id="home">
-<h1 data-ar="أناقة تليق بك" data-fr="L'élégance vous ressemble" data-en="Elegance That Suits You">أناقة تليق بك</h1>
-<p data-ar="خياطة مغربية راقية تجمع الأصالة والحداثة" data-fr="Une couture marocaine entre tradition et modernité" data-en="Moroccan couture combining tradition and modernity">خياطة مغربية راقية تجمع الأصالة والحداثة</p>
-<a href="#caftan" class="order" data-ar="اكتشف مجموعاتنا" data-fr="Découvrir" data-en="Discover">اكتشف مجموعاتنا</a>
+<h1>أناقة مغربية أصيلة</h1>
+<p>اكتشفوا أجمل القفاطين والجلابيب المغربية</p>
+<a class="btn" href="#women">اكتشف المجموعة</a>
 </div>
 
-<section id="caftan">
-<h2 data-ar="القفطان المغربي" data-fr="Caftan Marocain" data-en="Moroccan Caftan">القفطان المغربي</h2>
-<p data-ar="تصاميم تقليدية وعصرية وخياطة حسب الطلب" data-fr="Créations traditionnelles et modernes sur mesure" data-en="Traditional and modern custom designs">تصاميم تقليدية وعصرية وخياطة حسب الطلب</p>
-<div class="cards">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600" alt="قفطان تقليدي">
-<h3 data-ar="قفطان تقليدي" data-fr="Caftan traditionnel" data-en="Traditional Caftan">قفطان تقليدي</h3>
-<p data-ar="أصالة وفخامة مغربية" data-fr="Tradition et luxe marocain" data-en="Moroccan tradition and luxury">أصالة وفخامة مغربية</p>
-<a class="order" href="https://wa.me/212636101436?text=أريد%20قفطان%20تقليدي">اطلب عبر واتساب</a>
+<div class="intro">
+<h2>مجموعتنا الجديدة</h2>
+<p>50 موديل للنساء والرجال</p>
 </div>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=600" alt="قفطان عصري">
-<h3 data-ar="قفطان عصري" data-fr="Caftan moderne" data-en="Modern Caftan">قفطان عصري</h3>
-<p data-ar="أناقة عصرية بلمسة مغربية" data-fr="Élégance moderne marocaine" data-en="Modern Moroccan elegance">أناقة عصرية بلمسة مغربية</p>
-<a class="order" href="https://wa.me/212636101436?text=أريد%20قفطان%20عصري">اطلب عبر واتساب</a>
-</div>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=600" alt="فساتين سهرة">
-<h3 data-ar="فساتين السهرة" data-fr="Robes de soirée" data-en="Evening Dresses">فساتين السهرة</h3>
-<p data-ar="تصاميم فاخرة للمناسبات" data-fr="Créations pour vos cérémonies" data-en="Luxury occasion designs">تصاميم فاخرة للمناسبات</p>
-<a class="order" href="https://wa.me/212636101436?text=أريد%20فستان%20سهرة">اطلب عبر واتساب</a>
-</div>
-</div>
+
+<section id="women">
+<h2>مجموعة النساء | 25 موديل</h2>
+<div class="grid" id="women-grid"></div>
 </section>
 
 <section id="men">
-<h2 data-ar="الجلابة الرجالية" data-fr="Djellabas pour hommes" data-en="Men's Djellabas">الجلابة الرجالية</h2>
-<div class="cards">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=600" alt="ملابس رجالية">
-<h3 data-ar="جلابة كلاسيكية" data-fr="Djellaba classique" data-en="Classic Djellaba">جلابة كلاسيكية</h3>
-<p data-ar="أناقة مغربية أصيلة" data-fr="Élégance marocaine" data-en="Authentic Moroccan elegance">أناقة مغربية أصيلة</p>
-<a class="order" href="https://wa.me/212636101436?text=أريد%20جلابة%20كلاسيكية">اطلب عبر واتساب</a>
-</div>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=600" alt="أزياء رجالية">
-<h3 data-ar="جلابة عصرية" data-fr="Djellaba moderne" data-en="Modern Djellaba">جلابة عصرية</h3>
-<p data-ar="تصاميم أنيقة وعصرية" data-fr="Designs élégants et modernes" data-en="Elegant modern designs">تصاميم أنيقة وعصرية</p>
-<a class="order" href="https://wa.me/212636101436?text=أريد%20جلابة%20عصرية">اطلب عبر واتساب</a>
-</div>
-</div>
+<h2>مجموعة الرجال | 25 موديل</h2>
+<div class="grid" id="men-grid"></div>
 </section>
 
-<section id="western">
-<h2 data-ar="الأزياء الغربية" data-fr="Mode occidentale" data-en="Western Fashion">الأزياء الغربية</h2>
-<div class="cards">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=600" alt="أزياء نسائية">
-<h3 data-ar="فساتين أنيقة" data-fr="Robes élégantes" data-en="Elegant Dresses">فساتين أنيقة</h3>
-<a class="order" href="https://wa.me/212636101436?text=أريد%20فستان">اطلب عبر واتساب</a>
-</div>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600" alt="تصاميم نسائية">
-<h3 data-ar="خياطة حسب الطلب" data-fr="Couture sur mesure" data-en="Custom Tailoring">خياطة حسب الطلب</h3>
-<a class="order" href="https://wa.me/212636101436?text=أريد%20خياطة%20حسب%20الطلب">اطلب عبر واتساب</a>
-</div>
-</div>
-</section>
+<footer>
+<h2>MAISON SOPHIE</h2>
+قفطان وجلابية مغربية
+</footer>
 
-<section id="contact" class="contact">
-<h2 data-ar="تواصلوا معنا" data-fr="Contactez-nous" data-en="Contact Us">تواصلوا معنا</h2>
-<p>WhatsApp: 0636101436</p>
-<a class="order" href="https://wa.me/212636101436">تواصل عبر WhatsApp</a>
-</section>
-
-<footer>© 2026 MAISON SOPHIE — HAUTE COUTURE</footer>
+<a class="whatsapp" href="https://wa.me/212636101436" target="_blank">واتساب · اطلب الآن</a>
 
 <script>
-function changeLang(lang){
-document.documentElement.lang=lang;
-document.documentElement.dir=lang==="ar"?"rtl":"ltr";
-document.querySelectorAll("[data-"+lang+"]").forEach(el=>{
-el.textContent=el.getAttribute("data-"+lang);
+const women=[
+"قفطان ملكي","تكشيطة ذهبية","قفطان سهرة",
+"جلابة نسائية","قفطان زمردي","تكشيطة تقليدية",
+"قفطان أبيض","جلابة عصرية","قفطان مخملي",
+"قفطان مطرز","تكشيطة فاخرة","قفطان باستيل",
+"جلابة صيفية","قفطان مناسبات","قفطان حرير",
+"تكشيطة ملكية","جلابة مطرزة","قفطان أنيق",
+"قفطان أصيل","جلابة راقية","قفطان سهرة",
+"تكشيطة عصرية","قفطان ذهبي","جلابة تقليدية",
+"قفطان Sophie"
+];
+
+const men=[
+"جلابة بيضاء","جلابة شتوية","جلابة مطرزة",
+"جلابة كلاسيكية","جلابة كريمية","جلابة مناسبات",
+"جلابة أنيقة","جلابة صيفية","جلابة رمادية",
+"جلابة فاخرة","جلابة تقليدية","جلابة عصرية",
+"جلابة دافئة","جلابة راقية","جلابة بنية",
+"جلابة للمناسبات","جلابة يدوية","جلابة مغربية",
+"جلابة سوداء","جلابة رملية","جلابة فاخرة",
+"جلابة يومية","جلابة حديثة","جلابة أصيلة",
+"جلابة Maison Sophie"
+];
+
+function createProducts(names,target,type,query,offset){
+const grid=document.getElementById(target);
+
+names.forEach((name,i)=>{
+const card=document.createElement("div");
+card.className="product";
+
+const img=document.createElement("img");
+img.loading="lazy";
+img.alt=name;
+img.src=`https://loremflickr.com/640/820/${query}?lock=${offset+i+1}`;
+
+const title=document.createElement("h3");
+title.textContent=name;
+
+const link=document.createElement("a");
+link.textContent="اطلب عبر واتساب";
+link.href="https://wa.me/212636101436?text="+
+encodeURIComponent("السلام عليكم، أريد الاستفسار عن "+name);
+link.target="_blank";
+
+card.append(img,title,link);
+grid.appendChild(card);
 });
 }
+
+createProducts(women,"women-grid","نسائي",
+"moroccan,caftan,woman",100);
+
+createProducts(men,"men-grid","رجالي",
+"moroccan,djellaba,man",200);
 </script>
+
 </body>
 </html>
