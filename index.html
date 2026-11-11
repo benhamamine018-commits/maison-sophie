@@ -1,145 +1,81 @@
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maison Sophie</title>
+<title>Maison Sophie | Haute Couture</title>
 <style>
-* {box-sizing:border-box}
-body {
-  margin:0;
-  font-family:Georgia,serif;
-  color:#30251f;
-  background:#faf6f0;
-}
-header {
-  padding:25px 15px;
-  text-align:center;
-  background:#fff;
-}
-header h1 {
-  letter-spacing:5px;
-  margin:0;
-  font-size:30px;
-}
-nav {
-  padding:16px;
-  text-align:center;
-  background:#e9ded2;
-}
-nav a {
-  color:#30251f;
-  text-decoration:none;
-  margin:0 12px;
-}
-.hero {
-  min-height:440px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:30px;
-  background:linear-gradient(#0004,#0004),
-  url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1400')
-  center/cover;
-  color:white;
-}
-.hero h2 {font-size:42px}
-.hero p {font-size:19px}
-.btn {
-  display:inline-block;
-  background:#fff;
-  color:#30251f;
-  padding:13px 25px;
-  text-decoration:none;
-  margin-top:15px;
-}
-section {
-  padding:55px 20px;
-  text-align:center;
-}
-.products {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:22px;
-  max-width:1000px;
-  margin:auto;
-}
-.products img {
-  width:100%;
-  height:220px;
-  object-fit:cover;
-}
-.card {background:white;padding-bottom:20px}
-footer {
-  background:#30251f;
-  color:white;
-  text-align:center;
-  padding:30px;
-}
+*{box-sizing:border-box}
+body{margin:0;background:#111;color:#fff;font-family:Arial,sans-serif}
+header{padding:22px;text-align:center;border-bottom:1px solid #b99a55}
+.logo{font-family:Georgia,serif;color:#d6b66c;font-size:32px;letter-spacing:3px}
+nav{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;padding:18px}
+nav a{color:#d6b66c;text-decoration:none}
+select{background:#222;color:#d6b66c;padding:9px;border:1px solid #d6b66c}
+.hero{min-height:480px;background:linear-gradient(#0008,#000b),url('https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=1400') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px}
+.hero h1{font-family:Georgia,serif;font-size:42px;color:#e3c47d}
+.btn{display:inline-block;background:#c5a45b;color:#111;padding:13px 25px;text-decoration:none;margin-top:15px}
+section{padding:55px 20px;text-align:center}
+h2{color:#d6b66c}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;max-width:1050px;margin:30px auto}
+.card{background:#202020;padding:12px;border:1px solid #5c4927}
+.card img{width:100%;height:290px;object-fit:cover}
+.card h3{color:#d6b66c}
+footer{padding:30px;text-align:center;background:#080808;color:#c5a45b}
 </style>
 </head>
 <body>
-
-<header>
-<h1>MAISON SOPHIE</h1>
-<p>Élégance • Beauté • Art de vivre</p>
-</header>
-
+<header><div class="logo">MAISON SOPHIE</div><p>HAUTE COUTURE • CAFTAN • ELEGANCE</p></header>
 <nav>
-<a href="#home">Accueil</a>
-<a href="#about">À propos</a>
-<a href="#collection">Collection</a>
-<a href="#contact">Contact</a>
+<a href="#home" data-ar="الرئيسية" data-fr="Accueil" data-en="Home">الرئيسية</a>
+<a href="#collections" data-ar="مجموعاتنا" data-fr="Collections" data-en="Collections">مجموعاتنا</a>
+<a href="#contact" data-ar="اتصل بنا" data-fr="Contact" data-en="Contact">اتصل بنا</a>
+<select id="language" onchange="changeLang(this.value)">
+<option value="ar">العربية</option><option value="fr">Français</option><option value="en">English</option>
+</select>
 </nav>
-
 <div class="hero" id="home">
-<h2>Bienvenue chez Maison Sophie</h2>
-<p>L'élégance commence chez vous.</p>
-<a class="btn" href="#collection">Découvrir</a>
+<div>
+<h1 data-ar="الأناقة تبدأ من هنا" data-fr="L'élégance commence ici" data-en="Elegance Begins Here">الأناقة تبدأ من هنا</h1>
+<p data-ar="فن الخياطة والتصميم بين الأصالة والحداثة" data-fr="L'art de la couture entre tradition et modernité" data-en="The art of fashion between tradition and modernity">فن الخياطة والتصميم بين الأصالة والحداثة</p>
+<a class="btn" href="#collections" data-ar="اكتشفي مجموعاتنا" data-fr="Découvrir nos collections" data-en="Discover Our Collections">اكتشفي مجموعاتنا</a>
 </div>
-
-<section id="about">
-<h2>Notre univers</h2>
-<p>Maison Sophie vous invite à découvrir un univers élégant,
-raffiné et inspirant.</p>
-</section>
-
-<section id="collection">
-<h2>Notre collection</h2>
-<div class="products">
+</div>
+<section id="collections">
+<h2 data-ar="مجموعاتنا" data-fr="Nos Collections" data-en="Our Collections">مجموعاتنا</h2>
+<div class="cards">
 <div class="card">
-<img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600">
-<h3>Décoration élégante</h3>
-<p>Beauté et harmonie</p>
+<img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600" alt="Traditional fashion">
+<h3 data-ar="القفطان التقليدي" data-fr="Caftan Traditionnel" data-en="Traditional Caftan">القفطان التقليدي</h3>
+<p data-ar="أصالة مغربية وأناقة خالدة" data-fr="Tradition marocaine et élégance intemporelle" data-en="Moroccan heritage and timeless elegance">أصالة مغربية وأناقة خالدة</p>
 </div>
 <div class="card">
-<img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600">
-<h3>Art de vivre</h3>
-<p>Le charme des détails</p>
+<img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=600" alt="Modern fashion">
+<h3 data-ar="القفطان العصري" data-fr="Caftan Moderne" data-en="Modern Caftan">القفطان العصري</h3>
+<p data-ar="تصاميم عصرية بلمسة مغربية" data-fr="Designs modernes avec une touche marocaine" data-en="Modern designs with a Moroccan touch">تصاميم عصرية بلمسة مغربية</p>
 </div>
 <div class="card">
-<img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600">
-<h3>Maison raffinée</h3>
-<p>Un style intemporel</p>
+<img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=600" alt="Evening dresses">
+<h3 data-ar="الأزياء الغربية" data-fr="Mode Occidentale" data-en="Western Fashion">الأزياء الغربية</h3>
+<p data-ar="فساتين راقية وخياطة حسب الطلب" data-fr="Robes élégantes et couture sur mesure" data-en="Elegant dresses and custom tailoring">فساتين راقية وخياطة حسب الطلب</p>
 </div>
 </div>
 </section>
-
 <section id="contact">
-<h2>Contactez-nous</h2>
-<p>Bienvenue dans notre univers Maison Sophie.</p>
-<a class="btn" href="mailto:contact@maisonsophie.com">
-Nous contacter
-</a>
+<h2 data-ar="تواصلي معنا" data-fr="Contactez-nous" data-en="Contact Us">تواصلي معنا</h2>
+<p data-ar="للطلب والاستفسار عن التصاميم والخياطة الخاصة" data-fr="Pour vos commandes et demandes de couture" data-en="For orders and custom tailoring inquiries">للطلب والاستفسار عن التصاميم والخياطة الخاصة</p>
+<a class="btn" href="https://wa.me/" target="_blank">WhatsApp</a>
 </section>
-
-<footer>
-<p>© 2026 Maison Sophie — Tous droits réservés</p>
-</footer>
-
+<footer>© 2026 MAISON SOPHIE — HAUTE COUTURE</footer>
+<script>
+function changeLang(lang){
+document.documentElement.lang=lang;
+document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+document.querySelectorAll("[data-"+lang+"]").forEach(el=>{
+el.textContent=el.getAttribute("data-"+lang);
+});
+}
+</script>
 </body>
-  </html>
-  
+</html>
