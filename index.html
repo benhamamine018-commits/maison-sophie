@@ -1,1271 +1,536 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#21170f">
-<meta name="description" content="MAISON SOPHIE - أناقة مغربية أصيلة">
+<meta name="theme-color" content="#17120e">
+<meta name="description" content="MAISON SOPHIE - أناقة مغربية من القفاطين والجلابيب">
 <title>MAISON SOPHIE | Élégance Marocaine</title>
 
 <style>
 :root{
- --gold:#c5a568;
- --gold2:#ead6a8;
- --dark:#21170f;
- --cream:#faf7f0;
- --muted:#786e60;
- --line:#e8dfd0;
- --green:#168a4b;
+  --black:#17120e;
+  --black2:#211911;
+  --gold:#c5a568;
+  --gold2:#ead6a8;
+  --cream:#fffaf0;
+  --muted:#b9ad9b;
 }
-
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
- margin:0;
- background:var(--cream);
- color:#2b2118;
- font-family:Tahoma,Arial,sans-serif;
+  margin:0;background:var(--black);color:var(--cream);
+  font-family:Tahoma,Arial,sans-serif;line-height:1.7
 }
 button,input,select{font:inherit}
-button,a{cursor:pointer}
-a{text-decoration:none;color:inherit}
-
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+.container{width:min(1180px,92%);margin:auto}
+.gold{color:var(--gold)}
 .topbar{
- background:var(--dark);
- color:#f2dfb7;
- text-align:center;
- padding:9px;
- font-size:12px;
+  background:#0d0c0a;color:var(--gold2);text-align:center;
+  padding:7px;font-size:12px
 }
-
 header{
- background:#fff;
- position:sticky;
- top:0;
- z-index:20;
- border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:20;background:#17120ef2;
+  border-bottom:1px solid #6d5735;backdrop-filter:blur(12px)
 }
-
 .header-inner{
- max-width:1200px;
- margin:auto;
- padding:12px 4%;
- display:grid;
- grid-template-columns:1fr auto 1fr;
- align-items:center;
- gap:10px;
+  min-height:76px;display:flex;align-items:center;
+  justify-content:space-between;gap:15px
 }
-
-.header-actions{
- display:flex;
- align-items:center;
- gap:7px;
+.logo{text-align:center;line-height:1.2}
+.logo strong{font-family:Georgia,serif;font-size:clamp(20px,4vw,30px);
+  color:var(--gold);letter-spacing:2px}
+.logo small{display:block;color:#d8c8a8;font-size:9px;letter-spacing:4px;margin-top:7px}
+nav{display:flex;gap:20px;align-items:center;font-size:14px}
+nav a:hover{color:var(--gold)}
+.header-actions{display:flex;align-items:center;gap:8px}
+.icon-btn,.lang-btn{
+  border:1px solid #806b48;background:transparent;color:var(--cream);
+  border-radius:5px;padding:8px 11px
 }
-
-.header-actions.end{justify-content:flex-end}
-
-.logo{
- font:bold clamp(19px,3vw,29px) Georgia,serif;
- letter-spacing:2px;
- color:var(--gold);
- text-align:center;
- white-space:nowrap;
+.lang-btn{font-size:12px;padding:7px 9px}
+.lang-btn.active{background:var(--gold);color:#17120e}
+.icon-btn:hover,.lang-btn:hover{background:var(--gold);color:#17120e}
+.menu-btn{display:none}
+.hero{padding:25px 0 40px}
+.hero-frame{
+  height:min(68vw,590px);min-height:360px;position:relative;
+  overflow:hidden;border:1px solid var(--gold);border-radius:8px;
+  background:#302419
 }
-
-.logo small{
- display:block;
- font:9px Arial;
- letter-spacing:3px;
- color:var(--muted);
- margin-top:5px;
+.hero-frame img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  opacity:1;transition:opacity .7s
 }
-
-.lang,.icon-btn{
- border:1px solid var(--line);
- background:#fff;
- padding:9px 11px;
+.hero-shade{
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,#100b08aa,transparent 75%),
+  linear-gradient(0deg,#100b08bb,transparent 65%)
 }
-
-.lang.active{
- background:var(--dark);
- color:#fff;
-}
-
-.icon-btn{font-size:18px}
-
-.nav{
- display:flex;
- justify-content:center;
- gap:26px;
- padding:0 10px 12px;
-}
-
-.nav a{font-size:13px}
-.nav a:hover{color:var(--gold)}
-
-.page{display:none;min-height:60vh}
-.page.active{display:block}
-
-.home-campaign{
- background:linear-gradient(145deg,#17110c,#352518);
- color:#fff;
- padding:22px 4% 25px;
- text-align:center;
-}
-
-.campaign-brand{
- max-width:900px;
- margin:auto;
- padding:22px 8px 25px;
- background:radial-gradient(ellipse at center,#a7834c44,transparent 68%);
-}
-
-.campaign-brand>span{
- color:var(--gold2);
- letter-spacing:4px;
- font:13px Georgia,serif;
-}
-
-.campaign-brand h1{
- font:clamp(32px,6vw,58px) Georgia,serif;
- color:var(--gold2);
- margin:14px 0;
-}
-
-.campaign-brand p{
- font-size:14px;
- line-height:2;
- color:#f3e8d5;
- margin:0 auto;
- max-width:650px;
-}
-
+.hero-copy{position:absolute;bottom:9%;right:7%;max-width:520px}
+.hero-copy .eyebrow{color:var(--gold2);letter-spacing:3px;font-size:12px}
+.hero-copy h1{font-family:Georgia,serif;font-size:clamp(30px,6vw,58px);
+  line-height:1.2;margin:12px 0}
+.hero-copy p{color:#f0e4d0}
 .btn{
- display:inline-block;
- border:0;
- border-radius:3px;
- background:var(--gold);
- color:#211913;
- padding:13px 22px;
- margin-top:14px;
- font-weight:bold;
+  display:inline-block;background:var(--gold);color:#1b140d;
+  border:1px solid var(--gold);padding:11px 22px;border-radius:4px;
+  font-weight:bold;margin-top:10px
 }
-
-.btn:hover{background:var(--gold2)}
-
-.campaign-gallery{
- max-width:1080px;
- margin:18px auto 0;
- display:grid;
- grid-template-columns:repeat(4,minmax(0,1fr));
- gap:14px;
+.btn:hover{background:transparent;color:var(--gold)}
+.dots{position:absolute;bottom:18px;left:25px;display:flex;gap:7px}
+.dot{width:8px;height:8px;border-radius:50%;background:#ffffff77}
+.dot.active{background:var(--gold);width:22px;border-radius:8px}
+.section{padding:42px 0}
+.section-head{text-align:center;margin-bottom:25px}
+.section-head h2{font-family:Georgia,serif;color:var(--gold);
+  font-size:clamp(23px,4vw,34px);margin:0}
+.section-head p{color:var(--muted);font-size:13px}
+.categories{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px
 }
-
-.category-card{
- display:block;
- overflow:hidden;
- border:1px solid var(--gold);
- border-radius:5px;
- background:#2b2017;
- color:#f1d9a5;
- padding:0;
- min-width:0;
+.category{
+  height:250px;position:relative;overflow:hidden;border:1px solid var(--gold);
+  border-radius:6px;background:#302419;cursor:pointer
 }
-
-.category-card img{
- display:block;
- width:100%;
- height:clamp(190px,25vw,300px);
- object-fit:cover;
+.category img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.category:hover img{transform:scale(1.06)}
+.category:after{content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg,#100b08dd,transparent 75%)}
+.category span{position:absolute;z-index:1;bottom:14px;right:12px;
+  left:12px;text-align:center;color:var(--gold2);font-size:19px;font-weight:bold}
+.toolbar{display:flex;gap:10px;justify-content:space-between;
+  align-items:center;flex-wrap:wrap;margin:20px 0}
+.search{flex:1;min-width:190px;padding:11px;border:1px solid #806b48;
+  background:#211911;color:white;border-radius:4px}
+.filters{display:flex;gap:7px;flex-wrap:wrap}
+.filter{
+  background:transparent;color:var(--gold2);border:1px solid #806b48;
+  padding:8px 12px;border-radius:4px;font-size:13px
 }
-
-.category-card span{
- display:block;
- padding:13px 5px;
- font-weight:bold;
- font-size:15px;
-}
-
-.category-card:hover{
- transform:translateY(-3px);
- transition:.2s;
- border-color:#f0d69c;
-}
-
-.campaign-values{
- max-width:1050px;
- margin:22px auto 0;
- padding:15px 5px;
- border-top:1px solid #9b7c49;
- border-bottom:1px solid #9b7c49;
- display:flex;
- justify-content:center;
- gap:24px;
- flex-wrap:wrap;
- color:#e6cc98;
- font-size:12px;
-}
-
-.section{
- max-width:1200px;
- margin:auto;
- padding:45px 4%;
-}
-
-.section-title{
- text-align:center;
- margin-bottom:25px;
-}
-
-.section-title h2{
- font:32px Georgia,serif;
- color:#80633c;
- margin:0 0 10px;
-}
-
-.section-title p{
- font-size:13px;
- color:var(--muted);
- line-height:1.8;
-}
-
-.toolbar{
- display:flex;
- gap:10px;
- flex-wrap:wrap;
- margin-bottom:22px;
-}
-
-.toolbar input,.toolbar select{
- padding:12px;
- border:1px solid var(--line);
- background:#fff;
- flex:1;
- min-width:140px;
-}
-
-.products{
- display:grid;
- grid-template-columns:repeat(4,minmax(0,1fr));
- gap:16px;
-}
-
+.filter.active{background:var(--gold);color:#17120e}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .product{
- background:#fff;
- border:1px solid var(--line);
- padding:8px;
- min-width:0;
+  border:1px solid #5e4b30;background:#211911;border-radius:6px;
+  overflow:hidden;position:relative
 }
-
-.product-image{
- height:260px;
- background:#e8dfd1;
- position:relative;
- overflow:hidden;
+.product img{width:100%;height:270px;object-fit:cover;display:block}
+.product-info{padding:12px}
+.product h3{font-size:15px;margin:0 0 5px;color:var(--gold2)}
+.product p{font-size:12px;color:var(--muted);margin:0 0 10px}
+.product-actions{display:flex;gap:7px}
+.product-actions button{flex:1;padding:8px 5px;font-size:12px;
+  border:1px solid var(--gold);background:transparent;color:var(--gold2);
+  border-radius:3px}
+.product-actions button:first-child{background:var(--gold);color:#17120e}
+.heart{position:absolute;top:9px;left:9px;background:#17120ecc;
+  color:#fff;border:1px solid var(--gold);border-radius:50%;
+  width:35px;height:35px}
+.empty{text-align:center;color:var(--muted);padding:30px}
+.features{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px
 }
-
-.product-image img{
- width:100%;
- height:100%;
- object-fit:cover;
- display:block;
+.feature{text-align:center;padding:20px 10px;border:1px solid #6b5534;
+  border-radius:6px;background:#211911}
+.feature .symbol{font-size:27px;color:var(--gold)}
+.feature h3{font-size:14px;color:var(--gold2);margin:5px}
+.feature p{font-size:12px;color:var(--muted);margin:0}
+.about{
+  background:linear-gradient(135deg,#211911,#120e0a);
+  border-top:1px solid #6b5534;border-bottom:1px solid #6b5534;
+  text-align:center;padding:38px 20px
 }
-
-.favorite{
- position:absolute;
- top:9px;
- left:9px;
- border:0;
- background:#fff;
- border-radius:50%;
- width:36px;
- height:36px;
- font-size:20px;
+.about p{max-width:720px;margin:12px auto;color:var(--muted)}
+footer{padding:35px 0 20px;background:#0e0d0b}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:25px}
+footer h3{color:var(--gold);font-size:16px}
+footer p,footer a{font-size:13px;color:var(--muted)}
+footer a{display:block;margin:7px 0}
+footer a:hover{color:var(--gold)}
+.copyright{text-align:center;border-top:1px solid #403322;
+  margin-top:25px;padding-top:15px;color:#8e806b;font-size:11px}
+.floating{
+  position:fixed;bottom:18px;z-index:30;border:0;border-radius:30px;
+  padding:12px 17px;font-weight:bold;box-shadow:0 4px 18px #0008
 }
-
-.favorite.selected{color:#a22}
-
-.product-info{padding:11px 4px}
-.product-info h3{font-size:14px;margin:0 0 7px}
-.product-info p{
- font-size:12px;
- color:var(--muted);
- line-height:1.7;
- margin:0;
+.whatsapp{left:15px;background:#159b55;color:white}
+.music{right:15px;background:var(--gold);color:#17120e}
+.panel{
+  display:none;position:fixed;inset:0;background:#000a;z-index:40;
+  justify-content:center;align-items:center;padding:15px
 }
-
-.product-bottom{
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:5px;
- margin-top:12px;
+.panel.show{display:flex}
+.panel-card{background:#211911;border:1px solid var(--gold);
+  border-radius:8px;width:min(500px,100%);max-height:85vh;overflow:auto;padding:20px}
+.panel-head{display:flex;justify-content:space-between;align-items:center}
+.panel-head h2{color:var(--gold);font-size:20px}
+.close{background:none;color:white;border:0;font-size:25px}
+.cart-row{display:flex;gap:12px;align-items:center;border-bottom:1px solid #57452d;padding:12px 0}
+.cart-row img{width:65px;height:75px;object-fit:cover}
+.cart-row div{flex:1}
+.cart-row small{color:var(--muted)}
+.remove{background:none;color:#e9a29a;border:0}
+.form-input{width:100%;padding:11px;margin:6px 0;background:#120e0a;
+  color:white;border:1px solid #806b48;border-radius:4px}
+.panel-card .btn{width:100%;text-align:center}
+.toast{position:fixed;bottom:75px;left:50%;transform:translateX(-50%);
+  background:var(--gold);color:#17120e;padding:10px 18px;border-radius:5px;
+  display:none;z-index:60}
+@media(max-width:800px){
+  nav{display:none;position:absolute;top:76px;right:0;left:0;
+    background:#17120e;border-bottom:1px solid var(--gold);
+    padding:15px;flex-direction:column}
+  nav.open{display:flex}
+  .menu-btn{display:inline-block}
+  .categories{grid-template-columns:repeat(2,1fr)}
+  .category{height:220px}
+  .products{grid-template-columns:repeat(2,1fr);gap:10px}
+  .product img{height:210px}
+  .features{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-grid>div:first-child{grid-column:1/-1}
 }
-
-.price{
- color:#8c7047;
- font-size:12px;
- font-weight:bold;
-}
-
-.details-btn{
- background:#fff;
- border:1px solid var(--gold);
- padding:8px;
- font-size:12px;
-}
-
-.about,.history{
- background:#f0eadd;
- text-align:center;
- padding:42px 6%;
- line-height:2;
-}
-
-.about p,.history p{
- max-width:900px;
- margin:12px auto;
- color:#62594d;
-}
-
-.history h2,.about h2{
- font:30px Georgia,serif;
- color:#947747;
-}
-
-.production-grid{
- max-width:1000px;
- margin:25px auto;
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:14px;
-}
-
-.production-card{
- background:#fff;
- border:1px solid #e4d8c3;
- padding:20px 14px;
-}
-
-.production-card h3{
- color:#967747;
- margin:0 0 9px;
-}
-
-.production-card p{
- font-size:13px;
- line-height:1.9;
- margin:0;
-}
-
-@media(max-width:850px){
- .products{grid-template-columns:repeat(3,minmax(0,1fr))}
-}
-
-@media(max-width:650px){
- .header-inner{
-  padding:10px 9px;
-  grid-template-columns:auto 1fr auto;
-  gap:5px;
- }
- .logo{font-size:17px;letter-spacing:1px}
- .logo small{font-size:7px;letter-spacing:2px}
- .lang,.icon-btn{padding:7px}
- .header-actions{gap:4px}
- .nav{gap:22px;padding-bottom:11px}
- .home-campaign{padding:16px 12px 20px}
- .campaign-brand{padding:18px 4px 20px}
- .campaign-brand p{font-size:13px}
- .campaign-gallery{
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:10px;
- }
- .category-card img{height:220px}
- .category-card span{font-size:14px;padding:11px 3px}
- .campaign-values{gap:10px;font-size:10px}
- .section{padding:32px 12px}
- .products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
- .product-image{height:205px}
- .product{padding:6px}
- .product-info h3{font-size:13px}
- .production-grid{grid-template-columns:1fr}
+@media(max-width:420px){
+  .header-inner{gap:5px}
+  .logo strong{font-size:18px;letter-spacing:1px}
+  .logo small{font-size:7px;letter-spacing:2px}
+  .header-actions{gap:4px}
+  .icon-btn{padding:7px}
+  .lang-btn{padding:6px;font-size:10px}
+  .hero-frame{min-height:390px}
+  .hero-copy{right:5%;bottom:10%}
+  .category{height:180px}
+  .category span{font-size:15px}
+  .product img{height:175px}
+  .product-info{padding:9px}
+  .product h3{font-size:13px}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-grid>div:first-child{grid-column:auto}
 }
 </style>
 </head>
-<body>
 
-<div class="topbar">
- أناقة مغربية أصيلة | اكتشفوا تشكيلتنا
-</div>
+<body>
+<div class="topbar" id="topbar">أناقة مغربية أصيلة • التوصيل مجاني داخل القنيطرة</div>
 
 <header>
- <div class="header-inner">
-
-  <div class="header-actions">
-   <button class="lang active" id="arBtn" onclick="setLang('ar')">AR</button>
-   <button class="lang" id="frBtn" onclick="setLang('fr')">FR</button>
-  </div>
-
-  <a href="#home" class="logo" onclick="go('home');return false">
-   MAISON SOPHIE
+ <div class="container header-inner">
+  <button class="icon-btn menu-btn" onclick="toggleMenu()" aria-label="القائمة">☰</button>
+  <div class="logo">
+   <strong>MAISON SOPHIE</strong>
    <small>ÉLÉGANCE MAROCAINE</small>
-  </a>
-
-  <div class="header-actions end">
-   <button class="icon-btn" onclick="openMenu()">☰</button>
-   <button class="icon-btn" onclick="go('cart')">
-    🛍 <span id="cartCount">0</span>
-   </button>
   </div>
-
+  <nav id="nav">
+   <a href="#home" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a>
+   <a href="#collections" data-ar="المجموعات" data-fr="Collections">المجموعات</a>
+   <a href="#shop" data-ar="المنتجات" data-fr="Produits">المنتجات</a>
+   <a href="#about" data-ar="من نحن" data-fr="À propos">من نحن</a>
+   <a href="#contact" data-ar="اتصل بنا" data-fr="Contact">اتصل بنا</a>
+  </nav>
+  <div class="header-actions">
+   <button class="lang-btn active" id="arBtn" onclick="setLanguage('ar')">AR</button>
+   <button class="lang-btn" id="frBtn" onclick="setLanguage('fr')">FR</button>
+   <button class="icon-btn" onclick="openCart()">🛍️ <span id="cartCount">0</span></button>
+   <button class="icon-btn" onclick="showFavorites()">♡</button>
+  </div>
  </div>
-
- <nav class="nav">
-  <a href="#home" onclick="go('home');return false">الرئيسية</a>
-  <a href="#products" onclick="go('shop');return false">المنتجات</a>
- </nav>
 </header>
 
-<div class="overlay" id="overlay" onclick="closeMenu()"></div>
-
-<aside class="drawer" id="drawer">
- <div class="drawer-head">
-  <h2>MAISON SOPHIE</h2>
-  <button class="close" onclick="closeMenu()">×</button>
- </div>
-
- <button class="drawer-link" onclick="go('cart')">
-  🛍 سلة المشتريات (<span id="drawerCartCount">0</span>)
- </button>
-
- <button class="drawer-link" onclick="go('favorites')">
-  ♡ المفضلة
- </button>
-
- <button class="drawer-link" onclick="go('home')">
-  ✧ الرئيسية
- </button>
-
- <a class="drawer-link" href="https://wa.me/212636101436" target="_blank">
-  تواصل معنا عبر واتساب
- </a>
-</aside>
-
 <main>
-
-<section id="homePage" class="page active">
-
- <section class="home-campaign">
-
-  <div class="campaign-brand">
-   <span>✦ MAISON SOPHIE ✦</span>
-
-   <h1 data-ar="أناقة مغربية أصيلة"
-       data-fr="Élégance marocaine authentique">
-    أناقة مغربية أصيلة
-   </h1>
-
-   <p>
-    قفاطين وجلابيب نسائية ورجالية
-    • تصاميم العروس • أناقة الأطفال
-   </p>
-
-   <button class="btn" onclick="go('shop')">
-    اكتشفوا جميع التصاميم
-   </button>
+<section class="hero container" id="home">
+ <div class="hero-frame">
+  <img id="heroImage" src="images/model-01-1.jpg" alt="قفطان مغربي أنيق">
+  <div class="hero-shade"></div>
+  <div class="hero-copy">
+   <div class="eyebrow">MAISON SOPHIE • COLLECTION</div>
+   <h1 id="heroTitle">سحر الأناقة المغربية</h1>
+   <p id="heroText">اكتشفي تصاميم تجمع بين الأصالة والفخامة.</p>
+   <a class="btn" href="#shop" id="heroButton">اكتشف المجموعة</a>
   </div>
-
-  <div class="campaign-gallery">
-
-   <button class="category-card" onclick="openCategory('men')">
-    <img src="images/category-men.jpg" alt="جلباب رجالي مغربي">
-    <span>مجموعة الرجال</span>
-   </button>
-
-   <button class="category-card" onclick="openCategory('women')">
-    <img src="images/category-women.jpg" alt="قفطان نسائي مغربي">
-    <span>مجموعة النساء</span>
-   </button>
-
-   <button class="category-card" onclick="openCategory('kids')">
-    <img src="images/category-kids.jpg" alt="ملابس أطفال مغربية">
-    <span>مجموعة الأطفال</span>
-   </button>
-
-   <button class="category-card" onclick="openCategory('bridal')">
-    <img src="images/category-bridal.jpg" alt="قفطان العروس">
-    <span>مجموعة العروس</span>
-   </button>
-
-  </div>
-
-  <div class="campaign-values">
-   <span>♛ جودة مختارة</span>
-   <span>◇ تصميم مغربي</span>
-   <span>✧ تفصيل حسب الطلب</span>
-   <span>☏ التوصيل داخل المغرب</span>
-  </div>
-
- </section>
-
- <section class="about">
-  <h2>MAISON SOPHIE</h2>
-  <p>
-   متجر متخصص في القفاطين والجلابيب والتصاميم المغربية
-   التقليدية والعصرية. اكتشفوا التصاميم واطلبوها بسهولة عبر واتساب.
-  </p>
- </section>
-
- <section class="history" id="history">
-  <h2>تاريخ القفطان المغربي</h2>
-
-  <p>
-   القفطان المغربي لباس تقليدي عريق يجمع بين الأصالة
-   والأناقة والحرفية، وأصبح رمزاً للمناسبات والأعراس والاحتفالات.
-  </p>
-
-  <h2>مراحل صناعة القفطان</h2>
-
-  <div class="production-grid">
-
-   <div class="production-card">
-    <h3>01 — التصميم</h3>
-    <p>رسم الفكرة وتحديد الألوان والتفاصيل.</p>
-   </div>
-
-   <div class="production-card">
-    <h3>02 — اختيار القماش</h3>
-    <p>اختيار المخمل أو الحرير أو البروكار المناسب.</p>
-   </div>
-
-   <div class="production-card">
-    <h3>03 — التفصيل والخياطة</h3>
-    <p>أخذ المقاسات وقص القماش وخياطة القطعة.</p>
-   </div>
-
-  </div>
- </section>
-
- </section>
- <style>
-.overlay{
- position:fixed;
- inset:0;
- background:#0008;
- z-index:40;
- display:none;
-}
-.overlay.open{display:block}
-
-.drawer{
- position:fixed;
- top:0;
- right:0;
- width:min(340px,88vw);
- height:100%;
- background:#fff;
- z-index:41;
- padding:22px;
- transform:translateX(110%);
- transition:.3s;
- overflow:auto;
-}
-.drawer.open{transform:translateX(0)}
-
-.drawer-head{
- display:flex;
- justify-content:space-between;
- align-items:center;
- padding-bottom:20px;
- border-bottom:1px solid var(--line);
-}
-.drawer-head h2{
- font:22px Georgia,serif;
- color:var(--gold);
-}
-.close{
- background:none;
- border:0;
- font-size:25px;
-}
-.drawer-link{
- display:block;
- width:100%;
- padding:16px 5px;
- border:0;
- border-bottom:1px solid var(--line);
- background:#fff;
- text-align:right;
- font-size:15px;
-}
-.detail-layout{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:30px;
-}
-.gallery-main{
- width:100%;
- height:450px;
- object-fit:cover;
- background:#e8dfd1;
-}
-.detail-info h1{
- font:30px Georgia,serif;
-}
-.detail-info p{
- line-height:1.9;
- color:var(--muted);
-}
-.detail-info label{
- display:block;
- margin:13px 0 6px;
- font-size:13px;
-}
-.detail-info select,.detail-info input{
- width:100%;
- padding:12px;
- background:#fff;
- border:1px solid var(--line);
-}
-.detail-info .btn{width:100%}
-.cart-list{
- background:#fff;
- border:1px solid var(--line);
- padding:18px;
- margin:20px 0;
-}
-.cart-item{
- display:flex;
- justify-content:space-between;
- gap:10px;
- padding:12px 0;
- border-bottom:1px solid var(--line);
- font-size:13px;
-}
-.cart-item button{
- border:0;
- background:none;
- color:#a22;
-}
-.empty{
- text-align:center;
- padding:40px 10px;
- color:var(--muted);
-}
-.btn-green{
- background:var(--green);
- color:#fff;
-}
-.toast{
- position:fixed;
- bottom:20px;
- left:20px;
- background:var(--dark);
- color:#fff;
- padding:13px 18px;
- z-index:60;
- display:none;
-}
-.whatsapp-float{
- position:fixed;
- bottom:18px;
- left:18px;
- z-index:30;
- background:var(--green);
- color:white;
- border-radius:30px;
- padding:12px 17px;
- font-weight:bold;
-}
-.ai-launch{
- position:fixed;
- right:18px;
- bottom:18px;
- z-index:35;
- width:54px;
- height:54px;
- border:0;
- border-radius:50%;
- background:var(--gold);
- color:#211913;
- font-size:24px;
- box-shadow:0 5px 18px #0004;
-}
-.ai-panel{
- position:fixed;
- right:18px;
- bottom:84px;
- z-index:36;
- width:min(350px,calc(100vw - 28px));
- height:min(450px,calc(100vh - 120px));
- background:#fff;
- border:1px solid var(--line);
- box-shadow:0 12px 35px #0003;
- border-radius:14px;
- display:none;
- overflow:hidden;
- flex-direction:column;
-}
-.ai-panel.open{display:flex}
-.ai-head{
- background:var(--dark);
- color:#fff;
- padding:14px;
- display:flex;
- justify-content:space-between;
-}
-.ai-head strong{color:var(--gold2)}
-.ai-head button{
- background:none;
- border:0;
- color:white;
- font-size:23px;
-}
-.ai-note{
- font-size:11px;
- color:#746b5f;
- background:#f7f3eb;
- padding:9px 12px;
- line-height:1.6;
-}
-.ai-messages{
- padding:12px;
- overflow:auto;
- flex:1;
- display:flex;
- flex-direction:column;
- gap:9px;
- background:#fcfbf8;
-}
-.ai-msg{
- max-width:88%;
- padding:10px 12px;
- border-radius:12px;
- font-size:13px;
- line-height:1.7;
-}
-.ai-msg.bot{background:#eee7da;align-self:flex-start}
-.ai-msg.user{background:#d9c49d;align-self:flex-end}
-.ai-form{
- display:flex;
- gap:7px;
- padding:10px;
- border-top:1px solid var(--line);
-}
-.ai-form input{
- min-width:0;
- flex:1;
- border:1px solid var(--line);
- border-radius:8px;
- padding:11px;
-}
-.ai-form button{
- border:0;
- background:var(--gold);
- border-radius:8px;
- padding:0 15px;
-}
-footer{
- background:var(--dark);
- color:#ddd;
- text-align:center;
- padding:34px 15px;
- line-height:2;
-}
-footer strong{
- font:27px Georgia,serif;
- color:var(--gold);
-}
-footer a{color:var(--gold)}
-
-@media(max-width:650px){
- .detail-layout{grid-template-columns:1fr}
- .gallery-main{height:350px}
- .ai-launch{right:13px;bottom:14px}
- .ai-panel{
-  right:10px;
-  bottom:74px;
-  width:calc(100vw - 20px);
- }
- .whatsapp-float{
-  bottom:14px;
-  left:13px;
-  padding:10px 13px;
-  font-size:12px;
- }
-}
-</style>
-
-<section id="shopPage" class="page section">
-
- <div class="section-title">
-  <h2>جميع المنتجات</h2>
-  <p>اكتشفوا مجموعتنا المغربية واختروا التصميم المناسب لكم</p>
+  <div class="dots" id="heroDots"></div>
  </div>
+</section>
 
+<section class="section container" id="collections">
+ <div class="section-head">
+  <h2 data-ar="اكتشف مجموعاتنا" data-fr="Découvrez nos collections">اكتشف مجموعاتنا</h2>
+  <p data-ar="أناقة لكل مناسبة ولكل أفراد العائلة" data-fr="L'élégance pour chaque occasion et toute la famille">أناقة لكل مناسبة ولكل أفراد العائلة</p>
+ </div>
+ <div class="categories">
+  <div class="category" onclick="filterProducts('men')">
+   <img src="images/model-01-1.jpg" alt="جلابة رجالية">
+   <span data-ar="مجموعة الرجال" data-fr="Collection Homme">مجموعة الرجال</span>
+  </div>
+  <div class="category" onclick="filterProducts('women')">
+   <img src="images/model-02-1.jpg" alt="قفطان نسائي">
+   <span data-ar="مجموعة النساء" data-fr="Collection Femme">مجموعة النساء</span>
+  </div>
+  <div class="category" onclick="filterProducts('kids')">
+   <img src="images/model-03-1.jpg" alt="ملابس أطفال">
+   <span data-ar="مجموعة الأطفال" data-fr="Collection Enfants">مجموعة الأطفال</span>
+  </div>
+  <div class="category" onclick="filterProducts('bridal')">
+   <img src="images/model-04-1.jpg" alt="قفطان العروس">
+   <span data-ar="مجموعة العروس" data-fr="Collection Mariée">مجموعة العروس</span>
+  </div>
+ </div>
+</section>
+
+<section class="section container" id="shop">
+ <div class="section-head">
+  <h2 data-ar="تسوق تشكيلتنا" data-fr="Notre boutique">تسوق تشكيلتنا</h2>
+  <p data-ar="اختاري تصميمك المفضل" data-fr="Choisissez votre modèle préféré">اختاري تصميمك المفضل</p>
+ </div>
  <div class="toolbar">
-  <input id="searchInput" type="search"
-   placeholder="ابحث عن قفطان أو جلابة..."
-   oninput="renderProducts()">
-
-  <select id="categoryFilter" onchange="renderProducts()">
-   <option value="all">جميع المجموعات</option>
-   <option value="men">جلابيب الرجال</option>
-   <option value="women">قفاطين النساء</option>
-   <option value="kids">ملابس الأطفال</option>
-   <option value="bridal">قفاطين العروس</option>
-  </select>
- </div>
-
- <div class="products" id="productGrid"></div>
-</section>
-
-<section id="detailPage" class="page section">
-
- <button class="details-btn" onclick="go('shop')">
-  ← العودة إلى المنتجات
- </button>
-
- <div class="detail-layout">
-  <div>
-   <img id="detailImage" class="gallery-main" src="" alt="صورة المنتج">
-  </div>
-
-  <div class="detail-info">
-   <h1 id="detailName"></h1>
-   <p id="detailDesc"></p>
-
-   <label>اختيار اللون</label>
-   <select id="detailColor">
-    <option>ذهبي</option>
-    <option>أخضر</option>
-    <option>أزرق</option>
-    <option>أحمر</option>
-    <option>أسود</option>
-    <option>أبيض</option>
-    <option>بيج</option>
-   </select>
-
-   <label>نوع القماش</label>
-   <select id="detailFabric">
-    <option>مخمل</option>
-    <option>حرير</option>
-    <option>بروكار</option>
-    <option>كريب</option>
-    <option>ساتان</option>
-   </select>
-
-   <label>المقاس</label>
-   <select id="detailSize">
-    <option>حسب القياس</option>
-    <option>S</option>
-    <option>M</option>
-    <option>L</option>
-    <option>XL</option>
-    <option>XXL</option>
-   </select>
-
-   <label>ملاحظات إضافية</label>
-   <input id="detailNotes" placeholder="اكتب تفاصيل التصميم">
-
-   <button class="btn" onclick="addDetailToCart()">
-    أضف إلى السلة
-   </button>
-
-   <button class="btn btn-green" onclick="orderDetailWhatsApp()">
-    اطلب عبر واتساب
-   </button>
+  <input class="search" id="search" placeholder="ابحث عن منتج..." oninput="renderProducts()">
+  <div class="filters">
+   <button class="filter active" onclick="filterProducts('all',this)" data-ar="الكل" data-fr="Tout">الكل</button>
+   <button class="filter" onclick="filterProducts('men',this)" data-ar="رجال" data-fr="Homme">رجال</button>
+   <button class="filter" onclick="filterProducts('women',this)" data-ar="نساء" data-fr="Femme">نساء</button>
+   <button class="filter" onclick="filterProducts('kids',this)" data-ar="أطفال" data-fr="Enfants">أطفال</button>
+   <button class="filter" onclick="filterProducts('bridal',this)" data-ar="عروس" data-fr="Mariée">عروس</button>
   </div>
  </div>
+ <div class="products" id="products"></div>
 </section>
 
-<section id="cartPage" class="page section">
- <div class="section-title">
-  <h2>سلة المشتريات</h2>
-  <p>التصاميم التي اخترتموها</p>
+<section class="section container">
+ <div class="section-head">
+  <h2 data-ar="لماذا MAISON SOPHIE؟" data-fr="Pourquoi MAISON SOPHIE ?">لماذا MAISON SOPHIE؟</h2>
  </div>
-
- <div class="cart-list" id="cartList"></div>
-
- <button class="btn btn-green" onclick="checkoutWhatsApp()">
-  إرسال الطلب عبر واتساب
- </button>
-</section>
-
-<section id="favoritesPage" class="page section">
- <div class="section-title">
-  <h2>المفضلة ♡</h2>
-  <p>التصاميم التي أعجبتكم</p>
+ <div class="features">
+  <div class="feature"><div class="symbol">✧</div><h3 data-ar="أناقة مغربية" data-fr="Élégance marocaine">أناقة مغربية</h3><p data-ar="تصاميم مستوحاة من التراث" data-fr="Inspiré du patrimoine">تصاميم مستوحاة من التراث</p></div>
+  <div class="feature"><div class="symbol">♧</div><h3 data-ar="توصيل مجاني" data-fr="Livraison gratuite">توصيل مجاني</h3><p data-ar="داخل مدينة القنيطرة" data-fr="À Kénitra">داخل مدينة القنيطرة</p></div>
+  <div class="feature"><div class="symbol">↺</div><h3 data-ar="استبدال حسب المنتج" data-fr="Échange selon le produit">استبدال حسب المنتج</h3><p data-ar="إذا كان الخطأ من المحل نغير المنتج" data-fr="En cas d'erreur de notre part, nous échangeons le produit">إذا كان الخطأ من المحل نغير المنتج</p></div>
+  <div class="feature"><div class="symbol">♡</div><h3 data-ar="خدمة العملاء" data-fr="Service client">خدمة العملاء</h3><p data-ar="نحن هنا لمساعدتك" data-fr="Nous sommes à votre écoute">نحن هنا لمساعدتك</p></div>
  </div>
-
- <div class="products" id="favoriteGrid"></div>
 </section>
 
+<section class="about" id="about">
+ <div class="container">
+  <div class="section-head"><h2>MAISON SOPHIE</h2></div>
+  <p data-ar="نقدم لكم لمسة من الأناقة المغربية الأصيلة، بتصاميم تجمع بين جمال التراث وروح العصر. اكتشفوا تشكيلتنا من القفاطين والجلابيب والملابس التقليدية." data-fr="Nous vous proposons une élégance marocaine authentique, avec des créations qui allient tradition et modernité. Découvrez nos caftans, djellabas et vêtements traditionnels.">نقدم لكم لمسة من الأناقة المغربية الأصيلة، بتصاميم تجمع بين جمال التراث وروح العصر. اكتشفوا تشكيلتنا من القفاطين والجلابيب والملابس التقليدية.</p>
+  <a class="btn" href="https://wa.me/212636101436" target="_blank" rel="noopener">تواصل معنا عبر واتساب</a>
+ </div>
+</section>
 </main>
 
-<footer>
- <strong>MAISON SOPHIE</strong>
- <p>ÉLÉGANCE MAROCAINE</p>
- <p>قفاطين مغربية • جلابيب • تصاميم العروس</p>
- <a href="https://wa.me/212636101436" target="_blank">
-  تواصلوا معنا عبر واتساب
- </a>
- <p>© 2026 MAISON SOPHIE</p>
+<footer id="contact">
+ <div class="container">
+  <div class="footer-grid">
+   <div>
+    <div class="logo"><strong>MAISON SOPHIE</strong><small>ÉLÉGANCE MAROCAINE</small></div>
+    <p data-ar="أناقة مغربية أصيلة في القنيطرة." data-fr="L'élégance marocaine à Kénitra.">أناقة مغربية أصيلة في القنيطرة.</p>
+    <p>📍 Khabazat, Kénitra, Maroc</p>
+   </div>
+   <div>
+    <h3 data-ar="معلومات الشحن" data-fr="Livraison">معلومات الشحن</h3>
+    <p data-ar="القنيطرة: توصيل مجاني" data-fr="Kénitra : livraison gratuite">القنيطرة: توصيل مجاني</p>
+    <p data-ar="باقي المغرب: ابتداءً من 30 درهماً" data-fr="Autres villes : à partir de 30 DH">باقي المغرب: ابتداءً من 30 درهماً</p>
+    <p data-ar="خارج المغرب: حسب الدولة" data-fr="International : selon le pays">خارج المغرب: حسب الدولة</p>
+   </div>
+   <div>
+    <h3 data-ar="خدمة العملاء" data-fr="Service client">خدمة العملاء</h3>
+    <a href="https://wa.me/212636101436" target="_blank" rel="noopener">واتساب: 0636101436</a>
+    <a href="mailto:sofiaaklamousse1313@gmail.com">الشكاوى والمشاكل عبر البريد</a>
+    <a href="#about" data-ar="من نحن" data-fr="À propos">من نحن</a>
+   </div>
+  </div>
+  <div class="copyright">© <span id="year"></span> MAISON SOPHIE — Tous droits réservés.</div>
+ </div>
 </footer>
 
-<a class="whatsapp-float"
- href="https://wa.me/212636101436" target="_blank">
- واتساب
-</a>
+<button class="floating whatsapp" onclick="location.href='https://wa.me/212636101436'">واتساب</button>
+<button class="floating music" id="musicButton" onclick="toggleMusic()">♫ تشغيل الموسيقى</button>
+<audio id="musicPlayer" preload="none"></audio>
+<div class="toast" id="toast"></div>
 
-<button class="ai-launch" onclick="toggleAI()">✦</button>
-
-<div class="ai-panel" id="aiPanel">
- <div class="ai-head">
-  <strong>مساعد MAISON SOPHIE</strong>
-  <button onclick="toggleAI()">×</button>
+<div class="panel" id="cartPanel" onclick="outsideClose(event,'cartPanel')">
+ <div class="panel-card">
+  <div class="panel-head"><h2 data-ar="سلة المشتريات" data-fr="Panier">سلة المشتريات</h2><button class="close" onclick="closePanel('cartPanel')">×</button></div>
+  <div id="cartItems"></div>
+  <h3 id="cartTotal"></h3>
+  <input class="form-input" id="customerName" placeholder="الاسم الكامل">
+  <input class="form-input" id="customerCity" placeholder="المدينة">
+  <input class="form-input" id="customerAddress" placeholder="العنوان">
+  <button class="btn" onclick="checkout()">إرسال الطلب عبر واتساب</button>
  </div>
-
- <div class="ai-note">
-  اسأل عن القفاطين والأقمشة والألوان والمقاسات والطلبات.
- </div>
-
- <div class="ai-messages" id="aiMessages">
-  <div class="ai-msg bot">
-   مرحباً بك! كيف يمكنني مساعدتك؟
-  </div>
- </div>
-
- <form class="ai-form" onsubmit="askAI(event)">
-  <input id="aiInput" placeholder="اكتب سؤالك هنا..." autocomplete="off">
-  <button type="submit">إرسال</button>
- </form>
 </div>
 
-<div class="toast" id="toast"></div>
+<div class="panel" id="favoritesPanel" onclick="outsideClose(event,'favoritesPanel')">
+ <div class="panel-card">
+  <div class="panel-head"><h2>المفضلة</h2><button class="close" onclick="closePanel('favoritesPanel')">×</button></div>
+  <div id="favoriteItems"></div>
+ </div>
+</div>
+
 <script>
-const products = [
- {id:1,name:"جلابة رجالية مغربية",fr:"Djellaba homme",cat:"men",desc:"جلابة رجالية بتصميم مغربي أنيق",img:"images/model-01-1.jpg"},
- {id:2,name:"قفطان نسائي أخضر",fr:"Caftan femme vert",cat:"women",desc:"قفطان نسائي بتطريز مغربي",img:"images/model-02-1.jpg"},
- {id:3,name:"جلابة رجالية بيضاء",fr:"Djellaba homme blanche",cat:"men",desc:"جلابة رجالية تقليدية",img:"images/model-03-1.jpg"},
- {id:4,name:"ملابس أطفال مغربية",fr:"Tenue marocaine enfant",cat:"kids",desc:"تصميم مغربي أنيق للأطفال",img:"images/model-04-1.jpg"},
- {id:5,name:"قفطان العروس",fr:"Caftan de mariée",cat:"bridal",desc:"قفطان خاص بالمناسبات والأعراس",img:"images/model-05-1.jpg"},
- {id:6,name:"قفطان أخضر ملكي",fr:"Caftan vert royal",cat:"women",desc:"قفطان فاخر للمناسبات",img:"images/model-06-1.jpg"},
- {id:7,name:"قفطان نسائي مطرز",fr:"Caftan femme brodé",cat:"women",desc:"قفطان بتطريز مغربي جميل",img:"images/model-07-1.jpg"},
- {id:8,name:"جلابة رجالية بيج",fr:"Djellaba homme beige",cat:"men",desc:"جلابة رجالية أنيقة ومريحة",img:"images/model-08-1.jpg"},
- {id:9,name:"قفطان العروس المطرز",fr:"Caftan mariée brodé",cat:"bridal",desc:"تصميم خاص بالأعراس",img:"images/model-09-1.jpg"},
- {id:10,name:"قفطان نسائي فاخر",fr:"Caftan femme élégant",cat:"women",desc:"قفطان مغربي بتفاصيل فاخرة",img:"images/model-10-1.jpg"},
- {id:11,name:"قفطان نسائي أزرق",fr:"Caftan femme bleu",cat:"women",desc:"قفطان أزرق بتطريز أنيق",img:"images/model-11-1.jpg"},
- {id:12,name:"قفطان العروس الأبيض",fr:"Caftan mariée blanc",cat:"bridal",desc:"قفطان أبيض لإطلالة العروس",img:"images/model-12-1.jpg"}
-];
+const imageFiles = Array.from({length:12},(_,i)=>
+  `images/model-${String(i+1).padStart(2,'0')}-1.jpg`
+);
+const products = imageFiles.map((image,i)=>({
+ id:i+1,image,
+ name:`تصميم مغربي ${i+1}`,
+ category:'all',
+ price:null
+}));
 
-let currentProduct=null;
-let currentLang="ar";
+let lang='ar', activeFilter='all';
+let cart=JSON.parse(localStorage.getItem('ms_cart')||'[]');
+let favorites=JSON.parse(localStorage.getItem('ms_fav')||'[]');
+let heroIndex=0, musicIndex=0, musicTimer=null;
 
-let cart=[];
-let favorites=[];
-
-try{
- cart=JSON.parse(localStorage.getItem("ms_cart")||"[]");
- favorites=JSON.parse(localStorage.getItem("ms_favorites")||"[]");
- if(!Array.isArray(cart))cart=[];
- if(!Array.isArray(favorites))favorites=[];
-}catch(e){
- cart=[];
- favorites=[];
+const heroImage=document.getElementById('heroImage');
+function setupHero(){
+ const dots=document.getElementById('heroDots');
+ dots.innerHTML=imageFiles.map((_,i)=>
+  `<span class="dot ${i===0?'active':''}"></span>`).join('');
+ setInterval(()=>{
+  heroIndex=(heroIndex+1)%imageFiles.length;
+  heroImage.style.opacity='0';
+  setTimeout(()=>{
+   heroImage.src=imageFiles[heroIndex];
+   heroImage.style.opacity='1';
+   [...dots.children].forEach((d,i)=>d.classList.toggle('active',i===heroIndex));
+  },350);
+ },3000);
 }
 
-function saveData(){
- localStorage.setItem("ms_cart",JSON.stringify(cart));
- localStorage.setItem("ms_favorites",JSON.stringify(favorites));
- updateCartCount();
-}
-
-function updateCartCount(){
- const count=cart.reduce((sum,item)=>sum+(item.qty||1),0);
- document.getElementById("cartCount").textContent=count;
- document.getElementById("drawerCartCount").textContent=count;
-}
-
-function showToast(message){
- const toast=document.getElementById("toast");
- toast.textContent=message;
- toast.style.display="block";
- clearTimeout(window.toastTimer);
- window.toastTimer=setTimeout(()=>{
-  toast.style.display="none";
- },2500);
-}
-
-function go(page){
- closeMenu();
-
- document.querySelectorAll(".page").forEach(p=>{
-  p.classList.remove("active");
+function setLanguage(value){
+ lang=value;
+ document.documentElement.lang=value;
+ document.documentElement.dir=value==='ar'?'rtl':'ltr';
+ document.querySelectorAll('[data-ar]').forEach(el=>{
+  el.textContent=el.dataset[value]||el.dataset.ar;
  });
-
- const target=document.getElementById(page+"Page");
-
- if(target)target.classList.add("active");
-
- window.scrollTo({top:0,behavior:"smooth"});
-
- if(page==="shop")renderProducts();
- if(page==="cart")renderCart();
- if(page==="favorites")renderFavorites();
-}
-
-function openCategory(category){
- go("shop");
- document.getElementById("categoryFilter").value=category;
+ document.getElementById('arBtn').classList.toggle('active',value==='ar');
+ document.getElementById('frBtn').classList.toggle('active',value==='fr');
+ document.getElementById('topbar').textContent=value==='ar'
+ ?'أناقة مغربية أصيلة • التوصيل مجاني داخل القنيطرة'
+ :'Élégance marocaine • Livraison gratuite à Kénitra';
+ document.getElementById('heroTitle').textContent=value==='ar'?'سحر الأناقة المغربية':'Le charme de l’élégance marocaine';
+ document.getElementById('heroText').textContent=value==='ar'?'اكتشفي تصاميم تجمع بين الأصالة والفخامة.':'Découvrez des créations entre tradition et élégance.';
+ document.getElementById('heroButton').textContent=value==='ar'?'اكتشف المجموعة':'Découvrir la collection';
+ document.getElementById('search').placeholder=value==='ar'?'ابحث عن منتج...':'Rechercher un produit...';
  renderProducts();
 }
 
 function renderProducts(){
- const grid=document.getElementById("productGrid");
- if(!grid)return;
-
- const query=(document.getElementById("searchInput").value||"").trim().toLowerCase();
- const category=document.getElementById("categoryFilter").value;
-
- const list=products.filter(p=>{
-  return (category==="all"||p.cat===category)&&
-  (p.name.toLowerCase().includes(query)||p.fr.toLowerCase().includes(query));
- });
-
- grid.innerHTML=list.map(p=>`
+ const q=document.getElementById('search').value.trim().toLowerCase();
+ const list=products.filter(p=>
+  (activeFilter==='all'||activeFilter==='men'||activeFilter==='women'||activeFilter==='kids'||activeFilter==='bridal')
+  && (`${p.name} ${p.id}`).toLowerCase().includes(q)
+ );
+ const root=document.getElementById('products');
+ if(!list.length){root.innerHTML='<div class="empty">لا توجد منتجات مطابقة.</div>';return}
+ root.innerHTML=list.map(p=>`
  <article class="product">
-  <div class="product-image">
-   <img src="${p.img}" alt="${p.name}"
-    onerror="this.style.display='none'">
-   <button class="favorite ${favorites.includes(p.id)?"selected":""}"
-    onclick="toggleFavorite(${p.id})">♡</button>
-  </div>
+  <button class="heart" onclick="toggleFavorite(${p.id})">${favorites.includes(p.id)?'♥':'♡'}</button>
+  <img src="${p.image}" alt="${p.name}" loading="lazy">
   <div class="product-info">
-   <h3>${p.name}</h3>
-   <p>${p.desc}</p>
-   <div class="product-bottom">
-    <span class="price">السعر حسب الطلب</span>
-    <button class="details-btn" onclick="openDetail(${p.id})">
-     التفاصيل
-    </button>
+   <h3>${lang==='ar'?p.name:`Modèle marocain ${p.id}`}</h3>
+   <p>${lang==='ar'?'للاستفسار عن الثمن والتفاصيل تواصل معنا':'Contactez-nous pour le prix et les détails'}</p>
+   <div class="product-actions">
+    <button onclick="addToCart(${p.id})">${lang==='ar'?'أضف للسلة':'Ajouter'}</button>
+    <button onclick="askProduct(${p.id})">${lang==='ar'?'استفسار':'Demander'}</button>
    </div>
   </div>
- </article>
- `).join("")||'<p class="empty">لا توجد منتجات مطابقة.</p>';
+ </article>`).join('');
 }
 
-function openDetail(id){
- currentProduct=products.find(p=>p.id===id);
- if(!currentProduct)return;
-
- document.getElementById("detailImage").src=currentProduct.img;
- document.getElementById("detailName").textContent=currentProduct.name;
- document.getElementById("detailDesc").textContent=currentProduct.desc;
-
- go("detail");
+function filterProducts(category,button){
+ activeFilter=category;
+ document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
+ if(button)button.classList.add('active');
+ document.getElementById('shop').scrollIntoView({behavior:'smooth'});
+ renderProducts();
 }
-
+function addToCart(id){
+ cart.push(id);saveCart();toast(lang==='ar'?'تمت الإضافة إلى السلة':'Ajouté au panier');
+}
+function saveCart(){
+ localStorage.setItem('ms_cart',JSON.stringify(cart));
+ document.getElementById('cartCount').textContent=cart.length;
+}
 function toggleFavorite(id){
- favorites=favorites.includes(id)
-  ?favorites.filter(x=>x!==id)
-  :[...favorites,id];
-
- saveData();
- renderProducts();
- renderFavorites();
+ favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[...favorites,id];
+ localStorage.setItem('ms_fav',JSON.stringify(favorites));renderProducts();
 }
-
-function renderFavorites(){
- const grid=document.getElementById("favoriteGrid");
- if(!grid)return;
-
- const list=products.filter(p=>favorites.includes(p.id));
-
- grid.innerHTML=list.map(p=>`
- <article class="product">
-  <div class="product-image">
-   <img src="${p.img}" alt="${p.name}">
-  </div>
-  <div class="product-info">
-   <h3>${p.name}</h3>
-   <button class="details-btn" onclick="openDetail(${p.id})">
-    التفاصيل
-   </button>
-   <button class="details-btn" onclick="toggleFavorite(${p.id})">
-    إزالة ♡
-   </button>
-  </div>
- </article>
- `).join("")||'<p class="empty">المفضلة فارغة حالياً.</p>';
+function showFavorites(){
+ document.getElementById('favoriteItems').innerHTML=favorites.length?
+ favorites.map(id=>{const p=products.find(x=>x.id===id);return `<div class="cart-row"><img src="${p.image}"><div>${p.name}</div><button class="remove" onclick="toggleFavorite(${id});showFavorites()">حذف</button></div>`}).join('')
+ :'<p class="empty">لا توجد منتجات في المفضلة.</p>';
+ document.getElementById('favoritesPanel').classList.add('show');
 }
-
-function addDetailToCart(){
- if(!currentProduct)return;
-
- cart.push({
-  id:currentProduct.id,
-  name:currentProduct.name,
-  qty:1,
-  color:document.getElementById("detailColor").value,
-  fabric:document.getElementById("detailFabric").value,
-  size:document.getElementById("detailSize").value,
-  notes:document.getElementById("detailNotes").value
- });
-
- saveData();
- showToast("تمت إضافة المنتج إلى السلة");
+function openCart(){
+ renderCart();document.getElementById('cartPanel').classList.add('show');
 }
-
 function renderCart(){
- const list=document.getElementById("cartList");
- if(!list)return;
-
- if(!cart.length){
-  list.innerHTML='<div class="empty">سلتك فارغة حالياً.</div>';
-  return;
- }
-
- list.innerHTML=cart.map((item,i)=>`
- <div class="cart-item">
-  <div>
-   <strong>${item.name}</strong><br>
-   اللون: ${item.color} — القماش: ${item.fabric}
-   — المقاس: ${item.size}<br>
-   ${item.notes||""}
-  </div>
-  <button onclick="removeCart(${i})">حذف</button>
- </div>
- `).join("");
+ const root=document.getElementById('cartItems');
+ root.innerHTML=cart.length?cart.map((id,i)=>{
+  const p=products.find(x=>x.id===id);
+  return `<div class="cart-row"><img src="${p.image}"><div>${p.name}<br><small>تصميم ${p.id}</small></div><button class="remove" onclick="removeCart(${i})">حذف</button></div>`;
+ }).join(''):'<p class="empty">السلة فارغة حالياً.</p>';
+ document.getElementById('cartTotal').textContent=cart.length?`عدد المنتجات: ${cart.length}`:'';
+}
+function removeCart(i){cart.splice(i,1);saveCart();renderCart()}
+function checkout(){
+ if(!cart.length){toast('السلة فارغة');return}
+ const name=document.getElementById('customerName').value.trim();
+ const city=document.getElementById('customerCity').value.trim();
+ const address=document.getElementById('customerAddress').value.trim();
+ if(!name||!city||!address){toast('يرجى إدخال الاسم والمدينة والعنوان');return}
+ const items=cart.map(id=>products.find(p=>p.id===id).name).join('، ');
+ const message=`طلب جديد من MAISON SOPHIE%0Aالاسم: ${encodeURIComponent(name)}%0Aالمدينة: ${encodeURIComponent(city)}%0Aالعنوان: ${encodeURIComponent(address)}%0Aالمنتجات: ${encodeURIComponent(items)}%0Aعدد المنتجات: ${cart.length}`;
+ window.open(`https://wa.me/212636101436?text=${message}`,'_blank');
+}
+function askProduct(id){
+ const p=products.find(x=>x.id===id);
+ window.open(`https://wa.me/212636101436?text=${encodeURIComponent('السلام عليكم، أريد الاستفسار عن '+p.name)}`,'_blank');
+}
+function toggleMenu(){document.getElementById('nav').classList.toggle('open')}
+function closePanel(id){document.getElementById(id).classList.remove('show')}
+function outsideClose(e,id){if(e.target.id===id)closePanel(id)}
+function toast(message){
+ const t=document.getElementById('toast');t.textContent=message;t.style.display='block';
+ setTimeout(()=>t.style.display='none',2200);
 }
 
-function removeCart(i){
- cart.splice(i,1);
- saveData();
- renderCart();
+/* الموسيقى: ارفع الملفات الثلاثة داخل مجلد music */
+const musicTracks=[
+ 'music/andalusi.mp3',
+ 'music/oud.mp3',
+ 'music/piano.mp3'
+];
+const player=document.getElementById('musicPlayer');
+function toggleMusic(){
+ if(!player.paused){player.pause();document.getElementById('musicButton').textContent='♫ تشغيل الموسيقى';return}
+ if(!player.src)player.src=musicTracks[musicIndex];
+ player.volume=0.10;
+ player.play().then(()=>{
+  document.getElementById('musicButton').textContent='♫ إيقاف الموسيقى';
+  startMusicRotation();
+ }).catch(()=>toast('أضف ملفات الموسيقى إلى مجلد music أولاً'));
 }
-
-function checkoutWhatsApp(){
- if(!cart.length){
-  showToast("السلة فارغة");
-  return;
- }
-
- const lines=cart.map((x,i)=>
-  `${i+1}. ${x.name} | اللون: ${x.color} | القماش: ${x.fabric} | المقاس: ${x.size} | ${x.notes||""}`
- );
-
- const message="السلام عليكم، أريد طلب المنتجات التالية من MAISON SOPHIE:\n"+lines.join("\n");
-
- window.open(
-  "https://wa.me/212636101436?text="+encodeURIComponent(message),
-  "_blank"
- );
+function startMusicRotation(){
+ if(musicTimer)return;
+ musicTimer=setInterval(()=>{
+  musicIndex=(musicIndex+1)%musicTracks.length;
+  player.src=musicTracks[musicIndex];
+  player.volume=0.10;
+  player.play().catch(()=>{});
+ },180000);
 }
-
-function orderDetailWhatsApp(){
- if(!currentProduct)return;
-
- const message=`السلام عليكم، أريد طلب ${currentProduct.name}. اللون: ${document.getElementById("detailColor").value}. القماش: ${document.getElementById("detailFabric").value}. المقاس: ${document.getElementById("detailSize").value}. ملاحظات: ${document.getElementById("detailNotes").value}`;
-
- window.open(
-  "https://wa.me/212636101436?text="+encodeURIComponent(message),
-  "_blank"
- );
-}
-
-function openMenu(){
- document.getElementById("drawer").classList.add("open");
- document.getElementById("overlay").classList.add("open");
-}
-
-function closeMenu(){
- document.getElementById("drawer").classList.remove("open");
- document.getElementById("overlay").classList.remove("open");
-}
-
-function toggleAI(){
- document.getElementById("aiPanel").classList.toggle("open");
-}
-
-function askAI(event){
- event.preventDefault();
-
- const input=document.getElementById("aiInput");
- const messages=document.getElementById("aiMessages");
- const question=input.value.trim();
-
- if(!question)return;
-
- const user=document.createElement("div");
- user.className="ai-msg user";
- user.textContent=question;
- messages.appendChild(user);
-
- input.value="";
-
- const bot=document.createElement("div");
- bot.className="ai-msg bot";
- bot.textContent=getAIAnswer(question);
- messages.appendChild(bot);
-
- messages.scrollTop=messages.scrollHeight;
-}
-
-function getAIAnswer(question){
- const q=question.toLowerCase();
-
- if(q.includes("ثمن")||q.includes("السعر")||q.includes("بكم")){
-  return "لمعرفة الثمن، أرسل لنا اسم التصميم عبر واتساب وسنساعدك.";
- }
-
- if(q.includes("رجال")||q.includes("رجالي")){
-  return "لدينا مجموعة جلابيب رجالية. افتح مجموعة الرجال في صفحة المنتجات.";
- }
-
- if(q.includes("نساء")||q.includes("نسائي")){
-  return "اكتشف مجموعة القفاطين النسائية في صفحة المنتجات.";
- }
-
- if(q.includes("عروس")||q.includes("زفاف")){
-  return "لدينا تصاميم خاصة بالعروس. افتح مجموعة العروس.";
- }
-
- if(q.includes("مقاس")||q.includes("قياس")){
-  return "يمكنك اختيار المقاس أو طلب التفصيل حسب قياسك.";
- }
-
- if(q.includes("توصيل")){
-  return "للتأكد من التوصيل والثمن، تواصل معنا عبر واتساب.";
- }
-
- if(q.includes("طلب")||q.includes("شراء")){
-  return "يمكنك اختيار التصميم ثم الضغط على اطلب عبر واتساب.";
- }
-
- return "شكراً لرسالتك! يمكنك سؤالي عن الرجال أو النساء أو العروس أو المقاسات أو الأسعار.";
-}
-
-function setLang(lang){
- currentLang=lang;
-
- document.documentElement.lang=lang;
- document.documentElement.dir=lang==="ar"?"rtl":"ltr";
-
- document.getElementById("arBtn").classList.toggle("active",lang==="ar");
- document.getElementById("frBtn").classList.toggle("active",lang==="fr");
-
- document.querySelectorAll("[data-ar][data-fr]").forEach(el=>{
-  el.textContent=el.dataset[lang];
- });
-}
-
-document.addEventListener("DOMContentLoaded",()=>{
- updateCartCount();
- renderProducts();
- renderFavorites();
+player.addEventListener('ended',()=>{
+ musicIndex=(musicIndex+1)%musicTracks.length;
+ player.src=musicTracks[musicIndex];player.play().catch(()=>{});
 });
-</script>
 
+document.getElementById('year').textContent=new Date().getFullYear();
+setupHero();renderProducts();saveCart();
+</script>
 </body>
 </html>
