@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MAISON SOPHIE | القفطان والجلباب</title>
+  <script src="https://unpkg.com/lucide@latest"></script>
 <style>
 :root {
   --gold:#d4af37;
@@ -148,6 +149,26 @@ footer {
   border:1px solid var(--gold);
 }
 .close {float:left;color:var(--gold);cursor:pointer;font-size:25px}
+  /* MAISON SOPHIE GOLD ICONS */
+.lucide {
+  width: 22px;
+  height: 22px;
+  color: #d4af37;
+  stroke-width: 1.8;
+  vertical-align: middle;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #171717;
+  color: #d4af37;
+  border: 1px solid #d4af37;
+  border-radius: 8px;
+  padding: 11px 15px;
+  }
 </style>
 </head>
 <body>
@@ -629,6 +650,15 @@ addAssistant();
 
 const savedLanguage = localStorage.getItem("maisonLanguage") || "ar";
 changeLanguage(savedLanguage);
+
+/* إضافة أيقونات Lucide الاحترافية */
+function refreshSiteIcons() {
+  if (!window.lucide) return;
+  lucide.createIcons();
+}
+
+document.addEventListener("DOMContentLoaded", refreshSiteIcons);
+setTimeout(refreshSiteIcons, 500);
 </script>     
 </body>
      </html>
