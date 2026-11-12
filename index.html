@@ -616,3 +616,308 @@ categories.forEach(group=>{
     "images/model-"+String(n).padStart(2,"0")+"-3.jpg"
    ]
   });
+ }
+});
+
+function textFor(p,ar,fr){return lang==="ar"?p[ar]:p[fr]}
+
+function createCard(p){
+ const el=document.createElement("article");
+ el.className="product";
+ const img=p.images[0];
+ const name=textFor(p,"name","nameFr");
+ const short=textFor(p,"short","shortFr");
+ el.innerHTML=`
+ <div class="product-image">
+ <div class="image-fallback">MAISON SOPHIE</div>
+ <img src="${img}" alt="${name}" onerror="this.style.display='none'" onclick="openProduct(${p.id})">
+ <button class="favorite ${favorites.includes(p.id)?"selected":""}" onclick="toggleFavorite(${p.id})">
+ ${favorites.includes(p.id)?"♥":"♡"}
+ </button>
+ </div>
+ <div class="product-info">
+ <h3>${name}</h3>
+ <p>${short}</p>
+ <div class="product-bottom">
+ <span class="price">${lang==="ar"?p.price:p.priceFr}</span>
+ <button class="details-btn" onclick="openProduct(${p.id})">
+ ${lang==="ar"?"عرض التفاصيل":"Voir détails"}
+ </button>
+ </div>
+ </div>`;
+ return el;
+}
+
+function renderShop(){
+ let list=[...products];
+ const cat=document.getElementById("categoryFilter").value;
+ const search=document.getElementById("search").value.toLowerCase().trim();
+
+ if(cat!=="all")list=list.filter(p=>p.category===cat);
+ list=list.filter(p=>(p.name+" "+p.nameFr).toLowerCase().includes(search));
+
+ if(document.getElementById("sortFilter").value==="name"){
+  list.sort((a,b)=>a.name.localeCompare(b.name));
+ }
+
+ const area=document.getElementById("shopProducts");
+ area.innerHTML="";
+ if(!list.length){
+  area.innerHTML='<div class="empty">لا توجد نتائج</div>';
+  return;
+ }
+ list.forEach(p=>area.appendChild(createCard(p)));
+}
+
+function renderFeatured(){
+ const area=document.getElementById("featured");
+ area.innerHTML="";
+ [products[0],products[12],products[23],products[3]].forEach(p=>area.appendChild(createCard(p)));
+}
+
+function showPage(id){
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ const page=document.getElementById(id+"Page");
+ if(page)page.classList.add("active");
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function openProduct(id){
+ const p=products.find(x=>x.id===id);
+ if(!p)return;
+ currentProduct=p;
+
+ const name=textFor(p,"name","nameFr");
+ document.getElementById("productName").textContent=name;
+ document.getElementById("crumbName").textContent=name;
+ document.getElementById("productShort").textContent=textFor(p,"short","shortFr");
+ document.getElementById("productPrice").textContent=lang==="ar"?p.price:p.priceFr;
+
+ document.getElementById("specCategory").textContent=
+ lang==="ar"?p.category==="women"?"نساء":p.category==="men"?"رجال":"العروس":
+ p.category==="women"?"Femmes":p.category==="men"?"Hommes":"Mariée";
+
+ document.getElementById("specOrigin").textContent=textFor(p,"origin","originFr");
+ document.getElementById("specFabric").textContent=textFor(p,"fabric","fabricFr");
+ document.getElementById("specEmbroidery").textContent=textFor(p,"embroidery","embroideryFr");
+ document.getElementById("specCare").textContent=textFor(p,"care","careFr");
+
+ const main=document.getElementById("mainProductImage");
+ const fallback=document.getElementById("mainImageFallback");
+ main.style.display="block";
+ main.src=p.images[0];
+ fallback.style.display="none";
+ main.onerror=()=>{main.style.display="none";fallback.style.display="grid"};
+
+ const thumbs=document.getElementById("thumbnails");
+ thumbs.innerHTML="";
+ p.images.forEach((src,i)=>{
+  const im=document.createElement("img");
+  im.src=src;
+  im.alt="Photo "+(i+1);
+  im.onerror=()=>im.style.display="none";
+  if(i===0)im.classList.add("selected");
+  im.onclick=()=>{
+   main.style.display="block";
+   fallback.style.display="none";
+   main.src=src;
+   main.onerror=()=>{main.style.display="none";fallback.style.display="grid"};
+   thumbs.querySelectorAll("img").forEach(x=>x.classList.remove("selected"));
+   im.classList.add("selected");
+  };
+  thumbs.appendChild(im);
+ });
+
+ showTab("description",document.querySelector(".tabs button"));
+ showPage("detail");
+ if(location.hash!=="#product-"+id)history.replaceState(null,"","#product-"+id);
+}
+
+function showTab(tab,button){
+ document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
+ if(button)button.classList.add("active");
+
+ const p=currentProduct;
+ if(!p)return;
+
+ let content="";
+ if(tab==="description"){
+  content=lang==="ar"
+  ?p.short+" نوع القماش: "+p.fabric+"، والتطريز: "+p.embroidery+"."
+  :p.shortFr+" Tissu : "+p.fabricFr+". Broderie : "+p.embroideryFr+".";
+ }
+ if(tab==="origin"){
+  content=lang==="ar"
+  ?p.origin+". يرجى تأكيد المدينة والحرفة الفعلية قبل نشر تفاصيل المنشأ."
+  :p.originFr+". Veuillez confirmer la ville et le savoir-faire avant publication.";
+ }
+ if(tab==="delivery"){
+  content=lang==="ar"
+  ?"يتم تأكيد السعر والتوفر ومدة التوصيل عبر واتساب. يمكن طلب الشراء أو الكراء. الدفع عبر CIH يتم بعد تأكيد الطلب وإرسال تعليمات التحويل."
+  :"Le prix, la disponibilité et la livraison sont confirmés par WhatsApp. Achat ou location disponibles. Le paiement CIH est organisé après confirmation.";
+ }
+ document.getElementById("tabContent").textContent=content;
+}
+
+function addToCart(){
+ if(!currentProduct)return;
+ const qty=Math.max(1,Number(document.getElementById("productQty").value)||1);
+ cart.push({
+  id:currentProduct.id,
+  size:document.getElementById("productSize").value,
+  color:document.getElementById("productColor").value,
+  type:document.getElementById("productType").value,
+  qty:qty
+ });
+ document.getElementById("cartCount").textContent=cart.length;
+ toast(lang==="ar"?"تمت إضافة التصميم إلى السلة":"Produit ajouté au panier");
+}
+
+function renderCart(){
+ const area=document.getElementById("cartList");
+ area.innerHTML="";
+ if(!cart.length){
+  area.innerHTML='<div class="empty">السلة فارغة حالياً</div>';
+  return;
+ }
+ cart.forEach((item,i)=>{
+  const p=products.find(x=>x.id===item.id);
+  const row=document.createElement("div");
+  row.className="cart-item";
+  row.innerHTML=`
+  <span>${textFor(p,"name","nameFr")} — ${item.size} — ${item.type} — ×${item.qty}</span>
+  <button onclick="removeCart(${i})">حذف</button>`;
+  area.appendChild(row);
+ });
+}
+
+function removeCart(i){
+ cart.splice(i,1);
+ document.getElementById("cartCount").textContent=cart.length;
+ renderCart();
+}
+
+function checkout(){
+ if(!cart.length){
+  toast("السلة فارغة");
+  return;
+ }
+ let msg="السلام عليكم، أريد تأكيد طلبي من MAISON SOPHIE:\n";
+ cart.forEach(item=>{
+  const p=products.find(x=>x.id===item.id);
+  msg+=`${p.name}، المقاس ${item.size}، اللون ${item.color}، ${item.type}، الكمية ${item.qty}\n`;
+ });
+ msg+="أرجو تأكيد السعر والتوفر وإرسال تعليمات تحويل CIH.";
+ window.open("https://wa.me/"+PHONE+"?text="+encodeURIComponent(msg),"_blank");
+}
+
+function orderWhatsApp(){
+ if(!currentProduct)return;
+ const p=currentProduct;
+ const size=document.getElementById("productSize").value;
+ const color=document.getElementById("productColor").value;
+ const type=document.getElementById("productType").value;
+ const qty=Math.max(1,Number(document.getElementById("productQty").value)||1);
+
+ let msg=`السلام عليكم، أريد ${p.name}، المقاس ${size}، اللون ${color}، النوع ${type}، الكمية ${qty}. أرجو تأكيد السعر والتوفر.`;
+ window.open("https://wa.me/"+PHONE+"?text="+encodeURIComponent(msg),"_blank");
+}
+
+function toggleFavorite(id){
+ if(favorites.includes(id))favorites=favorites.filter(x=>x!==id);
+ else favorites.push(id);
+ renderFeatured();
+ renderShop();
+ renderFavorites();
+ toast(lang==="ar"?"تم تحديث المفضلة":"Favoris mis à jour");
+}
+
+function renderFavorites(){
+ const area=document.getElementById("favoriteProducts");
+ area.innerHTML="";
+ favorites.forEach(id=>{
+  const p=products.find(x=>x.id===id);
+  if(p)area.appendChild(createCard(p));
+ });
+ if(!favorites.length)area.innerHTML='<div class="empty">لا توجد تصاميم في المفضلة</div>';
+}
+
+function toast(msg){
+ const t=document.getElementById("toast");
+ t.textContent=msg;
+ t.style.display="block";
+ setTimeout(()=>t.style.display="none",2200);
+}
+
+function setLang(l){
+ lang=l;
+ document.documentElement.lang=l;
+ document.documentElement.dir=l==="ar"?"rtl":"ltr";
+
+ document.querySelectorAll("[data-ar]").forEach(el=>{
+  el.textContent=el.dataset[l];
+ });
+
+ renderFeatured();
+ renderShop();
+ renderFavorites();
+
+ if(currentProduct){
+  const id=currentProduct.id;
+  openProduct(id);
+ }
+}
+
+function route(){
+ const h=location.hash;
+
+ if(h.startsWith("#product-")){
+  const id=Number(h.substring(9));
+  openProduct(id);
+  return;
+ }
+
+ if(h==="#shop"||h==="#women"||h==="#men"||h==="#bridal"){
+  document.getElementById("categoryFilter").value=
+   h==="#women"?"women":
+   h==="#men"?"men":
+   h==="#bridal"?"bridal":"all";
+  renderShop();
+  showPage("shop");
+  return;
+ }
+
+ if(h==="#cart"){
+  renderCart();showPage("cart");return;
+ }
+ if(h==="#favorites"){
+  renderFavorites();showPage("favorites");return;
+ }
+ if(h==="#history"){
+  showPage("history");return;
+ }
+ showPage("home");
+}
+
+window.addEventListener("hashchange",route);
+
+let heroIndex=1;
+setInterval(()=>{
+ heroIndex=heroIndex%30+1;
+ const img=document.getElementById("heroImage");
+ img.style.opacity=0;
+ setTimeout(()=>{
+  img.src="images/model-"+String(heroIndex).padStart(2,"0")+"-1.jpg";
+  img.style.opacity=.45;
+ },500);
+},5000);
+
+renderFeatured();
+renderShop();
+document.getElementById("cartCount").textContent=cart.length;
+
+if(location.hash)route();
+</script>
+
+</body>
+</html>
