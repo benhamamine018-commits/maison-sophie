@@ -11,12 +11,12 @@
 <style>
 :root {
   --gold:#d4af37;
-  --black:#101010;
-  --card:#1c1c1c;
+  --black:#0b0b0b;
+  --card:#191919;
   --white:#fff;
 }
 * {box-sizing:border-box}
-html {scroll-behavior:smooth}
+html {scroll-behavior:smooth;scroll-padding-top:75px}
 body {
   margin:0;
   font-family:Arial,sans-serif;
@@ -26,18 +26,18 @@ body {
 }
 header {
   position:relative;
-  background:#080808;
+  background:linear-gradient(135deg,#080808,#1b170b);
   border-bottom:1px solid var(--gold);
-  padding:48px 12px 15px;
+  padding:24px 12px 12px;
   text-align:center;
 }
 .logo {
   color:var(--gold);
-  font-size:29px;
+  font-size:clamp(23px,5vw,33px);
   font-weight:bold;
-  letter-spacing:2px;
+  letter-spacing:3px;
 }
-header p {margin:5px 0}
+header p {margin:4px 0 0;color:#eee}
 .top-controls {
   position:absolute;
   top:8px;
@@ -53,25 +53,26 @@ header p {margin:5px 0}
   color:var(--gold);
   background:#1c1c1c;
   border:1px solid var(--gold);
-  border-radius:7px;
+  border-radius:8px;
 }
 nav {
   position:sticky;
   top:0;
-  z-index:15;
+  z-index:25;
   display:flex;
   align-items:center;
   justify-content:flex-start;
-  padding:9px 12px;
+  min-height:58px;
+  padding:8px 14px;
   background:#111;
   border-bottom:1px solid #333;
 }
 .menu-toggle {
-  background:transparent;
+  background:#171717;
   color:var(--gold);
   border:1px solid var(--gold);
-  border-radius:8px;
-  padding:5px 12px;
+  border-radius:10px;
+  padding:4px 14px;
   font-size:25px;
   cursor:pointer;
 }
@@ -79,21 +80,21 @@ nav {
   display:none;
   position:absolute;
   top:calc(100% + 5px);
-  left:8px;
-  width:220px;
+  left:10px;
+  width:230px;
   max-width:85vw;
   padding:10px;
-  background:#1c1c1c;
+  background:#191919;
   border:1px solid var(--gold);
-  border-radius:10px;
-  box-shadow:0 8px 25px #000b;
+  border-radius:12px;
+  box-shadow:0 10px 30px #000b;
 }
 .mobile-menu.show {display:flex;flex-direction:column}
 .mobile-menu a {
   display:flex;
   align-items:center;
   gap:10px;
-  padding:10px;
+  padding:11px;
   color:white;
   text-decoration:none;
   border-bottom:1px solid #333;
@@ -107,23 +108,29 @@ nav {
   flex-shrink:0;
 }
 .hero {
-  min-height:370px;
+  min-height:450px;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:35px 18px;
+  padding:40px 18px;
   background:
-    linear-gradient(#0009,#000b),
-    url('images/model-01-1.jpg') center/cover;
+    linear-gradient(#0007,#000b),
+    url('images/model-01-1.jpg') center/cover no-repeat;
 }
-.hero h1 {color:var(--gold);font-size:40px}
+.hero h1 {
+  color:var(--gold);
+  font-size:clamp(30px,7vw,48px);
+  letter-spacing:2px;
+  text-shadow:0 3px 15px #000;
+}
+.hero p {font-size:clamp(16px,4vw,22px);text-shadow:0 2px 8px #000}
 button,.button {
-  background:var(--gold);
+  background:linear-gradient(135deg,#e2c34f,#c39b24);
   color:#111;
   border:0;
-  padding:10px 14px;
-  border-radius:8px;
+  padding:11px 17px;
+  border-radius:10px;
   cursor:pointer;
   font-weight:bold;
   text-decoration:none;
@@ -132,49 +139,56 @@ button,.button {
   justify-content:center;
   gap:7px;
   margin:4px;
+  transition:.2s ease;
 }
+button:hover,.button:hover {transform:translateY(-2px);filter:brightness(1.08)}
 button.secondary {
   background:#222;
   color:var(--gold);
   border:1px solid var(--gold);
 }
-.section {padding:28px 15px;text-align:center}
-h2 {color:var(--gold)}
+.section {padding:35px 15px 75px;text-align:center}
+h2 {color:var(--gold);font-size:25px}
 .categories {
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
-  gap:7px;
-  margin:18px 0;
+  gap:10px;
+  margin:22px 0 28px;
 }
+.categories button {min-width:105px;padding:12px 16px}
 .products {
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:15px;
-  max-width:1100px;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:18px;
+  max-width:1200px;
   margin:auto;
 }
 .product {
-  background:var(--card);
+  background:linear-gradient(145deg,#202020,#141414);
   border:1px solid #383838;
-  border-radius:12px;
+  border-radius:14px;
   overflow:hidden;
-  padding-bottom:12px;
+  padding-bottom:14px;
+  transition:.25s ease;
 }
+.product:hover {border-color:var(--gold);transform:translateY(-4px)}
 .product img {
+  display:block;
   width:100%;
-  height:210px;
+  height:260px;
   object-fit:cover;
   background:#222;
 }
-.product h3 {color:var(--gold)}
+.product h3 {color:var(--gold);padding:0 8px}
 .product button {font-size:12px}
 .info {
-  background:#191919;
-  padding:22px;
-  margin:18px auto;
-  border-radius:12px;
-  max-width:1000px;
+  background:linear-gradient(145deg,#1b1b1b,#111);
+  border:1px solid #292929;
+  padding:24px;
+  margin:22px auto;
+  border-radius:15px;
+  max-width:1050px;
   line-height:1.9;
 }
 input,select,textarea {
@@ -182,27 +196,33 @@ input,select,textarea {
   width:100%;
   padding:12px;
   margin:10px 0;
-  border-radius:7px;
-  border:1px solid #777;
+  border-radius:8px;
+  border:1px solid #555;
   background:#222;
   color:white;
   font:inherit;
+}
+input:focus,select:focus,textarea:focus {
+  outline:1px solid var(--gold);
+  border-color:var(--gold);
 }
 footer {
   text-align:center;
   padding:25px;
   border-top:1px solid var(--gold);
+  color:#bdb7a8;
 }
 .whatsapp {
   position:fixed;
-  bottom:18px;
-  left:15px;
+  bottom:20px;
+  left:14px;
   background:#20c767;
   color:white;
-  padding:11px 15px;
+  padding:10px 15px;
   border-radius:50px;
   text-decoration:none;
-  z-index:12;
+  z-index:20;
+  box-shadow:0 4px 15px #0008;
 }
 .modal {
   display:none;
@@ -221,17 +241,24 @@ footer {
   border-radius:12px;
   border:1px solid var(--gold);
 }
-.close {
-  float:left;
-  color:var(--gold);
-  cursor:pointer;
-  font-size:28px;
+.close {float:left;color:var(--gold);cursor:pointer;font-size:28px}
+@media(max-width:850px) {
+  .products {grid-template-columns:repeat(3,minmax(0,1fr))}
+  .product img {height:220px}
 }
 @media(max-width:520px) {
-  .hero {min-height:300px}
-  .hero h1 {font-size:30px}
-  .products {grid-template-columns:repeat(2,minmax(0,1fr))}
-  .product img {height:180px}
+  header {padding:23px 10px 12px}
+  .logo {font-size:25px;letter-spacing:2px}
+  header p {font-size:14px}
+  .hero {min-height:370px}
+  .products {grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+  .product img {height:190px}
+  .product button {padding:9px 8px;font-size:11px}
+  .categories {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .categories button {width:100%;min-width:0;margin:0;padding:11px 5px}
+  .section {padding:25px 12px 80px}
+  .info {margin:14px 10px;padding:17px}
+  .whatsapp {bottom:16px;left:10px;padding:9px 13px}
 }
 </style>
 </head>
@@ -254,9 +281,7 @@ footer {
 </header>
 
 <nav>
-  <button class="menu-toggle" id="menuToggle"
-    aria-label="فتح القائمة" aria-expanded="false">☰</button>
-
+  <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false">☰</button>
   <div class="mobile-menu" id="mobileMenu">
     <a href="#home"><i data-lucide="house"></i><span data-i18n="home">الرئيسية</span></a>
     <a href="#products"><i data-lucide="shopping-bag"></i><span data-i18n="products">المنتجات</span></a>
@@ -273,10 +298,7 @@ footer {
   <div>
     <h1>MAISON SOPHIE</h1>
     <p data-i18n="heroText">جمال الأصالة المغربية وأناقة التصميم</p>
-    <a class="button" href="#products">
-      <i data-lucide="sparkles"></i>
-      <span data-i18n="discover">اكتشف تشكيلتنا</span>
-    </a>
+    <a class="button" href="#products"><i data-lucide="sparkles"></i><span data-i18n="discover">اكتشف تشكيلتنا</span></a>
   </div>
 </section>
 
@@ -295,17 +317,9 @@ footer {
 <section class="info" id="cart">
   <h2><i data-lucide="shopping-cart"></i> <span data-i18n="cart">سلة المشتريات</span></h2>
   <div id="cartItems"></div>
-  <button onclick="checkout()">
-    <i data-lucide="message-circle"></i>
-    <span data-i18n="checkout">إتمام الطلب عبر واتساب</span>
-  </button>
-  <button class="secondary" onclick="showFavorites()">
-    <i data-lucide="heart"></i>
-    <span data-i18n="favorites">عرض المفضلة</span>
-  </button>
-  <button class="secondary" onclick="renderProducts()">
-    <span data-i18n="showAll">عرض كل المنتجات</span>
-  </button>
+  <button onclick="checkout()"><i data-lucide="message-circle"></i><span data-i18n="checkout">إتمام الطلب عبر واتساب</span></button>
+  <button class="secondary" onclick="showFavorites()"><i data-lucide="heart"></i><span data-i18n="favorites">عرض المفضلة</span></button>
+  <button class="secondary" onclick="renderProducts()"><span data-i18n="showAll">عرض كل المنتجات</span></button>
 </section>
 
 <section class="info" id="design">
@@ -339,10 +353,7 @@ footer {
   <p>واتساب: 0636101436</p>
   <p>Email: sofiaaklamousse1313@gmail.com</p>
   <p data-i18n="address">العنوان: الخبازات، القنيطرة، المغرب</p>
-  <a class="button" href="https://wa.me/212636101436">
-    <i data-lucide="message-circle"></i>
-    <span data-i18n="whatsapp">راسلنا عبر واتساب</span>
-  </a>
+  <a class="button" href="https://wa.me/212636101436"><i data-lucide="message-circle"></i><span data-i18n="whatsapp">راسلنا عبر واتساب</span></a>
 </section>
 
 <section class="info" id="settings">
@@ -363,10 +374,8 @@ footer {
 </section>
 
 <section class="info" id="assistant">
-  <h2><i data-lucide="message-circle"></i> <span data-i18n="assistant">المساعد الذكي</span></h2>
-  <div id="chatMessages">
-    <p data-i18n="welcome">مرحباً بك في MAISON SOPHIE! كيف يمكننا مساعدتك؟</p>
-  </div>
+  <h2><i data-lucide="message-circle"></i> <span data-i18n="assistant">المساعد</span></h2>
+  <div id="chatMessages"><p data-i18n="welcome">مرحباً بك في MAISON SOPHIE! كيف يمكننا مساعدتك؟</p></div>
   <input id="chatInput" placeholder="اكتب سؤالك هنا...">
   <button onclick="sendChat()"><i data-lucide="send"></i><span data-i18n="send">إرسال</span></button>
 </section>
@@ -402,141 +411,141 @@ const products = [
 
 const translations = {
  ar:{
-  tagline:"أناقة القفطان والجلباب المغربي",home:"الرئيسية",products:"المنتجات",
-  cart:"سلة المشتريات",design:"صمم لباسك",delivery:"التوصيل",contact:"اتصل بنا",
-  settings:"الإعدادات",assistant:"المساعد الذكي",heroText:"جمال الأصالة المغربية وأناقة التصميم",
-  discover:"اكتشف تشكيلتنا",collection:"تشكيلتنا المغربية",all:"الكل",
-  women:"قفطان نسائي",men:"جلباب رجالي",kids:"الأطفال",bride:"العروس",
-  checkout:"إتمام الطلب عبر واتساب",favorites:"عرض المفضلة",showAll:"عرض كل المنتجات",
-  designTitle:"صمم لباسك الخاص",sendDesign:"أرسل التصميم عبر واتساب",
-  deliveryTitle:"التوصيل والاستبدال",free:"التوصيل مجاني داخل مدينة القنيطرة.",
-  cities:"باقي مدن المغرب ابتداءً من 30 درهماً حسب الوجهة.",
-  international:"التوصيل الدولي حسب البلد.",
-  exchange:"الاستبدال حسب نوع المنتج. إذا وقع خطأ من المتجر، نتكفل باستبدال المنتج.",
-  contactTitle:"تواصل معنا",address:"العنوان: الخبازات، القنيطرة، المغرب",
-  whatsapp:"راسلنا عبر واتساب",musicSettings:"إعدادات الموسيقى",volume:"مستوى الصوت",
-  play:"تشغيل",stop:"إيقاف",welcome:"مرحباً بك في MAISON SOPHIE! كيف يمكننا مساعدتك؟",
-  send:"إرسال",rights:"جميع الحقوق محفوظة",empty:"السلة فارغة حالياً.",
-  details:"عرض التفاصيل",add:"أضف للسلة",favorite:"المفضلة",
-  removeFavorite:"إزالة من المفضلة",delete:"حذف",quantity:"الكمية",
-  description:"منتج من تشكيلتنا المغربية. تواصل معنا لمعرفة التفاصيل والثمن.",
-  order:"اطلب عبر واتساب",added:"تمت إضافة المنتج إلى السلة",
-  emptyCart:"السلة فارغة",ask:"اكتب سؤالك هنا..."
+ tagline:"أناقة القفطان والجلباب المغربي",home:"الرئيسية",products:"المنتجات",
+ cart:"سلة المشتريات",design:"صمم لباسك",delivery:"التوصيل",contact:"اتصل بنا",
+ settings:"الإعدادات",assistant:"المساعد",heroText:"جمال الأصالة المغربية وأناقة التصميم",
+ discover:"اكتشف تشكيلتنا",collection:"تشكيلتنا المغربية",all:"الكل",
+ women:"قفطان نسائي",men:"جلباب رجالي",kids:"الأطفال",bride:"العروس",
+ checkout:"إتمام الطلب عبر واتساب",favorites:"عرض المفضلة",showAll:"عرض كل المنتجات",
+ designTitle:"صمم لباسك الخاص",sendDesign:"أرسل التصميم عبر واتساب",
+ deliveryTitle:"التوصيل والاستبدال",free:"التوصيل مجاني داخل مدينة القنيطرة.",
+ cities:"باقي مدن المغرب ابتداءً من 30 درهماً حسب الوجهة.",
+ international:"التوصيل الدولي حسب البلد.",
+ exchange:"الاستبدال حسب نوع المنتج. إذا وقع خطأ من المتجر، نتكفل باستبدال المنتج.",
+ contactTitle:"تواصل معنا",address:"العنوان: الخبازات، القنيطرة، المغرب",
+ whatsapp:"راسلنا عبر واتساب",musicSettings:"إعدادات الموسيقى",volume:"مستوى الصوت",
+ play:"تشغيل",stop:"إيقاف",welcome:"مرحباً بك في MAISON SOPHIE! كيف يمكننا مساعدتك؟",
+ send:"إرسال",rights:"جميع الحقوق محفوظة",empty:"السلة فارغة حالياً.",
+ details:"عرض التفاصيل",add:"أضف للسلة",favorite:"المفضلة",
+ removeFavorite:"إزالة من المفضلة",delete:"حذف",quantity:"الكمية",
+ description:"منتج من تشكيلتنا المغربية. تواصل معنا لمعرفة التفاصيل والثمن.",
+ order:"اطلب عبر واتساب",added:"تمت إضافة المنتج إلى السلة",
+ emptyCart:"السلة فارغة",ask:"اكتب سؤالك هنا..."
  },
  fr:{
-  tagline:"Élégance du caftan et de la djellaba marocaine",home:"Accueil",products:"Produits",
-  cart:"Panier",design:"Créer votre tenue",delivery:"Livraison",contact:"Contact",
-  settings:"Paramètres",assistant:"Assistant",heroText:"Tradition marocaine et élégance",
-  discover:"Découvrir",collection:"Notre collection",all:"Tout",
-  women:"Caftans femme",men:"Djellabas homme",kids:"Enfants",bride:"Mariée",
-  checkout:"Commander sur WhatsApp",favorites:"Favoris",showAll:"Tous les produits",
-  designTitle:"Créer votre tenue",sendDesign:"Envoyer le design sur WhatsApp",
-  deliveryTitle:"Livraison et échange",free:"Livraison gratuite à Kénitra.",
-  cities:"Autres villes du Maroc à partir de 30 DH selon la destination.",
-  international:"Livraison internationale selon le pays.",
-  exchange:"Échange selon le produit. En cas d'erreur du magasin, nous remplaçons le produit.",
-  contactTitle:"Contactez-nous",address:"Adresse : Khabazat, Kénitra, Maroc",
-  whatsapp:"Nous contacter sur WhatsApp",musicSettings:"Réglages de musique",
-  volume:"Volume",play:"Lecture",stop:"Arrêter",
-  welcome:"Bienvenue chez MAISON SOPHIE ! Comment pouvons-nous vous aider ?",
-  send:"Envoyer",rights:"Tous droits réservés",empty:"Le panier est vide.",
-  details:"Détails",add:"Ajouter au panier",favorite:"Favori",
-  removeFavorite:"Retirer des favoris",delete:"Supprimer",quantity:"Quantité",
-  description:"Un produit de notre collection marocaine. Contactez-nous pour le prix et les détails.",
-  order:"Commander sur WhatsApp",added:"Produit ajouté au panier",
-  emptyCart:"Le panier est vide",ask:"Écrivez votre question..."
+ tagline:"Élégance du caftan et de la djellaba marocaine",home:"Accueil",products:"Produits",
+ cart:"Panier",design:"Créer votre tenue",delivery:"Livraison",contact:"Contact",
+ settings:"Paramètres",assistant:"Assistant",heroText:"Tradition marocaine et élégance",
+ discover:"Découvrir",collection:"Notre collection",all:"Tout",
+ women:"Caftans femme",men:"Djellabas homme",kids:"Enfants",bride:"Mariée",
+ checkout:"Commander sur WhatsApp",favorites:"Favoris",showAll:"Tous les produits",
+ designTitle:"Créer votre tenue",sendDesign:"Envoyer le design sur WhatsApp",
+ deliveryTitle:"Livraison et échange",free:"Livraison gratuite à Kénitra.",
+ cities:"Autres villes du Maroc à partir de 30 DH selon la destination.",
+ international:"Livraison internationale selon le pays.",
+ exchange:"Échange selon le produit. En cas d'erreur du magasin, nous remplaçons le produit.",
+ contactTitle:"Contactez-nous",address:"Adresse : Khabazat, Kénitra, Maroc",
+ whatsapp:"Nous contacter sur WhatsApp",musicSettings:"Réglages de musique",
+ volume:"Volume",play:"Lecture",stop:"Arrêter",
+ welcome:"Bienvenue chez MAISON SOPHIE ! Comment pouvons-nous vous aider ?",
+ send:"Envoyer",rights:"Tous droits réservés",empty:"Le panier est vide.",
+ details:"Détails",add:"Ajouter au panier",favorite:"Favori",
+ removeFavorite:"Retirer des favoris",delete:"Supprimer",quantity:"Quantité",
+ description:"Un produit de notre collection marocaine. Contactez-nous pour le prix et les détails.",
+ order:"Commander sur WhatsApp",added:"Produit ajouté au panier",
+ emptyCart:"Le panier est vide",ask:"Écrivez votre question..."
  },
  en:{
-  tagline:"Moroccan Caftans and Djellabas",home:"Home",products:"Products",
-  cart:"Shopping Cart",design:"Design your outfit",delivery:"Delivery",contact:"Contact",
-  settings:"Settings",assistant:"Assistant",heroText:"Moroccan heritage and elegant design",
-  discover:"Discover our collection",collection:"Our Collection",all:"All",
-  women:"Women's Caftans",men:"Men's Djellabas",kids:"Children",bride:"Bridal",
-  checkout:"Checkout via WhatsApp",favorites:"Favorites",showAll:"All products",
-  designTitle:"Design your outfit",sendDesign:"Send design via WhatsApp",
-  deliveryTitle:"Delivery and exchange",free:"Free delivery in Kenitra.",
-  cities:"Other Moroccan cities from 30 MAD depending on destination.",
-  international:"International delivery depends on the country.",
-  exchange:"Exchange depends on the product. We replace products if the store makes a mistake.",
-  contactTitle:"Contact us",address:"Address: Khabazat, Kenitra, Morocco",
-  whatsapp:"Message us on WhatsApp",musicSettings:"Music settings",
-  volume:"Volume",play:"Play",stop:"Stop",
-  welcome:"Welcome to MAISON SOPHIE! How can we help you?",
-  send:"Send",rights:"All rights reserved",empty:"Your cart is empty.",
-  details:"Details",add:"Add to cart",favorite:"Favorite",
-  removeFavorite:"Remove favorite",delete:"Delete",quantity:"Quantity",
-  description:"A product from our Moroccan collection. Contact us for details and price.",
-  order:"Order via WhatsApp",added:"Product added to cart",
-  emptyCart:"Your cart is empty",ask:"Write your question..."
+ tagline:"Moroccan Caftans and Djellabas",home:"Home",products:"Products",
+ cart:"Shopping Cart",design:"Design your outfit",delivery:"Delivery",contact:"Contact",
+ settings:"Settings",assistant:"Assistant",heroText:"Moroccan heritage and elegant design",
+ discover:"Discover our collection",collection:"Our Collection",all:"All",
+ women:"Women's Caftans",men:"Men's Djellabas",kids:"Children",bride:"Bridal",
+ checkout:"Checkout via WhatsApp",favorites:"Favorites",showAll:"All products",
+ designTitle:"Design your outfit",sendDesign:"Send design via WhatsApp",
+ deliveryTitle:"Delivery and exchange",free:"Free delivery in Kenitra.",
+ cities:"Other Moroccan cities from 30 MAD depending on destination.",
+ international:"International delivery depends on the country.",
+ exchange:"Exchange depends on the product. We replace products if the store makes a mistake.",
+ contactTitle:"Contact us",address:"Address: Khabazat, Kenitra, Morocco",
+ whatsapp:"Message us on WhatsApp",musicSettings:"Music settings",
+ volume:"Volume",play:"Play",stop:"Stop",
+ welcome:"Welcome to MAISON SOPHIE! How can we help you?",
+ send:"Send",rights:"All rights reserved",empty:"Your cart is empty.",
+ details:"Details",add:"Add to cart",favorite:"Favorite",
+ removeFavorite:"Remove favorite",delete:"Delete",quantity:"Quantity",
+ description:"A product from our Moroccan collection. Contact us for details and price.",
+ order:"Order via WhatsApp",added:"Product added to cart",
+ emptyCart:"Your cart is empty",ask:"Write your question..."
  },
  es:{
-  tagline:"Caftanes y chilabas marroquíes",home:"Inicio",products:"Productos",
-  cart:"Carrito",design:"Diseña tu ropa",delivery:"Entrega",contact:"Contacto",
-  settings:"Ajustes",assistant:"Asistente",heroText:"Tradición marroquí y diseño elegante",
-  discover:"Descubrir",collection:"Nuestra colección",all:"Todo",
-  women:"Caftanes de mujer",men:"Chilabas de hombre",kids:"Niños",bride:"Novia",
-  checkout:"Pedir por WhatsApp",favorites:"Favoritos",showAll:"Todos los productos",
-  designTitle:"Diseña tu ropa",sendDesign:"Enviar diseño por WhatsApp",
-  deliveryTitle:"Entrega y cambios",free:"Entrega gratuita en Kenitra.",
-  cities:"Otras ciudades desde 30 MAD según el destino.",
-  international:"Envío internacional según el país.",
-  exchange:"Cambio según el producto. Si hay un error de la tienda, lo reemplazamos.",
-  contactTitle:"Contáctanos",address:"Dirección: Khabazat, Kenitra, Marruecos",
-  whatsapp:"Escríbenos por WhatsApp",musicSettings:"Ajustes de música",
-  volume:"Volumen",play:"Reproducir",stop:"Detener",
-  welcome:"¡Bienvenido a MAISON SOPHIE! ¿Cómo podemos ayudarte?",
-  send:"Enviar",rights:"Todos los derechos reservados",empty:"El carrito está vacío.",
-  details:"Detalles",add:"Añadir al carrito",favorite:"Favorito",
-  removeFavorite:"Quitar de favoritos",delete:"Eliminar",quantity:"Cantidad",
-  description:"Producto de nuestra colección marroquí. Contáctanos para conocer el precio y los detalles.",
-  order:"Pedir por WhatsApp",added:"Producto añadido al carrito",
-  emptyCart:"El carrito está vacío",ask:"Escribe tu pregunta..."
+ tagline:"Caftanes y chilabas marroquíes",home:"Inicio",products:"Productos",
+ cart:"Carrito",design:"Diseña tu ropa",delivery:"Entrega",contact:"Contacto",
+ settings:"Ajustes",assistant:"Asistente",heroText:"Tradición marroquí y diseño elegante",
+ discover:"Descubrir",collection:"Nuestra colección",all:"Todo",
+ women:"Caftanes de mujer",men:"Chilabas de hombre",kids:"Niños",bride:"Novia",
+ checkout:"Pedir por WhatsApp",favorites:"Favoritos",showAll:"Todos los productos",
+ designTitle:"Diseña tu ropa",sendDesign:"Enviar diseño por WhatsApp",
+ deliveryTitle:"Entrega y cambios",free:"Entrega gratuita en Kenitra.",
+ cities:"Otras ciudades desde 30 MAD según el destino.",
+ international:"Envío internacional según el país.",
+ exchange:"Cambio según el producto. Si hay un error de la tienda, lo reemplazamos.",
+ contactTitle:"Contáctanos",address:"Dirección: Khabazat, Kenitra, Marruecos",
+ whatsapp:"Escríbenos por WhatsApp",musicSettings:"Ajustes de música",
+ volume:"Volumen",play:"Reproducir",stop:"Detener",
+ welcome:"¡Bienvenido a MAISON SOPHIE! ¿Cómo podemos ayudarte?",
+ send:"Enviar",rights:"Todos los derechos reservados",empty:"El carrito está vacío.",
+ details:"Detalles",add:"Añadir al carrito",favorite:"Favorito",
+ removeFavorite:"Quitar de favoritos",delete:"Eliminar",quantity:"Cantidad",
+ description:"Producto de nuestra colección marroquí. Contáctanos para conocer el precio y los detalles.",
+ order:"Pedir por WhatsApp",added:"Producto añadido al carrito",
+ emptyCart:"El carrito está vacío",ask:"Escribe tu pregunta..."
  },
  de:{
-  tagline:"Marokkanische Kaftane und Djellabas",home:"Startseite",products:"Produkte",
-  cart:"Warenkorb",design:"Outfit gestalten",delivery:"Lieferung",contact:"Kontakt",
-  settings:"Einstellungen",assistant:"Assistent",heroText:"Marokkanische Tradition und Eleganz",
-  discover:"Kollektion entdecken",collection:"Unsere Kollektion",all:"Alle",
-  women:"Damen-Kaftane",men:"Herren-Djellabas",kids:"Kinder",bride:"Braut",
-  checkout:"Bestellung über WhatsApp",favorites:"Favoriten",showAll:"Alle Produkte",
-  designTitle:"Outfit gestalten",sendDesign:"Design über WhatsApp senden",
-  deliveryTitle:"Lieferung und Umtausch",free:"Kostenlose Lieferung in Kenitra.",
-  cities:"Andere Städte in Marokko ab 30 MAD je nach Zielort.",
-  international:"Internationaler Versand je nach Land.",
-  exchange:"Umtausch je nach Produkt. Bei einem Fehler ersetzen wir das Produkt.",
-  contactTitle:"Kontakt",address:"Adresse: Khabazat, Kenitra, Marokko",
-  whatsapp:"Schreiben Sie uns auf WhatsApp",musicSettings:"Musikeinstellungen",
-  volume:"Lautstärke",play:"Abspielen",stop:"Stopp",
-  welcome:"Willkommen bei MAISON SOPHIE! Wie können wir helfen?",
-  send:"Senden",rights:"Alle Rechte vorbehalten",empty:"Der Warenkorb ist leer.",
-  details:"Details",add:"In den Warenkorb",favorite:"Favorit",
-  removeFavorite:"Favorit entfernen",delete:"Löschen",quantity:"Menge",
-  description:"Produkt aus unserer marokkanischen Kollektion. Kontaktieren Sie uns für Preis und Details.",
-  order:"Über WhatsApp bestellen",added:"Produkt zum Warenkorb hinzugefügt",
-  emptyCart:"Der Warenkorb ist leer",ask:"Schreiben Sie Ihre Frage..."
+ tagline:"Marokkanische Kaftane und Djellabas",home:"Startseite",products:"Produkte",
+ cart:"Warenkorb",design:"Outfit gestalten",delivery:"Lieferung",contact:"Kontakt",
+ settings:"Einstellungen",assistant:"Assistent",heroText:"Marokkanische Tradition und Eleganz",
+ discover:"Kollektion entdecken",collection:"Unsere Kollektion",all:"Alle",
+ women:"Damen-Kaftane",men:"Herren-Djellabas",kids:"Kinder",bride:"Braut",
+ checkout:"Bestellung über WhatsApp",favorites:"Favoriten",showAll:"Alle Produkte",
+ designTitle:"Outfit gestalten",sendDesign:"Design über WhatsApp senden",
+ deliveryTitle:"Lieferung und Umtausch",free:"Kostenlose Lieferung in Kenitra.",
+ cities:"Andere Städte in Marokko ab 30 MAD je nach Zielort.",
+ international:"Internationaler Versand je nach Land.",
+ exchange:"Umtausch je nach Produkt. Bei einem Fehler ersetzen wir das Produkt.",
+ contactTitle:"Kontakt",address:"Adresse: Khabazat, Kenitra, Marokko",
+ whatsapp:"Schreiben Sie uns auf WhatsApp",musicSettings:"Musikeinstellungen",
+ volume:"Lautstärke",play:"Abspielen",stop:"Stopp",
+ welcome:"Willkommen bei MAISON SOPHIE! Wie können wir helfen?",
+ send:"Senden",rights:"Alle Rechte vorbehalten",empty:"Der Warenkorb ist leer.",
+ details:"Details",add:"In den Warenkorb",favorite:"Favorit",
+ removeFavorite:"Favorit entfernen",delete:"Löschen",quantity:"Menge",
+ description:"Produkt aus unserer marokkanischen Kollektion. Kontaktieren Sie uns für Preis und Details.",
+ order:"Über WhatsApp bestellen",added:"Produkt zum Warenkorb hinzugefügt",
+ emptyCart:"Der Warenkorb ist leer",ask:"Schreiben Sie Ihre Frage..."
  },
  it:{
-  tagline:"Caftani e djellaba marocchini",home:"Home",products:"Prodotti",
-  cart:"Carrello",design:"Crea il tuo abito",delivery:"Consegna",contact:"Contatto",
-  settings:"Impostazioni",assistant:"Assistente",heroText:"Tradizione marocchina ed eleganza",
-  discover:"Scopri la collezione",collection:"La nostra collezione",all:"Tutti",
-  women:"Caftani da donna",men:"Djellaba da uomo",kids:"Bambini",bride:"Sposa",
-  checkout:"Ordina su WhatsApp",favorites:"Preferiti",showAll:"Tutti i prodotti",
-  designTitle:"Crea il tuo abito",sendDesign:"Invia il design su WhatsApp",
-  deliveryTitle:"Consegna e cambio",free:"Consegna gratuita a Kenitra.",
-  cities:"Altre città marocchine da 30 MAD secondo la destinazione.",
-  international:"Spedizione internazionale secondo il paese.",
-  exchange:"Cambio secondo il prodotto. In caso di errore sostituiamo il prodotto.",
-  contactTitle:"Contattaci",address:"Indirizzo: Khabazat, Kenitra, Marocco",
-  whatsapp:"Scrivici su WhatsApp",musicSettings:"Impostazioni musica",
-  volume:"Volume",play:"Riproduci",stop:"Ferma",
-  welcome:"Benvenuto da MAISON SOPHIE! Come possiamo aiutarti?",
-  send:"Invia",rights:"Tutti i diritti riservati",empty:"Il carrello è vuoto.",
-  details:"Dettagli",add:"Aggiungi al carrello",favorite:"Preferito",
-  removeFavorite:"Rimuovi dai preferiti",delete:"Elimina",quantity:"Quantità",
-  description:"Prodotto della nostra collezione marocchina. Contattaci per prezzo e dettagli.",
-  order:"Ordina su WhatsApp",added:"Prodotto aggiunto al carrello",
-  emptyCart:"Il carrello è vuoto",ask:"Scrivi la tua domanda..."
+ tagline:"Caftani e djellaba marocchini",home:"Home",products:"Prodotti",
+ cart:"Carrello",design:"Crea il tuo abito",delivery:"Consegna",contact:"Contatto",
+ settings:"Impostazioni",assistant:"Assistente",heroText:"Tradizione marocchina ed eleganza",
+ discover:"Scopri la collezione",collection:"La nostra collezione",all:"Tutti",
+ women:"Caftani da donna",men:"Djellaba da uomo",kids:"Bambini",bride:"Sposa",
+ checkout:"Ordina su WhatsApp",favorites:"Preferiti",showAll:"Tutti i prodotti",
+ designTitle:"Crea il tuo abito",sendDesign:"Invia il design su WhatsApp",
+ deliveryTitle:"Consegna e cambio",free:"Consegna gratuita a Kenitra.",
+ cities:"Altre città marocchine da 30 MAD secondo la destinazione.",
+ international:"Spedizione internazionale secondo il paese.",
+ exchange:"Cambio secondo il prodotto. In caso di errore sostituiamo il prodotto.",
+ contactTitle:"Contattaci",address:"Indirizzo: Khabazat, Kenitra, Marocco",
+ whatsapp:"Scrivici su WhatsApp",musicSettings:"Impostazioni musica",
+ volume:"Volume",play:"Riproduci",stop:"Ferma",
+ welcome:"Benvenuto da MAISON SOPHIE! Come possiamo aiutarti?",
+ send:"Invia",rights:"Tutti i diritti riservati",empty:"Il carrello è vuoto.",
+ details:"Dettagli",add:"Aggiungi al carrello",favorite:"Preferito",
+ removeFavorite:"Rimuovi dai preferiti",delete:"Elimina",quantity:"Quantità",
+ description:"Prodotto della nostra collezione marocchina. Contattaci per prezzo e dettagli.",
+ order:"Ordina su WhatsApp",added:"Prodotto aggiunto al carrello",
+ emptyCart:"Il carrello è vuoto",ask:"Scrivi la tua domanda..."
  }
 };
 
@@ -561,7 +570,6 @@ function refreshIcons() {
 function changeLanguage(lang) {
   if (!translations[lang]) lang = "ar";
   currentLanguage = lang;
-
   document.documentElement.lang = lang;
   document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
 
@@ -573,7 +581,6 @@ function changeLanguage(lang) {
   document.getElementById("siteLanguage").value = lang;
   document.getElementById("chatInput").placeholder = t("ask");
   localStorage.setItem("maisonLanguage",lang);
-
   renderProducts(currentProducts);
   renderCart();
   refreshIcons();
@@ -612,13 +619,13 @@ function renderProducts(list = products) {
   container.innerHTML = "";
 
   list.forEach(product => {
-    const favorite = favorites.includes(product.id);
+    const isFavorite = favorites.includes(product.id);
     const card = document.createElement("div");
     card.className = "product";
 
     card.innerHTML = `
       <img src="${product.image}" alt="${product.name}"
-        onerror="this.style.display='none'">
+        loading="lazy" onerror="this.style.display='none'">
       <h3>${product.name}</h3>
       <button onclick="openProduct(${product.id})">
         <i data-lucide="eye"></i>${t("details")}
@@ -628,7 +635,7 @@ function renderProducts(list = products) {
       </button>
       <button class="secondary" onclick="toggleFavorite(${product.id})">
         <i data-lucide="heart"></i>
-        ${favorite ? t("removeFavorite") : t("favorite")}
+        ${isFavorite ? t("removeFavorite") : t("favorite")}
       </button>
     `;
     container.appendChild(card);
@@ -813,8 +820,8 @@ let heroIndex = 0;
 setInterval(() => {
   heroIndex = (heroIndex + 1) % heroImages.length;
   document.querySelector(".hero").style.backgroundImage =
-    `linear-gradient(#0009,#000b),url('${heroImages[heroIndex]}')`;
-},3000);
+    `linear-gradient(#0007,#000b),url('${heroImages[heroIndex]}')`;
+},4000);
 
 changeLanguage(currentLanguage);
 renderProducts();
