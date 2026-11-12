@@ -129,17 +129,17 @@ function createCard(group,index){
  const card=document.createElement("article");
  card.className="card";
  card.innerHTML=`
- <img src="${photo}" alt="${name}" loading="lazy">
- <h3 data-ar="${name}" data-fr="${french}">${name}</h3>
- <p data-ar="تصميم مغربي راقٍ" data-fr="Création marocaine raffinée">تصميم مغربي راقٍ</p>
- <select class="size">
- <option>S</option><option selected>M</option><option>L</option><option>XL</option><option>XXL</option>
- </select>
- <select class="type">
- <option value="شراء" data-ar="شراء" data-fr="Achat">شراء</option>
- <option value="كراء" data-ar="كراء" data-fr="Location">كراء</option>
- </select>
- <a href="#" class="order" data-ar="اطلب عبر واتساب" data-fr="Commander sur WhatsApp">اطلب عبر واتساب</a>`;
+<select class="type">
+<option value="شراء">شراء</option>
+<option value="كراء">كراء</option>
+</select>
+
+<select class="payment">
+<option value="CIH">تحويل بنكي CIH</option>
+<option value="CARD" disabled>الدفع بالبطاقة — قريباً</option>
+</select>
+
+<a href="#" class="order">تأكيد الطلب</a>
  card.querySelector(".order").onclick=function(e){
   e.preventDefault();
   const size=card.querySelector(".size").value;
