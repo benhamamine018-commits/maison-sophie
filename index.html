@@ -13,7 +13,7 @@ button,input,select{font:inherit}button,a{cursor:pointer}a{text-decoration:none;
 .topbar{background:var(--dark);color:#fff;text-align:center;padding:9px 12px;font-size:12px}
 header{background:#fff;position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line)}
 .header-inner{max-width:1400px;margin:auto;padding:13px 4%;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.logo{font:bold 25px Georgia,serif;letter-spacing:2px;color:var(--gold);text-align:center}.logo small{display:block;font:9px Arial;letter-spacing:3px;color:var(--muted);margin-top:4px}
+.logo{font: bold 25px Georgia,serif;letter-spacing:2px;color:var(--gold);text-align:center}.logo small{display:block;font:9px Arial;letter-spacing:3px;color:var(--muted);margin-top:4px}
 .header-actions{display:flex;align-items:center;gap:8px}.lang,.icon-btn{border:1px solid var(--line);background:#fff;padding:9px 11px}.lang.active{background:var(--dark);color:#fff}.icon-btn{font-size:19px}
 .nav{display:flex;justify-content:center;gap:25px;padding:0 10px 13px;flex-wrap:wrap}.nav a{font-size:13px}.nav a:hover{color:var(--gold)}
 .hero{min-height:470px;background:linear-gradient(135deg,#5a4935,#201811);display:grid;place-items:center;text-align:center;color:#fff;position:relative;overflow:hidden}
@@ -54,10 +54,13 @@ footer{background:var(--dark);color:#ddd;text-align:center;padding:34px 15px;lin
 @media(max-width:650px){.ai-launch{right:13px;bottom:14px;width:50px;height:50px}.ai-panel{right:10px;bottom:74px;width:calc(100vw - 20px);height:min(460px,calc(100vh - 100px))}.whatsapp-float{bottom:14px;left:13px;padding:10px 13px;font-size:12px}}
 @media(max-width:900px){.products{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:650px){.header-inner{padding:11px 9px}.logo{font-size:18px;letter-spacing:1px}.logo small{font-size:7px}.header-actions{gap:4px}.lang,.icon-btn{padding:7px}.nav{gap:13px;padding-bottom:12px}.nav a{font-size:12px}.hero{min-height:390px}.section{padding:35px 12px}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.product-image{height:210px}.product{padding:6px}.product-info h3{font-size:13px}.detail-layout{grid-template-columns:1fr}.gallery-main{height:370px}.production-grid{grid-template-columns:1fr}}
+
+.home-campaign{background:linear-gradient(145deg,#17110c,#352518);color:#fff;padding:32px 4% 22px;text-align:center}.campaign-brand{padding:20px 8px 28px;background:radial-gradient(ellipse at center,#a7834c55,transparent 68%)}.campaign-brand>span{color:#e4c98f;letter-spacing:4px;font:13px Georgia,serif}.campaign-brand h1{font:clamp(34px,6vw,58px) Georgia,serif;color:#e4c98f;margin:14px 0}.campaign-brand p{font-size:14px;line-height:2;color:#f3e8d5}.campaign-gallery{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;border:5px solid #b99a62;padding:5px;background:#b99a62}.campaign-gallery button{border:0;padding:0;background:#2b2017;color:#e8ce9c;font-weight:bold;cursor:pointer}.campaign-gallery img{display:block;width:100%;height:clamp(170px,27vw,310px);object-fit:cover}.campaign-gallery span{display:block;padding:10px 3px}.campaign-values{max-width:1100px;margin:18px auto 10px;padding:14px 5px;border-top:1px solid #9b7c49;border-bottom:1px solid #9b7c49;display:flex;justify-content:center;gap:22px;flex-wrap:wrap;color:#e6cc98;font-size:12px}.campaign-actions{padding:8px}
+@media(max-width:650px){.campaign-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.campaign-gallery img{height:220px}.campaign-values{gap:10px;font-size:10px}}
 </style>
 </head>
 <body>
- <div class="topbar" data-ar="أناقة مغربية أصيلة | اكتشفوا تشكيلتنا" data-fr="Élégance marocaine | Découvrez notre collection">أناقة مغربية أصيلة | اكتشفوا تشكيلتنا</div>
+<div class="topbar" data-ar="أناقة مغربية أصيلة | اكتشفوا تشكيلتنا" data-fr="Élégance marocaine | Découvrez notre collection">أناقة مغربية أصيلة | اكتشفوا تشكيلتنا</div>
 <header>
  <div class="header-inner">
   <div class="header-actions"><button class="lang active" id="arBtn" onclick="setLang('ar')">AR</button><button class="lang" id="frBtn" onclick="setLang('fr')">FR</button></div>
@@ -65,7 +68,8 @@ footer{background:var(--dark);color:#ddd;text-align:center;padding:34px 15px;lin
   <div class="header-actions"><button class="icon-btn" aria-label="القائمة" onclick="openMenu()">☰</button><button class="icon-btn" aria-label="السلة" onclick="go('cart')">🛍 <span id="cartCount">0</span></button></div>
  </div>
  <nav class="nav">
-  <a href="#home" onclick="go('home')" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a>
+  <a href="#home" onclick="go('home');return false" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a>
+  <a href="#products" onclick="go('shop');return false" data-ar="المنتجات" data-fr="Produits">المنتجات</a>
  </nav>
 </header>
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
@@ -78,324 +82,358 @@ footer{background:var(--dark);color:#ddd;text-align:center;padding:34px 15px;lin
 </aside>
 <main>
 <section id="homePage" class="page active">
- <section class="hero">
-  <div class="hero-content">
-   <div class="eyebrow">MAISON SOPHIE</div>
-   <h1 data-ar="أناقة مغربية أصيلة" data-fr="Élégance marocaine authentique">أناقة مغربية أصيلة</h1>
-   <p data-ar="قفاطين وجلابيب للنساء والرجال والأطفال<br>تصاميم تجمع الأصالة والفخامة" data-fr="Caftans et djellabas pour femmes, hommes et enfants<br>Des créations entre tradition et élégance">قفاطين وجلابيب للنساء والرجال والأطفال<br>تصاميم تجمع الأصالة والفخامة</p>
-   <a class="btn" href="#collection" onclick="document.getElementById('collection').scrollIntoView({behavior:'smooth'})" data-ar="اكتشفوا المجموعة" data-fr="Découvrir la collection">اكتشفوا المجموعة</a>
+ <section class="home-campaign">
+  <div class="campaign-brand"><span>✦ MAISON SOPHIE ✦</span><h1 data-ar="أناقة مغربية أصيلة" data-fr="Élégance marocaine authentique">أناقة مغربية أصيلة</h1><p data-ar="قفاطين وجلابيب نسائية ورجالية • تصاميم العروس • أناقة الأطفال" data-fr="Caftans et djellabas • Femme, homme, mariée et enfants">قفاطين وجلابيب نسائية ورجالية • تصاميم العروس • أناقة الأطفال</p><button class="btn" onclick="go('shop')" data-ar="اكتشفوا جميع التصاميم" data-fr="Découvrir les modèles">اكتشفوا جميع التصاميم</button></div>
+  <div class="campaign-gallery">
+   <button onclick="openCategory('women')"><img src="images/model-02-1.jpg" alt="قفطان نسائي مغربي"><span>مجموعة النساء</span></button>
+   <button onclick="openCategory('men')"><img src="images/model-05-1.jpg" alt="جلابة رجالية مغربية"><span>مجموعة الرجال</span></button>
+   <button onclick="openCategory('bridal')"><img src="images/model-09-1.jpg" alt="قفطان العروس"><span>مجموعة العروس</span></button>
+   <button onclick="openCategory('kids')"><img src="images/model-07-1.jpg" alt="قفطان أطفال"><span>مجموعة الأطفال</span></button>
   </div>
+  <div class="campaign-values"><span>♛ جودة مختارة</span><span>◇ تصميم مغربي</span><span>✧ تفصيل حسب الطلب</span><span>☏ التوصيل داخل المغرب</span></div>
+  <div class="campaign-actions"><button class="btn" onclick="go('shop')">تصفح جميع المنتجات</button></div>
  </section>
- <section class="section" id="collection">
-  <div class="section-title"><h2 data-ar="اختياراتنا المميزة" data-fr="Nos sélections">اختياراتنا المميزة</h2><p data-ar="اكتشفوا مختارات MAISON SOPHIE" data-fr="Découvrez la sélection MAISON SOPHIE">اكتشفوا مختارات MAISON SOPHIE</p></div>
-  <div class="toolbar">
-   <input id="searchInput" type="search" placeholder="ابحث عن منتج..." oninput="renderProducts()">
-   <select id="categoryFilter" onchange="renderProducts()">
-    <option value="all">جميع المجموعات</option><option value="women">النساء</option><option value="men">الرجال</option><option value="kids">الأطفال</option><option value="bridal">العرائس</option>
+ <section class="about"><h2>MAISON SOPHIE</h2><p data-ar="متجر متخصص في القفاطين والجلابيب والتصاميم المغربية التقليدية والعصرية. اكتشفوا التصاميم واطلبوها بسهولة عبر واتساب." data-fr="Boutique spécialisée dans les caftans, djellabas et créations marocaines traditionnelles et modernes. Découvrez nos modèles et commandez via WhatsApp.">متجر متخصص في القفاطين والجلابيب والتصاميم المغربية التقليدية والعصرية. اكتشفوا التصاميم واطلبوها بسهولة عبر واتساب.</p></section>
+ <section class="history"><h2 data-ar="تاريخ القفطان المغربي" data-fr="Histoire du caftan marocain">تاريخ القفطان المغربي</h2><p data-ar="القفطان المغربي لباس تقليدي عريق يجمع بين الأصالة والأناقة والحرفية. تطورت أشكاله وزخارفه عبر أجيال من الحرفيين، وأصبح رمزاً للمناسبات والأعراس والاحتفالات." data-fr="Le caftan marocain est un vêtement traditionnel qui associe élégance, authenticité et savoir-faire artisanal.">القفطان المغربي لباس تقليدي عريق يجمع بين الأصالة والأناقة والحرفية. تطورت أشكاله وزخارفه عبر أجيال من الحرفيين، وأصبح رمزاً للمناسبات والأعراس والاحتفالات.</p><h2 data-ar="مراحل صناعة القفطان" data-fr="Étapes de fabrication">مراحل صناعة القفطان</h2><div class="production-grid">
+ <div class="production-card"><h3>01 — التصميم</h3><p data-ar="رسم الفكرة وتحديد الألوان والتفاصيل." data-fr="Dessiner le modèle et choisir les couleurs.">رسم الفكرة وتحديد الألوان والتفاصيل.</p></div>
+ <div class="production-card"><h3>02 — اختيار القماش</h3><p data-ar="اختيار المخمل أو الحرير أو البروكار المناسب." data-fr="Choisir le velours, la soie ou le brocart.">اختيار المخمل أو الحرير أو البروكار المناسب.</p></div>
+ <div class="production-card"><h3>03 — التفصيل والخياطة</h3><p data-ar="أخذ المقاسات وقص القماش وخياطة القطعة." data-fr="Prendre les mesures, couper et coudre.">أخذ المقاسات وقص القماش وخياطة القطعة.</p></div>
+  </div></section>
+</section>
+
+<section id="shopPage" class="page section">
+ <div class="section-title">
+  <h2 data-ar="جميع المنتجات" data-fr="Tous les produits">جميع المنتجات</h2>
+  <p data-ar="اكتشفوا مجموعتنا المغربية واختروا التصميم المناسب لكم" data-fr="Découvrez notre collection marocaine">اكتشفوا مجموعتنا المغربية واختروا التصميم المناسب لكم</p>
+ </div>
+ <div class="toolbar">
+  <input id="searchInput" type="search" placeholder="ابحث عن قفطان أو جلابة..." oninput="renderProducts()">
+  <select id="categoryFilter" onchange="renderProducts()">
+   <option value="all">جميع المجموعات</option>
+   <option value="women">قفاطين النساء</option>
+   <option value="men">جلابيب الرجال</option>
+   <option value="bridal">قفاطين العروس</option>
+   <option value="kids">ملابس الأطفال</option>
+  </select>
+ </div>
+ <div class="products" id="productGrid"></div>
+</section>
+
+<section id="detailPage" class="page section">
+ <button class="details-btn" onclick="go('shop')">← العودة إلى المنتجات</button>
+ <div class="detail-layout">
+  <div>
+   <img id="detailImage" class="gallery-main" src="" alt="صورة المنتج">
+  </div>
+  <div class="detail-info">
+   <h1 id="detailName"></h1>
+   <p id="detailDesc"></p>
+   <div class="specs">
+    <div class="spec-row"><strong>السعر</strong><span>حسب التصميم والقياس</span></div>
+    <div class="spec-row"><strong>التفصيل</strong><span>حسب الطلب</span></div>
+    <div class="spec-row"><strong>التوصيل</strong><span>داخل المغرب</span></div>
+   </div>
+   <label>اختيار اللون</label>
+   <select id="detailColor">
+    <option>ذهبي</option><option>أخضر</option><option>أزرق</option><option>أحمر</option><option>أسود</option><option>أبيض</option><option>بيج</option>
    </select>
+   <label>نوع القماش</label>
+   <select id="detailFabric">
+    <option>مخمل</option><option>حرير</option><option>بروكار</option><option>كريب</option><option>ساتان</option>
+   </select>
+   <label>المقاس</label>
+   <select id="detailSize">
+    <option>حسب القياس</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
+   </select>
+   <label>ملاحظات إضافية</label>
+   <input id="detailNotes" placeholder="اكتبوا تفاصيل التصميم الذي تريدونه">
+   <button class="btn" onclick="addDetailToCart()">أضف إلى السلة</button>
+   <button class="btn btn-green" onclick="orderDetailWhatsApp()">اطلب عبر واتساب</button>
   </div>
-  <div class="products" id="productGrid"></div>
- </section>
- <section class="about">
-  <h2 data-ar="أناقة تصنع بحب" data-fr="L'élégance créée avec passion">أناقة تصنع بحب</h2>
-  <p data-ar="في MAISON SOPHIE نحتفي بجمال اللباس المغربي، ونقدم تصاميم تجمع بين الحرفية التقليدية واللمسة العصرية، مع اهتمام خاص بالتفاصيل وجودة الاختيار." data-fr="Chez MAISON SOPHIE, nous célébrons la beauté du vêtement marocain avec des créations alliant savoir-faire traditionnel et touche moderne.">في MAISON SOPHIE نحتفي بجمال اللباس المغربي، ونقدم تصاميم تجمع بين الحرفية التقليدية واللمسة العصرية، مع اهتمام خاص بالتفاصيل وجودة الاختيار.</p>
- </section>
- <section class="history">
-  <h2 data-ar="من تراثنا إلى أناقتكم" data-fr="De notre patrimoine à votre élégance">من تراثنا إلى أناقتكم</h2>
-  <p data-ar="القفطان المغربي رمز للأناقة والتراث، تتوارث الأجيال أسرار خياطته وتزيينه. نستلهم من هذا الإرث لنقدم قطعًا تليق بمناسباتكم ولحظاتكم الخاصة." data-fr="Le caftan marocain est un symbole d'élégance et de patrimoine. Nous nous inspirons de cet héritage pour créer des pièces pour vos moments précieux.">القفطان المغربي رمز للأناقة والتراث، تتوارث الأجيال أسرار خياطته وتزيينه. نستلهم من هذا الإرث لنقدم قطعًا تليق بمناسباتكم ولحظاتكم الخاصة.</p>
-  <div class="production-grid">
-   <div class="production-card"><h3 data-ar="اختيار القماش" data-fr="Choix du tissu">اختيار القماش</h3><p data-ar="نختار الأقمشة بعناية لتناسب التصميم والمناسبة." data-fr="Nous choisissons soigneusement les tissus selon le modèle et l'occasion.">نختار الأقمشة بعناية لتناسب التصميم والمناسبة.</p></div>
-   <div class="production-card"><h3 data-ar="الخياطة" data-fr="Confection">الخياطة</h3><p data-ar="عناية بالتفاصيل والقياسات للحصول على مظهر أنيق." data-fr="Un soin particulier aux détails et aux mesures.">عناية بالتفاصيل والقياسات للحصول على مظهر أنيق.</p></div>
-   <div class="production-card"><h3 data-ar="اللمسات الأخيرة" data-fr="Finitions">اللمسات الأخيرة</h3><p data-ar="تطريز ولمسات تقليدية تكمل جمال القطعة." data-fr="Broderies et finitions traditionnelles subliment chaque pièce.">تطريز ولمسات تقليدية تكمل جمال القطعة.</p></div>
-  </div>
- </section>
-   </section>
-   <section id="detailPage" class="page section">
- <button class="btn btn-dark" onclick="go('home')">← العودة للرئيسية</button>
- <div id="detailContent"></div>
+ </div>
 </section>
+
 <section id="cartPage" class="page section">
- <div class="section-title"><h2>سلة المشتريات</h2><p>راجعوا اختياراتكم قبل إرسال الطلب</p></div>
- <div id="cartContent"></div>
+ <div class="section-title"><h2>سلة المشتريات</h2><p>التصاميم التي اخترتموها</p></div>
+ <div class="cart-list" id="cartList"></div>
+ <button class="btn btn-green" onclick="checkoutWhatsApp()">إرسال الطلب عبر واتساب</button>
 </section>
+
 <section id="favoritesPage" class="page section">
- <div class="section-title"><h2>المفضلة</h2><p>المنتجات التي أعجبتكم</p></div>
- <div class="products" id="favoritesContent"></div>
-</section>
-<section id="historyPage" class="page section">
- <div class="section-title"><h2>تاريخ القفطان ومراحل الإنتاج</h2></div>
- <div class="history"><p>القفطان المغربي جزء من تراثنا العريق، يجمع بين الحرفية والأناقة والتفاصيل التقليدية.</p></div>
+ <div class="section-title"><h2>المفضلة ♡</h2><p>التصاميم التي أعجبتكم</p></div>
+ <div class="products" id="favoriteGrid"></div>
 </section>
 </main>
+
 <footer>
  <strong>MAISON SOPHIE</strong>
  <p>ÉLÉGANCE MAROCAINE</p>
- <p>قفاطين وجلابيب بتصاميم مغربية أصيلة</p>
+ <p>قفاطين مغربية • جلابيب • تصاميم العروس</p>
  <a href="https://wa.me/212636101436" target="_blank" rel="noopener">تواصلوا معنا عبر واتساب</a>
+ <p>© 2026 MAISON SOPHIE — جميع الحقوق محفوظة</p>
 </footer>
-<a class="whatsapp-float" href="https://wa.me/212636101436" target="_blank" rel="noopener">WhatsApp</a>
+
+<a class="whatsapp-float" href="https://wa.me/212636101436" target="_blank" rel="noopener">واتساب</a>
+
 <button class="ai-launch" onclick="toggleAI()" aria-label="المساعد الذكي">✦</button>
 <div class="ai-panel" id="aiPanel">
  <div class="ai-head"><strong>مساعد MAISON SOPHIE</strong><button onclick="toggleAI()">×</button></div>
- <div class="ai-note">مرحبًا! اسألونا عن القفاطين والجلابة والأقمشة والمقاسات. هذا مساعد تجريبي للأسئلة الشائعة.</div>
- <div class="ai-messages" id="aiMessages"><div class="ai-msg bot">مرحبًا بك في MAISON SOPHIE 🌸 كيف يمكنني مساعدتك؟</div></div>
- <form class="ai-form" onsubmit="sendAI(event)">
-  <input id="aiInput" type="text" placeholder="اكتب سؤالك هنا..." autocomplete="off" required>
+ <div class="ai-note">اسأل عن القفاطين والأقمشة والألوان والمقاسات والطلبات. هذا مساعد نصي بإجابات إرشادية.</div>
+ <div class="ai-messages" id="aiMessages">
+  <div class="ai-msg bot">مرحباً بك! كيف يمكنني مساعدتك في اختيار قفطانك المغربي؟</div>
+ </div>
+ <form class="ai-form" onsubmit="askAI(event)">
+  <input id="aiInput" placeholder="اكتب سؤالك هنا..." autocomplete="off">
   <button type="submit">إرسال</button>
  </form>
 </div>
+
 <div class="toast" id="toast"></div>
+
 <script>
-const products=[
-{id:1,name:"قفطان ملكي",fr:"Caftan royal",cat:"women",price:"حسب الطلب",desc:"قفطان أنيق بتفاصيل مغربية راقية",img:"images/model-01-1.jpg"},
-{id:2,name:"قفطان مطرز",fr:"Caftan brodé",cat:"women",price:"حسب الطلب",desc:"تطريز أنيق ولمسات فاخرة",img:"images/model-02-1.jpg"},
-{id:3,name:"جلابة نسائية",fr:"Djellaba femme",cat:"women",price:"حسب الطلب",desc:"جلابة مغربية بتصميم عصري",img:"images/model-03-1.jpg"},
-{id:4,name:"قفطان سهرة",fr:"Caftan de soirée",cat:"women",price:"حسب الطلب",desc:"اختيار أنيق للمناسبات",img:"images/model-04-1.jpg"},
-{id:5,name:"جلابة رجالية",fr:"Djellaba homme",cat:"men",price:"حسب الطلب",desc:"جلابة رجالية مغربية أصيلة",img:"images/model-05-1.jpg"},
-{id:6,name:"جلابة رجالية عصرية",fr:"Djellaba homme moderne",cat:"men",price:"حسب الطلب",desc:"أناقة وراحة في تصميم واحد",img:"images/model-06-1.jpg"},
-{id:7,name:"جلابة أطفال",fr:"Djellaba enfant",cat:"kids",price:"حسب الطلب",desc:"تصميم مريح وأنيق للأطفال",img:"images/model-07-1.jpg"},
-{id:8,name:"قفطان أطفال",fr:"Caftan enfant",cat:"kids",price:"حسب الطلب",desc:"أناقة صغيرة للمناسبات",img:"images/model-08-1.jpg"},
-{id:9,name:"قفطان العروس",fr:"Caftan de mariée",cat:"bridal",price:"حسب الطلب",desc:"تصميم فاخر ليوم استثنائي",img:"images/model-09-1.jpg"},
-{id:10,name:"قفطان زفاف فاخر",fr:"Caftan de mariage",cat:"bridal",price:"حسب الطلب",desc:"تفاصيل راقية للمناسبات الكبرى",img:"images/model-10-1.jpg"},
-{id:11,name:"جلابة مطرزة",fr:"Djellaba brodée",cat:"women",price:"حسب الطلب",desc:"لمسات تقليدية جميلة",img:"images/model-11-1.jpg"},
-{id:12,name:"قفطان مغربي",fr:"Caftan marocain",cat:"women",price:"حسب الطلب",desc:"تصميم مستوحى من التراث المغربي",img:"images/model-12-1.jpg"}
+const products = [
+{id:1,name:"جلابة رجالية بيج",fr:"Djellaba homme beige",cat:"men",desc:"جلابة رجالية مغربية أنيقة",img:"images/model-01-1.jpg"},
+{id:2,name:"قفطان نسائي أخضر مطرز",fr:"Caftan femme vert brodé",cat:"women",desc:"قفطان نسائي بتطريز مغربي أنيق",img:"images/model-02-1.jpg"},
+{id:3,name:"جلابة رجالية بيضاء",fr:"Djellaba homme blanche",cat:"men",desc:"جلابة رجالية بتصميم تقليدي",img:"images/model-03-1.jpg"},
+{id:4,name:"ملابس أطفال مغربية",fr:"Tenue marocaine enfant",cat:"kids",desc:"تصميم مغربي أنيق للأطفال",img:"images/model-04-1.jpg"},
+{id:5,name:"قفطان العروس العاجي",fr:"Caftan de mariée ivoire",cat:"bridal",desc:"قفطان عروس بتفاصيل راقية",img:"images/model-05-1.jpg"},
+{id:6,name:"قفطان نسائي أخضر ملكي",fr:"Caftan femme vert royal",cat:"women",desc:"قفطان فاخر للمناسبات",img:"images/model-06-1.jpg"},
+{id:7,name:"قفطان نسائي مطرز",fr:"Caftan femme brodé",cat:"women",desc:"قفطان بتطريز مغربي جميل",img:"images/model-07-1.jpg"},
+{id:8,name:"جلابة رجالية بيج فاتح",fr:"Djellaba homme beige clair",cat:"men",desc:"جلابة رجالية أنيقة ومريحة",img:"images/model-08-1.jpg"},
+{id:9,name:"قفطان العروس المطرز",fr:"Caftan mariée brodé",cat:"bridal",desc:"تصميم خاص بالمناسبات والأعراس",img:"images/model-09-1.jpg"},
+{id:10,name:"قفطان نسائي فاخر",fr:"Caftan femme élégant",cat:"women",desc:"قفطان مغربي بتفاصيل فاخرة",img:"images/model-10-1.jpg"},
+{id:11,name:"قفطان نسائي أزرق",fr:"Caftan femme bleu",cat:"women",desc:"قفطان أزرق بتطريز أنيق",img:"images/model-11-1.jpg"},
+{id:12,name:"قفطان العروس الأبيض",fr:"Caftan mariée blanc",cat:"bridal",desc:"قفطان أبيض لإطلالة العروس",img:"images/model-12-1.jpg"}
 ];
-let cart=JSON.parse(localStorage.getItem("ms_cart")||"[]");
-let favorites=JSON.parse(localStorage.getItem("ms_favorites")||"[]");
-let currentLang="ar";
-let currentProduct=null;
- function saveData(){
+
+let currentProduct = null;
+let cart = JSON.parse(localStorage.getItem("ms_cart") || "[]");
+let favorites = JSON.parse(localStorage.getItem("ms_favorites") || "[]");
+
+function saveData(){
  localStorage.setItem("ms_cart",JSON.stringify(cart));
  localStorage.setItem("ms_favorites",JSON.stringify(favorites));
  updateCartCount();
 }
+
 function updateCartCount(){
  const count=cart.reduce((sum,item)=>sum+item.qty,0);
  document.getElementById("cartCount").textContent=count;
  document.getElementById("drawerCartCount").textContent=count;
 }
-function toast(message){
- const el=document.getElementById("toast");
- el.textContent=message;
- el.style.display="block";
+
+function showToast(message){
+ const toast=document.getElementById("toast");
+ toast.textContent=message;
+ toast.style.display="block";
  clearTimeout(window.toastTimer);
- window.toastTimer=setTimeout(()=>el.style.display="none",2500);
+ window.toastTimer=setTimeout(()=>toast.style.display="none",2600);
 }
-function openMenu(){
- document.getElementById("drawer").classList.add("open");
- document.getElementById("overlay").classList.add("open");
-}
-function closeMenu(){
- document.getElementById("drawer").classList.remove("open");
- document.getElementById("overlay").classList.remove("open");
-}
+
 function go(page){
  closeMenu();
- document.querySelectorAll(".page").forEach(el=>el.classList.remove("active"));
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
  const target=document.getElementById(page+"Page");
  if(target)target.classList.add("active");
+ window.scrollTo({top:0,behavior:"smooth"});
+ if(page==="shop")renderProducts();
  if(page==="cart")renderCart();
  if(page==="favorites")renderFavorites();
- window.scrollTo({top:0,behavior:"smooth"});
 }
+
+function openCategory(category){
+ go("shop");
+ document.getElementById("categoryFilter").value=category;
+ renderProducts();
+}
+
 function renderProducts(){
  const grid=document.getElementById("productGrid");
  if(!grid)return;
- const filter=document.getElementById("categoryFilter").value;
- const query=document.getElementById("searchInput").value.trim().toLowerCase();
- const filtered=products.filter(p=>{
-  const matchesCat=filter==="all"||p.cat===filter;
-  const matchesText=(p.name+" "+p.fr+" "+p.desc).toLowerCase().includes(query);
-  return matchesCat&&matchesText;
- });
- grid.innerHTML=filtered.map(p=>productCard(p)).join("");
+ const query=(document.getElementById("searchInput")?.value||"").trim().toLowerCase();
+ const category=document.getElementById("categoryFilter")?.value||"all";
+ const list=products.filter(p=>(category==="all"||p.cat===category)&&(p.name.toLowerCase().includes(query)||p.fr.toLowerCase().includes(query)));
+ grid.innerHTML=list.map(p=>`
+ <article class="product">
+  <div class="product-image">
+   <span class="image-fallback">MAISON SOPHIE</span>
+   <img src="${p.img}" alt="${p.name}" onerror="this.style.display='none'">
+   <button class="favorite ${favorites.includes(p.id)?"selected":""}" onclick="toggleFavorite(${p.id})" aria-label="المفضلة">♡</button>
+  </div>
+  <div class="product-info">
+   <h3>${p.name}</h3><p>${p.desc}</p>
+   <div class="product-bottom"><span class="price">السعر حسب الطلب</span><button class="details-btn" onclick="openDetail(${p.id})">التفاصيل</button></div>
+  </div>
+ </article>`).join("")||'<p class="empty">لا توجد منتجات مطابقة.</p>';
 }
-function productCard(p){
- const isFav=favorites.includes(p.id);
- return `<article class="product">
- <div class="product-image">
-  <span class="image-fallback">MAISON SOPHIE</span>
-  <img src="${p.img}" alt="${p.name}" onerror="this.style.display='none'">
-  <button class="favorite ${isFav?'selected':''}" onclick="toggleFavorite(${p.id})" aria-label="إضافة للمفضلة">${isFav?'♥':'♡'}</button>
- </div>
- <div class="product-info">
-  <h3>${currentLang==="ar"?p.name:p.fr}</h3>
-  <p>${p.desc}</p>
-  <div class="product-bottom"><span class="price">${p.price}</span><button class="details-btn" onclick="showDetails(${p.id})">التفاصيل</button></div>
- </div></article>`;
-}
-function toggleFavorite(id){
- if(favorites.includes(id))favorites=favorites.filter(x=>x!==id);
- else favorites.push(id);
- saveData();renderProducts();renderFavorites();
- toast("تم تحديث المفضلة");
-}
-function renderFavorites(){
- const el=document.getElementById("favoritesContent");
- const list=products.filter(p=>favorites.includes(p.id));
- el.innerHTML=list.length?list.map(p=>productCard(p)).join():'<div class="empty">لا توجد منتجات في المفضلة بعد.</div>';
-}
-function showDetails(id){
+
+function openDetail(id){
  currentProduct=products.find(p=>p.id===id);
  if(!currentProduct)return;
- const p=currentProduct;
- document.getElementById("detailContent").innerHTML=`
- <div class="detail-layout">
-  <div><img class="gallery-main" src="${p.img}" alt="${p.name}" onerror="this.style.display='none'"></div>
-  <div class="detail-info">
-   <h1>${currentLang==="ar"?p.name:p.fr}</h1>
-   <p>${p.desc}</p>
-   <div class="specs">
-    <div class="spec-row"><strong>السعر</strong><span>يحدد حسب التصميم</span></div>
-    <div class="spec-row"><strong>الفئة</strong><span>${categoryName(p.cat)}</span></div>
-   </div>
-   <label for="fabric">نوع القماش</label>
-   <select id="fabric"><option>ساتان</option><option>مخمل</option><option>كريب</option><option>حرير</option><option>اختيار آخر</option></select>
-   <label for="color">اللون المطلوب</label>
-   <input id="color" placeholder="اكتب اللون الذي تفضله">
-   <label for="embroidery">التطريز والزخرفة</label>
-   <select id="embroidery"><option>تطريز تقليدي</option><option>طرز يدوي</option><option>تصميم بسيط</option><option>حسب الطلب</option></select>
-   <label for="size">المقاس</label>
-   <select id="size"><option>مقاس عادي</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>تفصيل حسب القياسات</option></select>
-   <label for="notes">ملاحظات إضافية</label>
-   <input id="notes" placeholder="الطول أو تفاصيل أخرى">
-   <button class="btn" onclick="addToCart(${p.id})">أضف إلى السلة</button>
-   <button class="btn btn-green" onclick="orderDirect(${p.id})">اطلب عبر واتساب</button>
-  </div>
- </div>`;
+ document.getElementById("detailImage").src=currentProduct.img;
+ document.getElementById("detailName").textContent=currentProduct.name;
+ document.getElementById("detailDesc").textContent=currentProduct.desc;
  go("detail");
 }
-function categoryName(cat){
- return {women:"النساء",men:"الرجال",kids:"الأطفال",bridal:"العرائس"}[cat]||"";
- }
- function getChoice(){
- return {
-  fabric:document.getElementById("fabric")?.value||"",
-  color:document.getElementById("color")?.value||"",
-  embroidery:document.getElementById("embroidery")?.value||"",
-  size:document.getElementById("size")?.value||"",
-  notes:document.getElementById("notes")?.value||""
- };
+
+function toggleFavorite(id){
+ favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[...favorites,id];
+ saveData();renderProducts();renderFavorites();
 }
-function addToCart(id){
- const p=products.find(x=>x.id===id);
- const choice=getChoice();
- cart.push({id:p.id,name:p.name,qty:1,choice});
- saveData();
- toast("تمت إضافة المنتج إلى السلة");
- go("cart");
+
+function renderFavorites(){
+ const grid=document.getElementById("favoriteGrid");
+ const list=products.filter(p=>favorites.includes(p.id));
+ grid.innerHTML=list.map(p=>`<article class="product"><div class="product-image"><img src="${p.img}" alt="${p.name}"></div><div class="product-info"><h3>${p.name}</h3><button class="details-btn" onclick="openDetail(${p.id})">التفاصيل</button><button class="details-btn" onclick="toggleFavorite(${p.id})">إزالة ♡</button></div></article>`).join("")||'<p class="empty">لم تضف أي منتج إلى المفضلة بعد.</p>';
 }
-function orderDirect(id){
- const p=products.find(x=>x.id===id);
- const c=getChoice();
- const message=`السلام عليكم، أريد طلب: ${p.name}
-القماش: ${c.fabric}
-اللون: ${c.color}
-التطريز: ${c.embroidery}
-المقاس: ${c.size}
-ملاحظات: ${c.notes}
-المرجو إرسال الثمن والتفاصيل.`;
+
+function addDetailToCart(){
+ if(!currentProduct)return;
+ cart.push({id:currentProduct.id,name:currentProduct.name,qty:1,color:document.getElementById("detailColor").value,fabric:document.getElementById("detailFabric").value,size:document.getElementById("detailSize").value,notes:document.getElementById("detailNotes").value});
+ saveData();showToast("تمت إضافة المنتج إلى السلة");
+}
+
+function renderCart(){
+ const list=document.getElementById("cartList");
+ if(!cart.length){list.innerHTML='<div class="empty">سلتك فارغة حالياً.</div>';return;}
+ list.innerHTML=cart.map((item,i)=>`<div class="cart-item"><div><strong>${item.name}</strong><br>اللون: ${item.color} — القماش: ${item.fabric} — المقاس: ${item.size}<br>${item.notes||""}</div><button onclick="removeCart(${i})">حذف</button></div>`).join("");
+}
+
+function removeCart(i){cart.splice(i,1);saveData();renderCart();}
+
+function checkoutWhatsApp(){
+ if(!cart.length){showToast("السلة فارغة");return;}
+ const lines=cart.map((x,i)=>`${i+1}. ${x.name} | اللون ${x.color} | القماش ${x.fabric} | المقاس ${x.size} | ${x.notes||""}`);
+ const message="السلام عليكم، أريد طلب المنتجات التالية من MAISON SOPHIE:\n"+lines.join("\n");
  window.open("https://wa.me/212636101436?text="+encodeURIComponent(message),"_blank");
 }
-function renderCart(){
- const el=document.getElementById("cartContent");
- if(!cart.length){
-  el.innerHTML='<div class="empty">سلتكم فارغة حاليًا.</div>';
-  return;
- }
- el.innerHTML=`<div class="cart-list">${cart.map((item,index)=>`
- <div class="cart-item">
-  <div><strong>${item.name}</strong><br>
-  <small>القماش: ${item.choice.fabric} | اللون: ${item.choice.color||"غير محدد"} | المقاس: ${item.choice.size}</small></div>
-  <button onclick="removeCart(${index})">حذف ×</button>
- </div>`).join("")}</div>
- <div class="payment-note">السعر النهائي والتوصيل يتم تأكيدهما عبر واتساب بعد مراجعة تفاصيل الطلب.</div>
- <button class="btn btn-green" onclick="checkout()">إرسال الطلب عبر واتساب</button>
- <button class="btn btn-dark" onclick="clearCart()">إفراغ السلة</button>`;
-}
-function removeCart(index){
- cart.splice(index,1);saveData();renderCart();
-}
-function clearCart(){
- cart=[];saveData();renderCart();
-}
-function checkout(){
- if(!cart.length)return;
- const lines=cart.map((item,i)=>`${i+1}. ${item.name}
-القماش: ${item.choice.fabric}
-اللون: ${item.choice.color}
-التطريز: ${item.choice.embroidery}
-المقاس: ${item.choice.size}
-ملاحظات: ${item.choice.notes}`).join("\n\n");
- const message="السلام عليكم، أريد تأكيد هذا الطلب من MAISON SOPHIE:\n\n"+lines+"\n\nالمرجو تأكيد الثمن والتوصيل.";
+
+function orderDetailWhatsApp(){
+ if(!currentProduct)return;
+ const message=`السلام عليكم، أريد طلب ${currentProduct.name}. اللون: ${document.getElementById("detailColor").value}. القماش: ${document.getElementById("detailFabric").value}. المقاس: ${document.getElementById("detailSize").value}. ملاحظات: ${document.getElementById("detailNotes").value}`;
  window.open("https://wa.me/212636101436?text="+encodeURIComponent(message),"_blank");
 }
 function setLang(lang){
  currentLang=lang;
  document.documentElement.lang=lang;
  document.documentElement.dir=lang==="ar"?"rtl":"ltr";
- document.getElementById("arBtn").classList.toggle("active",lang==="ar");
- document.getElementById("frBtn").classList.toggle("active",lang==="fr");
+
  document.querySelectorAll("[data-ar][data-fr]").forEach(el=>{
-  el.innerHTML=el.getAttribute("data-"+lang);
+  el.textContent=el.dataset[lang];
  });
- renderProducts();
+
+ document.querySelectorAll(".lang-btn").forEach(btn=>{
+  btn.classList.toggle("active",btn.dataset.lang===lang);
+ });
+
+ const assistantInput=document.getElementById("assistantInput");
+ if(assistantInput){
+  assistantInput.placeholder=lang==="ar"?"اكتب سؤالك هنا...":"Écrivez votre question...";
+ }
 }
-function toggleAI(){
- document.getElementById("aiPanel").classList.toggle("open");
+
+function openMenu(){
+ const menu=document.getElementById("menuDrawer");
+ if(menu) menu.classList.add("open");
 }
-function addAIMessage(text,type){
- const box=document.getElementById("aiMessages");
- const msg=document.createElement("div");
- msg.className="ai-msg "+type;
- msg.textContent=text;
- box.appendChild(msg);
- box.scrollTop=box.scrollHeight;
+
+function closeMenu(){
+ const menu=document.getElementById("menuDrawer");
+ if(menu) menu.classList.remove("open");
 }
-function sendAI(event){
- event.preventDefault();
- const input=document.getElementById("aiInput");
+
+function toggleAssistant(){
+ const panel=document.getElementById("assistantPanel");
+ if(panel) panel.classList.toggle("open");
+}
+
+function sendAssistantMessage(){
+ const input=document.getElementById("assistantInput");
+ const messages=document.getElementById("assistantMessages");
+ if(!input||!messages)return;
+
  const question=input.value.trim();
  if(!question)return;
- addAIMessage(question,"user");
+
+ const userMessage=document.createElement("div");
+ userMessage.className="chat-message user-message";
+ userMessage.textContent=question;
+ messages.appendChild(userMessage);
+
  input.value="";
- const answer=getAIAnswer(question);
- setTimeout(()=>addAIMessage(answer,"bot"),350);
- }
- function getAIAnswer(question){
+
+ const answer=document.createElement("div");
+ answer.className="chat-message bot-message";
+ answer.textContent=getAssistantAnswer(question);
+ messages.appendChild(answer);
+
+ messages.scrollTop=messages.scrollHeight;
+}
+
+function getAssistantAnswer(question){
  const q=question.toLowerCase();
 
- if(q.includes("ثمن")||q.includes("السعر")||q.includes("prix")||q.includes("price")){
-  return "أثمنة منتجات MAISON SOPHIE تختلف حسب نوع القماش والتطريز والتصميم. أرسل لنا صورة التصميم عبر واتساب للحصول على الثمن: 0636101436.";
+ if(currentLang==="fr"){
+  if(q.includes("prix")||q.includes("price"))
+   return "Pour connaître le prix d'un modèle, envoyez-nous son nom sur WhatsApp.";
+  if(q.includes("livraison"))
+   return "Contactez-nous sur WhatsApp pour connaître les options de livraison.";
+  if(q.includes("taille")||q.includes("mesure"))
+   return "Nous proposons plusieurs tailles. Contactez-nous pour choisir la vôtre.";
+  if(q.includes("commande")||q.includes("acheter"))
+   return "Vous pouvez commander directement via WhatsApp.";
+  return "Merci pour votre message ! Notre équipe peut vous aider sur WhatsApp.";
  }
- if(q.includes("مقاس")||q.includes("قياس")||q.includes("taille")||q.includes("size")){
-  return "نوفر مقاسات مختلفة، ويمكننا تفصيل القطعة حسب قياساتك. اختر المقاس أو اكتب ملاحظاتك عند الطلب.";
- }
- if(q.includes("توصيل")||q.includes("livraison")||q.includes("delivery")){
-  return "للتأكد من التوصيل والثمن إلى مدينتك، تواصل معنا عبر واتساب وسنساعدك.";
- }
- if(q.includes("قماش")||q.includes("tissu")||q.includes("fabric")){
-  return "يمكنك اختيار الساتان أو المخمل أو الكريب أو الحرير، كما يمكنك طلب قماش آخر حسب رغبتك.";
- }
- if(q.includes("لون")||q.includes("couleur")||q.includes("color")){
-  return "يمكنك اختيار اللون الذي تفضله وكتابته في خانة اللون عند طلب القطعة.";
- }
- if(q.includes("رجال")||q.includes("homme")){
-  return "لدينا تصاميم للجلابة الرجالية. افتح قائمة المنتجات واختر تصنيف الرجال.";
- }
- if(q.includes("أطفال")||q.includes("enfant")||q.includes("kids")){
-  return "نوفر تصاميم للأطفال. أخبرنا بالعمر والمقاس المطلوب عبر واتساب.";
- }
- if(q.includes("عروس")||q.includes("mariée")||q.includes("bridal")){
-  return "لدينا تصاميم قفاطين للعرائس والمناسبات. أخبرنا بالتصميم الذي تبحث عنه.";
- }
- if(q.includes("واتساب")||q.includes("whatsapp")||q.includes("تواصل")){
-  return "يمكنك التواصل معنا مباشرة عبر واتساب على الرقم 0636101436.";
- }
- return "شكرًا على سؤالك 🌸 أستطيع مساعدتك بمعلومات عامة عن القفاطين والجلابة والأقمشة والمقاسات. للحصول على جواب دقيق عن طلب خاص، تواصل معنا عبر واتساب: 0636101436.";
+
+ if(q.includes("ثمن")||q.includes("السعر")||q.includes("بكم"))
+  return "لمعرفة ثمن أي موديل، أرسل لنا اسمه عبر واتساب.";
+ if(q.includes("توصيل")||q.includes("الشحن"))
+  return "للتعرف على خيارات التوصيل، تواصل معنا عبر واتساب.";
+ if(q.includes("مقاس")||q.includes("قياس"))
+  return "تتوفر مقاسات مختلفة. تواصل معنا لنساعدك في اختيار المقاس المناسب.";
+ if(q.includes("طلب")||q.includes("شراء")||q.includes("نشتري"))
+  return "يمكنك إرسال طلبك مباشرة عبر واتساب.";
+ return "شكراً على رسالتك! يسعدنا مساعدتك. يمكنك التواصل معنا عبر واتساب.";
 }
-updateCartCount();
-renderProducts();
+
+function updateCartCount(){
+ const count=document.getElementById("cartCount");
+ if(count) count.textContent=cart.length;
+}
+
+function updateFavoriteCount(){
+ const count=document.getElementById("favoriteCount");
+ if(count) count.textContent=favorites.length;
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+ updateCartCount();
+ updateFavoriteCount();
+
+ if(typeof renderProducts==="function"){
+  renderProducts();
+ }
+
+ if(typeof renderFavorites==="function"){
+  renderFavorites();
+ }
+
+ document.querySelectorAll(".lang-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+   setLang(btn.dataset.lang);
+  });
+ });
+
+ const assistantInput=document.getElementById("assistantInput");
+ if(assistantInput){
+  assistantInput.addEventListener("keydown",event=>{
+   if(event.key==="Enter")sendAssistantMessage();
+  });
+ }
+
+ setLang("ar");
+});
 </script>
 </body>
 </html>
+ 
