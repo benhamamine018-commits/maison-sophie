@@ -1,967 +1,350 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#2b190f">
+<meta name="theme-color" content="#28190f">
 <title>MAISON SOPHIE | Élégance Marocaine</title>
 <script src="https://unpkg.com/lucide@latest"></script>
-
 <style>
-:root {
-  --gold:#c5a15b;
-  --dark:#28190f;
-  --cream:#f5efe3;
-  --brown:#60452f;
-  --white:#fffdf8;
+:root{--gold:#c5a15b;--dark:#28190f;--cream:#f5efe3;--brown:#60452f;--white:#fffdf8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--cream);color:var(--dark);font-family:Arial,sans-serif;line-height:1.6}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.topbar{position:sticky;top:0;z-index:40;background:linear-gradient(110deg,#24150e,#49301e,#24150e);color:#f5dfaa;border-bottom:2px solid var(--gold);box-shadow:0 3px 12px #0002}
+.topbar-inner{max-width:1500px;margin:auto;min-height:68px;padding:7px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{flex:1;text-align:center;min-width:0}
+.logo{font-family:"Palatino Linotype",Georgia,serif;font-size:clamp(22px,4vw,34px);font-weight:bold;letter-spacing:3px;color:#e7c77f;white-space:nowrap;text-shadow:0 1px 8px #d6ad5b44}
+.brand small{display:block;color:#e7d4ae;letter-spacing:2px;font-size:10px}
+.menu-button{width:46px;height:44px;flex:0 0 46px;border:1px solid var(--gold);border-radius:9px;background:transparent;color:#f3d69b;display:grid;place-items:center;font-size:25px}
+.menu-button:hover{background:#ffffff12}
+.menu-panel{display:none;position:absolute;top:calc(100% + 5px);right:12px;width:min(290px,calc(100vw - 24px));padding:12px;background:#382317;border:1px solid var(--gold);border-radius:12px;box-shadow:0 10px 30px #0004}
+.menu-panel.open{display:block}
+.menu-panel a{display:block;color:#f7e7c5;text-decoration:none;padding:10px 12px;border-radius:7px;border-bottom:1px solid #80634255}
+.menu-panel a:hover{background:#795a36}
+.menu-language{padding:10px 8px 2px;color:#f7e7c5}
+.menu-language label{display:block;font-size:13px;margin-bottom:5px}
+.menu-language select{width:100%;background:transparent;color:#f4d99f;border:1px solid var(--gold);border-radius:7px;padding:8px}
+.menu-language option{color:#28190f}
+.hero{min-height:210px;padding:32px 15px;text-align:center;color:#f4dfb2;background:radial-gradient(ellipse at center,#67452b 0%,#382317 58%,#24150e 100%);border-bottom:3px solid var(--gold);display:flex;flex-direction:column;justify-content:center;align-items:center}
+.hero h1{font-family:Georgia,serif;font-size:clamp(25px,5vw,42px);margin:0 0 7px;color:#f0d18e}
+.hero p{margin:0 auto;max-width:750px;font-size:clamp(14px,2vw,18px);color:#f4e7cf}
+.hero .hero-note{margin-top:12px;font-size:12px;letter-spacing:1px;color:#d9bd85}
+main{max-width:1500px;margin:auto}
+.intro{text-align:center;padding:24px 12px 8px}
+.intro h2{color:#76502e;font-family:Georgia,serif;font-size:clamp(23px,4vw,34px);margin:0}
+.intro p{color:#735b42;margin:5px;font-size:clamp(15px,2.5vw,20px)}
+.filters{text-align:center;padding:12px 8px 18px}
+.filters button{background:#49301e;color:#f8e7c7;border:1px solid var(--gold);border-radius:24px;padding:9px 17px;margin:4px}
+.filters button.active{background:#c5a15b;color:#28190f}
+.section-title{display:flex;align-items:center;justify-content:center;gap:12px;margin:18px auto 12px;color:#68452b;font-size:21px;text-align:center}
+.section-title:before,.section-title:after{content:"";height:1px;background:#b99b70;flex:1;max-width:300px}
+.section-title span{white-space:nowrap}
+.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding:5px 12px 18px}
+.product{background:#fffdf8;border:1px solid #d8c5a8;border-radius:8px;overflow:hidden;text-align:center;box-shadow:0 2px 7px #4a32151a;transition:.2s}
+.product:hover{transform:translateY(-3px);box-shadow:0 6px 16px #4a321533;border-color:var(--gold)}
+.product img{width:100%;height:clamp(180px,27vw,360px);display:block;object-fit:cover;background:#e8dfd0}
+.product-name{background:#382317;color:#f7e7c5;padding:9px 5px;font-size:14px;min-height:44px}
+.product-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:5px;padding:9px 4px}
+.product-actions button{background:#e9d7b5;color:#392719;border:1px solid #c4a675;border-radius:7px;padding:7px 10px;font-size:12px}
+.product-actions button:hover{background:#d9bd85}
+.info{margin:25px 12px;padding:22px;background:#fffaf0;border:1px solid #d9c6a7;border-radius:10px;text-align:center}
+.info h2{color:#704b2d;margin-top:0}
+input,select,textarea{width:100%;padding:11px;margin:7px 0;border:1px solid #c6b18e;border-radius:7px;background:white;color:#382719}
+textarea{min-height:90px;resize:vertical}
+.info button,.main-button{background:#49301e;color:#f8e7c7;border:1px solid var(--gold);border-radius:7px;padding:10px 16px;margin:5px;text-decoration:none;display:inline-block}
+.benefits{background:#28190f;color:#e8d2a5;display:grid;grid-template-columns:repeat(4,1fr);padding:16px 5px;text-align:center;border-top:2px solid var(--gold)}
+.benefit{border-left:1px solid #806342;padding:7px;font-size:13px}
+.benefit:last-child{border:0}
+.benefit i{display:block;margin:auto auto 5px;color:#e5c27b;width:26px;height:26px}
+footer{background:#28190f;color:#e7d1a6;padding:16px;text-align:center}
+.whatsapp{position:fixed;bottom:17px;left:14px;z-index:30;background:#20bd65;color:white;text-decoration:none;padding:11px 16px;border-radius:30px;box-shadow:0 3px 12px #0003;display:flex;align-items:center;gap:7px}
+.modal{display:none;position:fixed;inset:0;z-index:60;background:#000b;padding:15px;overflow:auto}
+.modal-content{background:#fffaf0;color:#382719;max-width:500px;margin:30px auto;padding:20px;border-radius:10px;border:2px solid var(--gold);text-align:center}
+.modal-content img{max-width:100%;max-height:400px;object-fit:contain}
+.close{float:left;font-size:28px;color:#79552e;cursor:pointer}
+.cart-line{padding:10px;border-bottom:1px solid #d9c6a7}
+.cart-line button{background:#49301e;color:white;border:0;border-radius:5px;padding:5px 10px;margin:3px}
+.chat-box{max-width:700px;margin:auto;text-align:right}
+.chat-messages{background:#fff;border:1px solid #e0cfb1;border-radius:8px;padding:10px;min-height:70px;max-height:260px;overflow:auto;text-align:start}
+.chat-message{padding:8px 10px;margin:6px 0;border-radius:8px;background:#f4ead8}
+.chat-message.user{background:#e6d4b3;text-align:right}
+@media(max-width:900px){.products{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.product img{height:clamp(170px,31vw,260px)}}
+@media(max-width:600px){
+.topbar-inner{min-height:62px;padding:6px 10px}
+.logo{font-size:clamp(19px,5vw,25px);letter-spacing:2px}
+.brand small{font-size:8px;letter-spacing:1.3px}
+.menu-button{width:42px;height:40px;flex-basis:42px}
+.hero{min-height:180px;padding:25px 12px}
+.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;padding:5px 7px 14px}
+.product img{height:clamp(190px,58vw,280px)}
+.product-name{font-size:12px;min-height:40px}
+.product-actions button{font-size:11px;padding:6px 7px}
+.section-title{font-size:17px;gap:6px}
+.benefits{grid-template-columns:repeat(2,1fr)}
+.benefit{border-bottom:1px solid #806342}
+.info{margin:18px 8px;padding:16px}
 }
-* {box-sizing:border-box}
-html {scroll-behavior:smooth}
-body {
-  margin:0;
-  background:var(--cream);
-  color:var(--dark);
-  font-family:Arial,sans-serif;
-  line-height:1.6;
-}
-header {
-  background:linear-gradient(110deg,#24150e,#49301e,#24150e);
-  color:#f5dfaa;
-  padding:13px 20px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  border-bottom:3px solid var(--gold);
-}
-.brand {text-align:center}
-.logo {
-  font-family:Georgia,serif;
-  font-size:clamp(23px,4vw,42px);
-  letter-spacing:3px;
-  color:#e7c77f;
-  font-weight:bold;
-}
-.brand small {
-  display:block;
-  color:#e7d4ae;
-  letter-spacing:2px;
-  font-size:11px;
-}
-.header-title {text-align:center}
-.header-title h2 {
-  color:#f1d69d;
-  margin:0;
-  font-size:clamp(18px,3vw,29px);
-}
-.header-title p {
-  margin:3px 0 0;
-  font-size:13px;
-  color:#eee0c7;
-}
-.language select {
-  width:auto;
-  background:#2c1b10;
-  color:#f4d99f;
-  border:1px solid var(--gold);
-  border-radius:20px;
-  padding:9px;
-}
-nav {
-  background:#382317;
-  padding:9px 15px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:9px;
-  position:sticky;
-  top:0;
-  z-index:20;
-  box-shadow:0 3px 8px #0002;
-}
-nav a {
-  color:#f7e7c5;
-  text-decoration:none;
-  padding:7px 13px;
-  border-radius:20px;
-  font-size:14px;
-}
-nav a:hover {background:#795a36}
-.menu-button {
-  display:none;
-  background:transparent;
-  color:#f3d69b;
-  border:1px solid var(--gold);
-  padding:7px 12px;
-  border-radius:8px;
-  font-size:22px;
-}
-main {max-width:1500px;margin:auto}
-.intro {
-  text-align:center;
-  padding:22px 12px 10px;
-}
-.intro h1 {
-  color:#76502e;
-  font-family:Georgia,serif;
-  font-size:clamp(22px,4vw,34px);
-  margin:0;
-}
-.intro p {color:#735b42;margin:5px}
-.section-title {
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:12px;
-  margin:18px auto 10px;
-  color:#68452b;
-  font-size:21px;
-  text-align:center;
-}
-.section-title:before,
-.section-title:after {
-  content:"";
-  height:1px;
-  background:#b99b70;
-  flex:1;
-  max-width:300px;
-}
-.section-title span {
-  white-space:nowrap;
-}
-.products {
-  display:grid;
-  grid-template-columns:repeat(6,minmax(0,1fr));
-  gap:7px;
-  padding:5px 10px 12px;
-}
-.product {
-  background:#fffdf8;
-  border:1px solid #d8c5a8;
-  border-radius:4px;
-  overflow:hidden;
-  text-align:center;
-  box-shadow:0 2px 5px #4a32151a;
-  transition:.2s;
-}
-.product:hover {
-  transform:translateY(-3px);
-  box-shadow:0 5px 14px #4a321533;
-  border-color:var(--gold);
-}
-.product img {
-  width:100%;
-  height:260px;
-  display:block;
-  object-fit:cover;
-  background:#e8dfd0;
-}
-.product-name {
-  background:#382317;
-  color:#f7e7c5;
-  padding:5px 3px;
-  font-size:12px;
-  line-height:1.5;
-  min-height:43px;
-}
-.product-actions {
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:3px;
-  padding:5px 2px;
-}
-.product-actions button {
-  background:#e9d7b5;
-  color:#392719;
-  border:1px solid #c4a675;
-  border-radius:5px;
-  padding:5px 7px;
-  font-size:11px;
-  margin:0;
-}
-button {
-  cursor:pointer;
-  font:inherit;
-}
-.filters {
-  text-align:center;
-  padding:10px;
-}
-.filters button {
-  background:#49301e;
-  color:#f8e7c7;
-  border:1px solid var(--gold);
-  border-radius:20px;
-  padding:8px 15px;
-  margin:3px;
-}
-.filters button.active {
-  background:#c5a15b;
-  color:#28190f;
-}
-.info {
-  margin:25px 12px;
-  padding:23px;
-  background:#fffaf0;
-  border:1px solid #d9c6a7;
-  border-radius:8px;
-  text-align:center;
-}
-.info h2 {color:#704b2d}
-input,select,textarea {
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-  border:1px solid #c6b18e;
-  border-radius:6px;
-  background:white;
-  color:#382719;
-  font:inherit;
-}
-.info button,.main-button {
-  background:#49301e;
-  color:#f8e7c7;
-  border:1px solid var(--gold);
-  border-radius:6px;
-  padding:10px 17px;
-  margin:5px;
-}
-footer {
-  background:#28190f;
-  color:#e7d1a6;
-  padding:15px;
-  text-align:center;
-}
-.benefits {
-  background:#28190f;
-  color:#e8d2a5;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  padding:15px 5px;
-  text-align:center;
-  border-top:2px solid var(--gold);
-}
-.benefit {
-  border-left:1px solid #806342;
-  padding:7px;
-  font-size:13px;
-}
-.benefit:last-child {border:0}
-.benefit i {
-  display:block;
-  margin:auto auto 5px;
-  color:#e5c27b;
-  width:26px;
-  height:26px;
-}
-.whatsapp {
-  position:fixed;
-  bottom:17px;
-  left:14px;
-  z-index:30;
-  background:#20bd65;
-  color:white;
-  text-decoration:none;
-  padding:11px 16px;
-  border-radius:30px;
-  box-shadow:0 3px 12px #0003;
-}
-.modal {
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:50;
-  background:#000b;
-  padding:15px;
-  overflow:auto;
-}
-.modal-content {
-  background:#fffaf0;
-  color:#382719;
-  max-width:500px;
-  margin:30px auto;
-  padding:20px;
-  border-radius:9px;
-  border:2px solid var(--gold);
-  text-align:center;
-}
-.modal-content img {
-  max-width:100%;
-  max-height:400px;
-  object-fit:contain;
-}
-.close {
-  float:left;
-  font-size:28px;
-  color:#79552e;
-  cursor:pointer;
-}
-.cart-line {
-  padding:10px;
-  border-bottom:1px solid #d9c6a7;
-}
-.cart-line button {
-  background:#49301e;
-  color:white;
-  border:0;
-  border-radius:5px;
-  padding:5px 10px;
-  margin:3px;
-}
-@media(max-width:900px) {
-  .products {grid-template-columns:repeat(4,minmax(0,1fr))}
-  .product img {height:220px}
-}
-@media(max-width:600px) {
-  header {
-    flex-wrap:wrap;
-    justify-content:center;
-    padding:12px 8px;
-  }
-  .brand {width:100%;order:1}
-  .header-title {width:100%;order:2}
-  .language {position:absolute;top:10px;left:8px}
-  .logo {font-size:25px}
-  .header-title h2 {font-size:19px}
-  .header-title p {font-size:11px}
-  nav {justify-content:flex-start}
-  .menu-button {display:block}
-  nav .nav-links {
-    display:none;
-    position:absolute;
-    top:100%;
-    right:8px;
-    left:8px;
-    background:#382317;
-    border:1px solid var(--gold);
-    border-radius:8px;
-    padding:8px;
-  }
-  nav .nav-links.open {display:flex;flex-direction:column}
-  nav a {display:block}
-  .products {
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:5px;
-    padding:5px;
-  }
-  .product img {height:155px}
-  .product-name {font-size:10px;min-height:38px}
-  .product-actions button {font-size:9px;padding:5px 4px}
-  .section-title {font-size:17px;gap:6px}
-  .benefits {grid-template-columns:repeat(2,1fr)}
-  .benefit {border-bottom:1px solid #806342}
-}
-@media(max-width:380px) {
-  .products {grid-template-columns:repeat(2,minmax(0,1fr))}
-  .product img {height:190px}
-}
-  
-
-/* زر لغة صغير وشفاف */
-.language {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-}
-
-#siteLanguage {
-  width: 95px !important;
-  height: 34px !important;
-  padding: 4px 7px !important;
-  font-size: 12px !important;
-  color: #e8cf91 !important;
-  background: transparent !important;
-  border: 1px solid #c5a15b !important;
-  border-radius: 20px !important;
-  box-shadow: none !important;
-}
-
-
+@media(max-width:360px){.logo{font-size:18px}.products{grid-template-columns:repeat(2,minmax(0,1fr))}.product img{height:175px}}
 </style>
 </head>
-
 <body>
-
-<header>
-  <div class="brand">
-    <div class="logo">✧ MAISON SOPHIE ✧</div>
-    <small>ÉLÉGANCE MAROCAINE AUTHENTIQUE</small>
+<header class="topbar">
+  <div class="topbar-inner">
+    <button class="menu-button" id="menuButton" aria-label="فتح القائمة" aria-expanded="false">☰</button>
+    <div class="brand">
+      <div class="logo">✧ MAISON SOPHIE ✧</div>
+      <small>ÉLÉGANCE MAROCAINE AUTHENTIQUE</small>
+    </div>
+    <div style="width:42px;flex:0 0 42px"></div>
   </div>
-
-  <div class="header-title">
-    <h2 data-i18n="headline">أناقة مغربية أصيلة</h2>
-    <p data-i18n="subheadline">قفاطين وجلابيب نسائية ورجالية • بيع وكراء لجميع المناسبات</p>
-  </div>
-
-  <div class="language">
-    <select id="siteLanguage">
-      <option value="ar">العربية</option>
-      <option value="fr">Français</option>
-      <option value="en">English</option>
-      <option value="es">Español</option>
-      <option value="de">Deutsch</option>
-      <option value="it">Italiano</option>
-    </select>
-  </div>
-</header>
-
-<nav>
-  <button class="menu-button" id="menuButton">☰</button>
-  <div class="nav-links" id="navLinks">
+  <div class="menu-panel" id="menuPanel">
     <a href="#home" data-i18n="home">الرئيسية</a>
     <a href="#women" data-i18n="women">القفاطين النسائية</a>
     <a href="#men" data-i18n="men">الجلابيب الرجالية</a>
     <a href="#kids" data-i18n="kids">الأطفال</a>
     <a href="#bride" data-i18n="bride">العروس</a>
     <a href="#cart" data-i18n="cart">السلة</a>
+    <a href="#design" data-i18n="designTitle">صمم لباسك الخاص</a>
+    <a href="#delivery" data-i18n="deliveryTitle">التوصيل والاستبدال</a>
     <a href="#contact" data-i18n="contact">اتصل بنا</a>
+    <a href="#assistant" data-i18n="assistant">مساعد المتجر</a>
+    <div class="menu-language">
+      <label for="siteLanguage" data-i18n="chooseLanguage">لغة الموقع</label>
+      <select id="siteLanguage">
+        <option value="ar">العربية</option><option value="fr">Français</option>
+        <option value="en">English</option><option value="es">Español</option>
+        <option value="de">Deutsch</option><option value="it">Italiano</option>
+      </select>
+    </div>
   </div>
-</nav>
+</header>
 
-<main id="home">
+<section class="hero" id="home">
+  <h1 data-i18n="headline">أناقة مغربية أصيلة</h1>
+  <p data-i18n="subheadline">قفاطين وجلابيب نسائية ورجالية • بيع وكراء لجميع المناسبات</p>
+  <div class="hero-note">MAISON SOPHIE · KÉNITRA · MAROC</div>
+</section>
 
-<div class="intro">
-  <h1>MAISON SOPHIE</h1>
-  <p data-i18n="intro">جمال القفطان المغربي وفخامة الجلباب التقليدي</p>
-</div>
-
+<main>
+<div class="intro"><h2>MAISON SOPHIE</h2><p data-i18n="intro">جمال القفطان المغربي وفخامة الجلباب التقليدي</p></div>
 <div class="filters">
   <button class="active" onclick="showCategory('all',this)" data-i18n="all">الكل</button>
-  <button onclick="showCategory('women',this)" data-i18n="women">نسائي</button>
-  <button onclick="showCategory('men',this)" data-i18n="men">رجالي</button>
+  <button onclick="showCategory('women',this)" data-i18n="women">القفاطين النسائية</button>
+  <button onclick="showCategory('men',this)" data-i18n="men">الجلابيب الرجالية</button>
   <button onclick="showCategory('kids',this)" data-i18n="kids">الأطفال</button>
   <button onclick="showCategory('bride',this)" data-i18n="bride">العروس</button>
 </div>
-
-<section id="women">
-  <h2 class="section-title"><span data-i18n="womenTitle">مجموعة النساء</span></h2>
-  <div class="products" id="womenProducts"></div>
+<section id="women"><h2 class="section-title"><span data-i18n="womenTitle">مجموعة النساء</span></h2><div class="products" id="womenProducts"></div></section>
+<section id="men"><h2 class="section-title"><span data-i18n="menTitle">مجموعة الرجال</span></h2><div class="products" id="menProducts"></div></section>
+<section id="kids"><h2 class="section-title"><span data-i18n="kidsTitle">مجموعة الأطفال</span></h2><div class="products" id="kidsProducts"></div></section>
+<section id="bride"><h2 class="section-title"><span data-i18n="brideTitle">مجموعة العروس</span></h2><div class="products" id="brideProducts"></div></section>
+<section id="cart" class="section">
+  <h2 class="section-title">سلة المشتريات</h2>
+  <div id="cartItems">
+    <p>سلة المشتريات فارغة حالياً.</p>
+  </div>
+  <div class="cart-total">
+    المجموع: <strong id="cartTotal">0 DH</strong>
+  </div>
+  <button class="main-btn" onclick="checkoutWhatsApp()">
+    إتمام الطلب عبر واتساب
+  </button>
 </section>
 
-<section id="men">
-  <h2 class="section-title"><span data-i18n="menTitle">مجموعة الرجال</span></h2>
-  <div class="products" id="menProducts"></div>
-</section>
+<section id="design" class="section">
+  <h2 class="section-title">تصميم خاص بك</h2>
+  <p>اطلبي تصميم القفطان أو الجلابة الذي تحلمين به.</p>
 
-<section id="kids">
-  <h2 class="section-title"><span data-i18n="kidsTitle">مجموعة الأطفال</span></h2>
-  <div class="products" id="kidsProducts"></div>
-</section>
-
-<section id="bride">
-  <h2 class="section-title"><span data-i18n="brideTitle">مجموعة العروس</span></h2>
-  <div class="products" id="brideProducts"></div>
-</section>
-
-<section class="info" id="cart">
-  <h2 data-i18n="cartTitle">سلة المشتريات</h2>
-  <div id="cartItems"></div>
-  <button class="main-button" onclick="checkout()" data-i18n="checkout">إتمام الطلب عبر واتساب</button>
-  <button class="main-button" onclick="showFavorites()" data-i18n="favorites">عرض المفضلة</button>
-</section>
-
-<section class="info" id="design">
-  <h2 data-i18n="designTitle">صمم لباسك الخاص</h2>
   <form id="designForm">
-    <input id="designName" placeholder="الاسم" required>
-    <select id="designType">
-      <option>قفطان نسائي</option>
-      <option>جلباب رجالي</option>
-      <option>لباس الأطفال</option>
-      <option>قفطان العروس</option>
+    <input type="text" id="designName" placeholder="الاسم الكامل" required>
+    <input type="tel" id="designPhone" placeholder="رقم الهاتف" required>
+    <select id="designType" required>
+      <option value="">اختاري نوع التصميم</option>
+      <option>قفطان مغربي</option>
+      <option>جلابة نسائية</option>
+      <option>جلابة رجالية</option>
+      <option>تصميم العروس</option>
+      <option>تصميم الأطفال</option>
     </select>
-    <input id="designColor" placeholder="اللون المطلوب">
-    <input id="designFabric" placeholder="نوع الثوب">
-    <input id="designEmbroidery" placeholder="نوع الطرز">
-    <textarea id="designNotes" placeholder="تفاصيل إضافية"></textarea>
-    <button type="submit" data-i18n="sendDesign">أرسل التصميم عبر واتساب</button>
+    <textarea id="designDetails" placeholder="تفاصيل التصميم واللون والمقاس"></textarea>
+    <button class="main-btn" type="submit">إرسال الطلب</button>
   </form>
 </section>
 
-<section class="info" id="delivery">
-  <h2 data-i18n="deliveryTitle">التوصيل والاستبدال</h2>
-  <p data-i18n="free">التوصيل مجاني داخل مدينة القنيطرة.</p>
-  <p data-i18n="cities">باقي مدن المغرب ابتداءً من 30 درهماً حسب الوجهة.</p>
-  <p data-i18n="international">التوصيل الدولي حسب البلد.</p>
-  <p data-i18n="exchange">الاستبدال حسب نوع المنتج. إذا وقع خطأ من المتجر، نتكفل باستبدال المنتج.</p>
-</section>
-
-<section class="info" id="contact">
-  <h2 data-i18n="contactTitle">تواصل معنا</h2>
-  <p>WhatsApp: 0636101436</p>
-  <p>Email: sofiaaklamousse1313@gmail.com</p>
-  <p data-i18n="address">العنوان: الخبازات، القنيطرة، المغرب</p>
-  <a class="main-button" href="https://wa.me/212636101436" data-i18n="whatsapp">راسلنا عبر واتساب</a>
-</section>
-
-<section class="info" id="settings">
-  <h2 data-i18n="settings">الإعدادات</h2>
-  <button class="main-button" onclick="toggleMusic()" data-i18n="musicSettings">إعدادات الموسيقى</button>
-  <div id="musicPanel" style="display:none">
-    <select id="musicChoice">
-      <option value="music/andalusi.mp3">الموسيقى الأندلسية</option>
-      <option value="music/oud.mp3">العود</option>
-      <option value="music/piano.mp3">البيانو</option>
-    </select>
-    <label data-i18n="volume">مستوى الصوت</label>
-    <input id="musicVolume" type="range" min="0" max="100" value="10">
-    <button onclick="playMusic()" data-i18n="play">تشغيل</button>
-    <button onclick="stopMusic()" data-i18n="stop">إيقاف</button>
-    <audio id="siteMusic" controls style="width:100%"></audio>
+<section id="delivery" class="section">
+  <h2 class="section-title">التوصيل والاستبدال</h2>
+  <div class="info-card">
+    <p>التوصيل مجاني داخل مدينة القنيطرة.</p>
+    <p>التوصيل إلى المدن المغربية الأخرى ابتداءً من 30 درهماً حسب الوجهة.</p>
+    <p>التوصيل الدولي حسب البلد.</p>
+    <p>الاستبدال حسب نوع المنتج، ونتكفل بالخطأ إذا كان من المتجر.</p>
   </div>
 </section>
 
-<section class="info" id="assistant">
-  <h2 data-i18n="assistant">مساعد المتجر</h2>
-  <div id="chatMessages">
-    <p data-i18n="welcome">مرحباً بك في MAISON SOPHIE!</p>
+<section id="contact" class="section">
+  <h2 class="section-title">اتصلوا بنا</h2>
+  <div class="info-card">
+    <p>MAISON SOPHIE</p>
+    <p>العنوان: الخبازات، القنيطرة، المغرب</p>
+    <p>واتساب: 0636101436</p>
+    <p>البريد الإلكتروني: sofiaaklamousse1313@gmail.com</p>
+    <a class="main-btn" href="https://wa.me/212636101436">
+      تواصل عبر واتساب
+    </a>
   </div>
-  <input id="chatInput" placeholder="اكتب سؤالك هنا">
-  <button onclick="sendChat()" data-i18n="send">إرسال</button>
 </section>
 
-</main>
-
-<div class="benefits">
-  <div class="benefit"><i data-lucide="gem"></i><span data-i18n="quality">جودة عالية</span></div>
-  <div class="benefit"><i data-lucide="truck"></i><span data-i18n="shipping">توصيل لجميع المدن</span></div>
-  <div class="benefit"><i data-lucide="shield-check"></i><span data-i18n="secure">طلب آمن</span></div>
-  <div class="benefit"><i data-lucide="message-circle"></i><span data-i18n="order">للطلب عبر واتساب</span></div>
-</div>
+<section id="assistant" class="section">
+  <h2 class="section-title">مساعدة MAISON SOPHIE</h2>
+  <div class="info-card">
+    <p>مرحباً بك! كيف يمكننا مساعدتك؟</p>
+    <p>للطلبات والاستفسارات تواصلي معنا عبر واتساب.</p>
+    <a class="main-btn" href="https://wa.me/212636101436">
+      تحدثي معنا
+    </a>
+  </div>
+</section>
 
 <footer>
-  © MAISON SOPHIE - <span data-i18n="rights">جميع الحقوق محفوظة</span>
+  <p>© 2026 MAISON SOPHIE — جميع الحقوق محفوظة</p>
 </footer>
-
-<a class="whatsapp" href="https://wa.me/212636101436">
-  <i data-lucide="message-circle"></i> واتساب
-</a>
-
-<div class="modal" id="productModal">
-  <div class="modal-content">
-    <span class="close" onclick="closeProduct()">×</span>
-    <div id="productDetails"></div>
-  </div>
-</div>
-
 <script>
 const products = [
-{id:1,name:"قفطان مغربي 01",category:"women",image:"images/model-01-1.jpg"},
-{id:2,name:"جلباب رجالي 02",category:"men",image:"images/model-02-1.jpg"},
-{id:3,name:"لباس أطفال 03",category:"kids",image:"images/model-03-1.jpg"},
-{id:4,name:"قفطان العروس 04",category:"bride",image:"images/model-04-1.jpg"},
-{id:5,name:"قفطان مغربي 05",category:"women",image:"images/model-05-1.jpg"},
-{id:6,name:"جلباب رجالي 06",category:"men",image:"images/model-06-1.jpg"},
-{id:7,name:"قفطان مغربي 07",category:"women",image:"images/model-07-1.jpg"},
-{id:8,name:"لباس أطفال 08",category:"kids",image:"images/model-08-1.jpg"},
-{id:9,name:"قفطان العروس 09",category:"bride",image:"images/model-09-1.jpg"},
-{id:10,name:"جلباب رجالي 10",category:"men",image:"images/model-10-1.jpg"},
-{id:11,name:"قفطان مغربي 11",category:"women",image:"images/model-11-1.jpg"},
-{id:12,name:"قفطان مغربي 12",category:"women",image:"images/model-12-1.jpg"}
+  {id:1,name:"قفطان مغربي فاخر",category:"women",image:"images/model-01-1.jpg"},
+  {id:2,name:"جلابة رجالية أنيقة",category:"men",image:"images/model-02-1.jpg"},
+  {id:3,name:"لباس أطفال",category:"kids",image:"images/model-03-1.jpg"},
+  {id:4,name:"قفطان العروس",category:"bride",image:"images/model-04-1.jpg"},
+  {id:5,name:"قفطان عصري",category:"women",image:"images/model-05-1.jpg"},
+  {id:6,name:"جلابة رجالية مغربية",category:"men",image:"images/model-06-1.jpg"},
+  {id:7,name:"قفطان أنيق",category:"women",image:"images/model-07-1.jpg"},
+  {id:8,name:"ملابس الأطفال",category:"kids",image:"images/model-08-1.jpg"},
+  {id:9,name:"قفطان الزفاف",category:"bride",image:"images/model-09-1.jpg"},
+  {id:10,name:"جلابة رجالية فاخرة",category:"men",image:"images/model-10-1.jpg"},
+  {id:11,name:"قفطان مغربي",category:"women",image:"images/model-11-1.jpg"},
+  {id:12,name:"قفطان نسائي",category:"women",image:"images/model-12-1.jpg"}
 ];
 
-const translations = {
-ar:{
-headline:"أناقة مغربية أصيلة",
-subheadline:"قفاطين وجلابيب نسائية ورجالية • بيع وكراء لجميع المناسبات",
-intro:"جمال القفطان المغربي وفخامة الجلباب التقليدي",
-home:"الرئيسية",women:"القفاطين النسائية",men:"الجلابيب الرجالية",
-kids:"الأطفال",bride:"العروس",all:"الكل",
-womenTitle:"مجموعة النساء",menTitle:"مجموعة الرجال",
-kidsTitle:"مجموعة الأطفال",brideTitle:"مجموعة العروس",
-cart:"السلة",cartTitle:"سلة المشتريات",contact:"اتصل بنا",
-checkout:"إتمام الطلب عبر واتساب",favorites:"عرض المفضلة",
-designTitle:"صمم لباسك الخاص",sendDesign:"أرسل التصميم عبر واتساب",
-deliveryTitle:"التوصيل والاستبدال",
-free:"التوصيل مجاني داخل مدينة القنيطرة.",
-cities:"باقي مدن المغرب ابتداءً من 30 درهماً حسب الوجهة.",
-international:"التوصيل الدولي حسب البلد.",
-exchange:"الاستبدال حسب نوع المنتج. إذا وقع خطأ من المتجر، نتكفل باستبدال المنتج.",
-contactTitle:"تواصل معنا",address:"العنوان: الخبازات، القنيطرة، المغرب",
-whatsapp:"راسلنا عبر واتساب",settings:"الإعدادات",
-musicSettings:"إعدادات الموسيقى",volume:"مستوى الصوت",
-play:"تشغيل",stop:"إيقاف",assistant:"مساعد المتجر",
-welcome:"مرحباً بك في MAISON SOPHIE!",send:"إرسال",
-quality:"جودة عالية",shipping:"توصيل لجميع المدن",
-secure:"طلب آمن",order:"للطلب عبر واتساب",
-rights:"جميع الحقوق محفوظة",details:"عرض",add:"أضف للسلة",
-favorite:"المفضلة",remove:"إزالة",delete:"حذف",
-quantity:"الكمية",empty:"السلة فارغة",
-description:"منتج من تشكيلتنا المغربية. تواصل معنا لمعرفة التفاصيل والثمن."
-},
-fr:{
-headline:"Élégance marocaine authentique",
-subheadline:"Caftans et djellabas • Vente et location",
-intro:"La beauté du caftan marocain et l'élégance traditionnelle",
-home:"Accueil",women:"Caftans femme",men:"Djellabas homme",
-kids:"Enfants",bride:"Mariée",all:"Tout",
-womenTitle:"Collection femmes",menTitle:"Collection hommes",
-kidsTitle:"Collection enfants",brideTitle:"Collection mariée",
-cart:"Panier",cartTitle:"Votre panier",contact:"Contact",
-checkout:"Commander sur WhatsApp",favorites:"Favoris",
-designTitle:"Créer votre tenue",sendDesign:"Envoyer sur WhatsApp",
-deliveryTitle:"Livraison et échange",
-free:"Livraison gratuite à Kénitra.",
-cities:"Autres villes à partir de 30 DH selon la destination.",
-international:"Livraison internationale selon le pays.",
-exchange:"Échange selon le produit.",
-contactTitle:"Contactez-nous",address:"Khabazat, Kénitra, Maroc",
-whatsapp:"WhatsApp",settings:"Paramètres",musicSettings:"Musique",
-volume:"Volume",play:"Lecture",stop:"Arrêter",assistant:"Assistant",
-welcome:"Bienvenue chez MAISON SOPHIE !",send:"Envoyer",
-quality:"Haute qualité",shipping:"Livraison nationale",secure:"Commande sécurisée",
-order:"Commander sur WhatsApp",rights:"Tous droits réservés",
-details:"Voir",add:"Ajouter",favorite:"Favori",remove:"Retirer",
-delete:"Supprimer",quantity:"Quantité",empty:"Panier vide",
-description:"Produit de notre collection marocaine. Contactez-nous pour le prix."
-},
-en:{
-headline:"Authentic Moroccan Elegance",
-subheadline:"Women's and men's caftans and djellabas",
-intro:"The beauty of Moroccan caftans and traditional elegance",
-home:"Home",women:"Women's Caftans",men:"Men's Djellabas",
-kids:"Children",bride:"Bridal",all:"All",
-womenTitle:"Women's Collection",menTitle:"Men's Collection",
-kidsTitle:"Children's Collection",brideTitle:"Bridal Collection",
-cart:"Cart",cartTitle:"Shopping Cart",contact:"Contact",
-checkout:"Order via WhatsApp",favorites:"Favorites",
-designTitle:"Design your outfit",sendDesign:"Send design via WhatsApp",
-deliveryTitle:"Delivery and Exchange",free:"Free delivery in Kenitra.",
-cities:"Other Moroccan cities from 30 MAD depending on destination.",
-international:"International delivery depends on country.",
-exchange:"Exchange depends on the product.",
-contactTitle:"Contact Us",address:"Khabazat, Kenitra, Morocco",
-whatsapp:"WhatsApp",settings:"Settings",musicSettings:"Music settings",
-volume:"Volume",play:"Play",stop:"Stop",assistant:"Store assistant",
-welcome:"Welcome to MAISON SOPHIE!",send:"Send",
-quality:"High quality",shipping:"Delivery across cities",
-secure:"Secure order",order:"Order via WhatsApp",
-rights:"All rights reserved",details:"View",add:"Add to cart",
-favorite:"Favorite",remove:"Remove",delete:"Delete",
-quantity:"Quantity",empty:"Your cart is empty",
-description:"A product from our Moroccan collection. Contact us for the price."
-},
-es:{
-headline:"Elegancia marroquí auténtica",
-subheadline:"Caftanes y chilabas para mujer y hombre",
-intro:"La belleza del caftán marroquí",
-home:"Inicio",women:"Caftanes mujer",men:"Chilabas hombre",
-kids:"Niños",bride:"Novia",all:"Todo",
-womenTitle:"Colección de mujer",menTitle:"Colección de hombre",
-kidsTitle:"Colección infantil",brideTitle:"Colección de novia",
-cart:"Carrito",cartTitle:"Tu carrito",contact:"Contacto",
-checkout:"Pedir por WhatsApp",favorites:"Favoritos",
-designTitle:"Diseña tu ropa",sendDesign:"Enviar por WhatsApp",
-deliveryTitle:"Entrega y cambios",free:"Entrega gratuita en Kenitra.",
-cities:"Otras ciudades desde 30 MAD según destino.",
-international:"Envío internacional según el país.",
-exchange:"Cambios según el producto.",
-contactTitle:"Contáctanos",address:"Khabazat, Kenitra, Marruecos",
-whatsapp:"WhatsApp",settings:"Ajustes",musicSettings:"Música",
-volume:"Volumen",play:"Reproducir",stop:"Detener",assistant:"Asistente",
-welcome:"¡Bienvenido a MAISON SOPHIE!",send:"Enviar",
-quality:"Alta calidad",shipping:"Envíos nacionales",secure:"Pedido seguro",
-order:"Pedir por WhatsApp",rights:"Todos los derechos reservados",
-details:"Ver",add:"Añadir",favorite:"Favorito",remove:"Quitar",
-delete:"Eliminar",quantity:"Cantidad",empty:"Carrito vacío",
-description:"Producto de nuestra colección marroquí. Contáctanos para conocer el precio."
-},
-de:{
-headline:"Authentische marokkanische Eleganz",
-subheadline:"Kaftane und Djellabas für Damen und Herren",
-intro:"Die Schönheit marokkanischer Kaftane",
-home:"Startseite",women:"Damen-Kaftane",men:"Herren-Djellabas",
-kids:"Kinder",bride:"Braut",all:"Alle",
-womenTitle:"Damenkollektion",menTitle:"Herrenkollektion",
-kidsTitle:"Kinderkollektion",brideTitle:"Brautkollektion",
-cart:"Warenkorb",cartTitle:"Ihr Warenkorb",contact:"Kontakt",
-checkout:"Über WhatsApp bestellen",favorites:"Favoriten",
-designTitle:"Outfit gestalten",sendDesign:"Über WhatsApp senden",
-deliveryTitle:"Lieferung und Umtausch",free:"Kostenlose Lieferung in Kenitra.",
-cities:"Andere Städte ab 30 MAD je nach Zielort.",
-international:"Internationaler Versand je nach Land.",
-exchange:"Umtausch je nach Produkt.",
-contactTitle:"Kontakt",address:"Khabazat, Kenitra, Marokko",
-whatsapp:"WhatsApp",settings:"Einstellungen",musicSettings:"Musik",
-volume:"Lautstärke",play:"Abspielen",stop:"Stopp",assistant:"Assistent",
-welcome:"Willkommen bei MAISON SOPHIE!",send:"Senden",
-quality:"Hohe Qualität",shipping:"Lieferung in Städte",
-secure:"Sichere Bestellung",order:"Über WhatsApp bestellen",
-rights:"Alle Rechte vorbehalten",details:"Ansehen",add:"Hinzufügen",
-favorite:"Favorit",remove:"Entfernen",delete:"Löschen",
-quantity:"Menge",empty:"Warenkorb ist leer",
-description:"Produkt aus unserer marokkanischen Kollektion. Kontaktieren Sie uns für den Preis."
-},
-it:{
-headline:"Eleganza marocchina autentica",
-subheadline:"Caftani e djellaba per donna e uomo",
-intro:"La bellezza del caftano marocchino",
-home:"Home",women:"Caftani donna",men:"Djellaba uomo",
-kids:"Bambini",bride:"Sposa",all:"Tutti",
-womenTitle:"Collezione donna",menTitle:"Collezione uomo",
-kidsTitle:"Collezione bambini",brideTitle:"Collezione sposa",
-cart:"Carrello",cartTitle:"Il tuo carrello",contact:"Contatto",
-checkout:"Ordina su WhatsApp",favorites:"Preferiti",
-designTitle:"Crea il tuo abito",sendDesign:"Invia su WhatsApp",
-deliveryTitle:"Consegna e cambio",free:"Consegna gratuita a Kenitra.",
-cities:"Altre città da 30 MAD secondo la destinazione.",
-international:"Spedizione internazionale secondo il paese.",
-exchange:"Cambio secondo il prodotto.",
-contactTitle:"Contattaci",address:"Khabazat, Kenitra, Marocco",
-whatsapp:"WhatsApp",settings:"Impostazioni",musicSettings:"Musica",
-volume:"Volume",play:"Riproduci",stop:"Ferma",assistant:"Assistente",
-welcome:"Benvenuto da MAISON SOPHIE!",send:"Invia",
-quality:"Alta qualità",shipping:"Consegna nazionale",
-secure:"Ordine sicuro",order:"Ordina su WhatsApp",
-rights:"Tutti i diritti riservati",details:"Vedi",add:"Aggiungi",
-favorite:"Preferito",remove:"Rimuovi",delete:"Elimina",
-quantity:"Quantità",empty:"Carrello vuoto",
-description:"Prodotto della nostra collezione marocchina. Contattaci per il prezzo."
-}
-};
-
 let cart = JSON.parse(localStorage.getItem("maisonCart") || "[]");
-let favorites = JSON.parse(localStorage.getItem("maisonFavorites") || "[]");
-let currentLanguage = localStorage.getItem("maisonLanguage") || "ar";
 
-function t(key) {
-  return translations[currentLanguage]?.[key] || translations.ar[key] || key;
-}
+function renderProducts(){
+  const groups = {
+    women:"womenProducts",
+    men:"menProducts",
+    kids:"kidsProducts",
+    bride:"brideProducts"
+  };
 
-function saveData() {
-  localStorage.setItem("maisonCart",JSON.stringify(cart));
-  localStorage.setItem("maisonFavorites",JSON.stringify(favorites));
-}
+  Object.values(groups).forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.innerHTML="";
+  });
 
-function icons() {
-  if (window.lucide) lucide.createIcons();
-}
+  products.forEach(p=>{
+    const container=document.getElementById(groups[p.category]);
+    if(!container) return;
 
-function renderGroup(category,containerId) {
-  const container = document.getElementById(containerId);
-  container.innerHTML = "";
-  products.filter(p => p.category === category).forEach(p => {
-    const fav = favorites.includes(p.id);
-    const card = document.createElement("article");
-    card.className = "product";
-    card.innerHTML = `
-      <img src="${p.image}" alt="${p.name}" loading="lazy"
-        onerror="this.style.display='none'">
-      <div class="product-name">${p.name}</div>
-      <div class="product-actions">
-        <button onclick="openProduct(${p.id})">${t("details")}</button>
-        <button onclick="addToCart(${p.id})">${t("add")}</button>
-        <button onclick="toggleFavorite(${p.id})">${fav ? "♥" : "♡"}</button>
-      </div>`;
-    container.appendChild(card);
+    container.innerHTML += `
+      <article class="product-card">
+        <img src="${p.image}" alt="${p.name}"
+          onerror="this.style.display='none'">
+        <h3>${p.name}</h3>
+        <button class="main-btn" onclick="addToCart(${p.id})">
+          أضف إلى السلة
+        </button>
+        <button class="main-btn" onclick="orderProduct(${p.id})">
+          اطلب عبر واتساب
+        </button>
+      </article>`;
   });
 }
 
-function renderAll() {
-  renderGroup("women","womenProducts");
-  renderGroup("men","menProducts");
-  renderGroup("kids","kidsProducts");
-  renderGroup("bride","brideProducts");
-  renderCart();
-  icons();
-}
-
-function showCategory(category,button) {
-  document.querySelectorAll(".filters button").forEach(b=>b.classList.remove("active"));
-  button.classList.add("active");
-
-  const sections = ["women","men","kids","bride"];
-  sections.forEach(id=>{
-    document.getElementById(id).style.display =
-      category==="all" || category===id ? "block" : "none";
-  });
-
-  if(category!=="all") {
-    document.getElementById(category).scrollIntoView({behavior:"smooth"});
-  }
-}
-
-function addToCart(id) {
-  const item=cart.find(p=>p.id===id);
+function addToCart(id){
+  const p=products.find(x=>x.id===id);
+  const item=cart.find(x=>x.id===id);
   if(item) item.quantity++;
-  else cart.push({id,quantity:1});
-  saveData();
-  renderCart();
-  alert("تمت إضافة المنتج إلى السلة");
+  else cart.push({...p,quantity:1});
+  saveCart();
 }
 
-function removeFromCart(id) {
+function saveCart(){
+  localStorage.setItem("maisonCart",JSON.stringify(cart));
+  renderCart();
+}
+
+function renderCart(){
+  const el=document.getElementById("cartItems");
+  const total=document.getElementById("cartTotal");
+  if(!el || !total) return;
+
+  if(cart.length===0){
+    el.innerHTML="<p>السلة فارغة حالياً.</p>";
+  }else{
+    el.innerHTML=cart.map(p=>`
+      <div class="info-card">
+        ${p.name} — الكمية: ${p.quantity}
+        <button onclick="removeFromCart(${p.id})">حذف</button>
+      </div>
+    `).join("");
+  }
+  total.textContent="يُحدد السعر عند تأكيد الطلب";
+}
+
+function removeFromCart(id){
   cart=cart.filter(p=>p.id!==id);
-  saveData();
-  renderCart();
+  saveCart();
 }
 
-function changeQuantity(id,amount) {
-  const item=cart.find(p=>p.id===id);
-  if(!item) return;
-  item.quantity+=amount;
-  if(item.quantity<=0) removeFromCart(id);
-  else {saveData();renderCart();}
-}
-
-function toggleFavorite(id) {
-  if(favorites.includes(id)) favorites=favorites.filter(x=>x!==id);
-  else favorites.push(id);
-  saveData();
-  renderAll();
-}
-
-function showFavorites() {
-  const selected=products.filter(p=>favorites.includes(p.id));
-  if(!selected.length) {
-    alert("لا توجد منتجات في المفضلة حالياً");
-    return;
-  }
-  const details=document.getElementById("productDetails");
-  details.innerHTML="<h2>المفضلة</h2>"+selected.map(p=>`
-    <p>${p.name}</p>
-    <button onclick="addToCart(${p.id})">أضف للسلة</button>
-  `).join("");
-  document.getElementById("productModal").style.display="block";
-}
-
-function renderCart() {
-  const box=document.getElementById("cartItems");
-  if(!cart.length) {
-    box.textContent=t("empty");
-    return;
-  }
-  box.innerHTML=cart.map(item=>{
-    const p=products.find(x=>x.id===item.id);
-    if(!p) return "";
-    return `<div class="cart-line">
-      <strong>${p.name}</strong>
-      <p>${t("quantity")}: ${item.quantity}</p>
-      <button onclick="changeQuantity(${p.id},1)">+</button>
-      <button onclick="changeQuantity(${p.id},-1)">−</button>
-      <button onclick="removeFromCart(${p.id})">${t("delete")}</button>
-    </div>`;
-  }).join("");
-}
-
-function checkout() {
-  if(!cart.length) {
-    alert(t("empty"));
-    return;
-  }
-  const lines=cart.map(item=>{
-    const p=products.find(x=>x.id===item.id);
-    return `${p.name} - ${t("quantity")}: ${item.quantity}`;
-  });
-  const message="السلام عليكم، أريد تأكيد طلبي:\n"+lines.join("\n");
+function orderProduct(id){
+  const p=products.find(x=>x.id===id);
+  const message="السلام عليكم، أريد طلب: "+p.name;
   window.open("https://wa.me/212636101436?text="+encodeURIComponent(message),"_blank");
 }
 
-function openProduct(id) {
-  const p=products.find(x=>x.id===id);
-  if(!p) return;
-  document.getElementById("productDetails").innerHTML=`
-    <h2>${p.name}</h2>
-    <img src="${p.image}" alt="${p.name}">
-    <p>${t("description")}</p>
-    <button onclick="addToCart(${id})">${t("add")}</button>
-    <button onclick="orderProduct(${id})">${t("order")}</button>
-  `;
-  document.getElementById("productModal").style.display="block";
+function checkoutWhatsApp(){
+  if(cart.length===0){
+    alert("السلة فارغة");
+    return;
+  }
+  const message="السلام عليكم، أريد طلب:\n"+
+    cart.map(p=>p.name+" × "+p.quantity).join("\n");
+  window.open("https://wa.me/212636101436?text="+encodeURIComponent(message),"_blank");
 }
 
-function closeProduct() {
-  document.getElementById("productModal").style.display="none";
-}
-
-function orderProduct(id) {
-  const p=products.find(x=>x.id===id);
-  const msg=`السلام عليكم، أريد طلب ${p.name}`;
-  window.open("https://wa.me/212636101436?text="+encodeURIComponent(msg),"_blank");
-}
-
-document.getElementById("designForm").addEventListener("submit",e=>{
+document.getElementById("designForm")?.addEventListener("submit",function(e){
   e.preventDefault();
   const message=
-    "طلب تصميم لباس خاص\n"+
+    "طلب تصميم جديد\n"+
     "الاسم: "+document.getElementById("designName").value+"\n"+
-    "نوع اللباس: "+document.getElementById("designType").value+"\n"+
-    "اللون: "+document.getElementById("designColor").value+"\n"+
-    "الثوب: "+document.getElementById("designFabric").value+"\n"+
-    "الطرز: "+document.getElementById("designEmbroidery").value+"\n"+
-    "تفاصيل: "+document.getElementById("designNotes").value;
+    "الهاتف: "+document.getElementById("designPhone").value+"\n"+
+    "النوع: "+document.getElementById("designType").value+"\n"+
+    "التفاصيل: "+document.getElementById("designDetails").value;
+
   window.open("https://wa.me/212636101436?text="+encodeURIComponent(message),"_blank");
 });
 
-function toggleMusic() {
-  const p=document.getElementById("musicPanel");
-  p.style.display=p.style.display==="none"?"block":"none";
+function toggleMenu(){
+  document.getElementById("menu")?.classList.toggle("open");
 }
 
-function playMusic() {
-  const audio=document.getElementById("siteMusic");
-  audio.src=document.getElementById("musicChoice").value;
-  audio.volume=Number(document.getElementById("musicVolume").value)/100;
-  audio.play().catch(()=>alert("تأكد من وجود ملفات الموسيقى داخل مجلد music."));
-}
-
-function stopMusic() {
-  const audio=document.getElementById("siteMusic");
-  audio.pause();
-  audio.currentTime=0;
-}
-
-document.getElementById("musicVolume").addEventListener("input",e=>{
-  document.getElementById("siteMusic").volume=Number(e.target.value)/100;
-});
-
-function sendChat() {
-  const input=document.getElementById("chatInput");
-  const msg=input.value.trim();
-  if(!msg) return;
-  const chat=document.getElementById("chatMessages");
-  const user=document.createElement("p");
-  user.textContent="أنت: "+msg;
-  chat.appendChild(user);
-  const reply=document.createElement("p");
-  reply.textContent="MAISON SOPHIE: شكراً لتواصلك معنا! للمساعدة المباشرة راسلنا عبر واتساب.";
-  chat.appendChild(reply);
-  input.value="";
-}
-
-function changeLanguage(lang) {
-  if(!translations[lang]) lang="ar";
-  currentLanguage=lang;
-  document.documentElement.lang=lang;
-  document.documentElement.dir=lang==="ar"?"rtl":"ltr";
-  document.querySelectorAll("[data-i18n]").forEach(el=>{
-    const key=el.dataset.i18n;
-    if(translations[lang][key]) el.textContent=translations[lang][key];
-  });
-  localStorage.setItem("maisonLanguage",lang);
-  renderAll();
-}
-
-document.getElementById("siteLanguage").addEventListener("change",e=>{
-  changeLanguage(e.target.value);
-});
-
-document.getElementById("menuButton").addEventListener("click",()=>{
-  document.getElementById("navLinks").classList.toggle("open");
-});
-
-document.querySelectorAll("#navLinks a").forEach(a=>{
-  a.addEventListener("click",()=>{
-    document.getElementById("navLinks").classList.remove("open");
+document.querySelectorAll("#menu a").forEach(link=>{
+  link.addEventListener("click",()=>{
+    document.getElementById("menu")?.classList.remove("open");
   });
 });
 
-document.getElementById("musicVolume").value=10;
-document.getElementById("siteLanguage").value=currentLanguage;
-changeLanguage(currentLanguage);
+function filterProducts(category){
+  document.querySelectorAll(".product-card").forEach(card=>{
+    const section=card.closest("section");
+    card.style.display=category==="all" ||
+      section?.id===category ? "" : "none";
+  });
+}
+
+renderProducts();
+renderCart();
 </script>
-
 </body>
 </html>
