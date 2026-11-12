@@ -88,7 +88,20 @@ const card=document.createElement("div");
 card.className="product";
 
 const img=document.createElement("img");
-img.src="https://loremflickr.com/500/650/moroccan,caftan?lock="+(i+(category==="نساء"?10:50));
+const womenPhotos = [
+"1794441518833.jpg",
+"1794441516982.jpg",
+"1794441514096.jpg"
+];
+
+const menPhotos = [
+"1794441512769.jpg",
+"1794441510050.jpg",
+"1794441508075.jpg"
+];
+
+const photos = category === "نساء" ? womenPhotos : menPhotos;
+img.src = photos[i % photos.length];
 img.alt=name;
 img.loading="lazy";
 
