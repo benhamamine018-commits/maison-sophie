@@ -235,6 +235,88 @@ footer {
     min-height: 300px;
   }
 }
+  
+/* ===== قائمة الهاتف MAISON SOPHIE ===== */
+
+header {
+  position: relative;
+  padding-top: 55px;
+}
+
+.top-controls {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  z-index: 20;
+}
+
+.top-controls select {
+  width: auto;
+  max-width: 110px;
+  padding: 6px 9px;
+  font-size: 13px;
+  color: #d4af37;
+  background: #1c1c1c;
+  border: 1px solid #d4af37;
+  border-radius: 8px;
+}
+
+nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+
+.menu-toggle {
+  display: block;
+  order: -1;
+  background: transparent;
+  color: #d4af37;
+  border: 1px solid #d4af37;
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-size: 23px;
+  cursor: pointer;
+}
+
+.mobile-menu {
+  display: none;
+  position: absolute;
+  left: 8px;
+  top: calc(100% + 8px);
+  z-index: 1000;
+  min-width: 180px;
+  padding: 12px;
+  background: #1c1c1c;
+  border: 1px solid #d4af37;
+  border-radius: 10px;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mobile-menu.show {
+  display: flex;
+}
+
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 8px;
+}
+
+@media (max-width: 600px) {
+  nav > a {
+    font-size: 13px;
+  }
+
+  .menu-toggle {
+    flex-shrink: 0;
+  }
+  }
+  
 </style>
 </head>
 
@@ -669,7 +751,46 @@ const translations = {
   }
 };
 
+
 function addLanguageControls() {
+  const box = document.createElement("div");
+  box.className = "top-controls";
+
+  box.innerHTML = `
+    <select id="siteLanguage"
+      onchange="changeLanguage(this.value)">
+      <option value="ar">العربية</option>
+      <option value="fr">Français</option>
+      <option value="en">English</option>
+      <option value="es">Español</option>
+      <option value="de">Deutsch</option>
+      <option value="it">Italiano</option>
+    </select>
+  `;
+
+  document.querySelector("header").appendChild(box);
+
+  const nav = document.querySelector("nav");
+  const links = [...nav.querySelectorAll("a")];
+
+  const menu = document.createElement("div");
+  menu.className = "mobile-menu";
+  menu.id = "mobileMenu";
+
+  links.slice(3).forEach(link => menu.appendChild(link));
+
+  const button = document.createElement("button");
+  button.className = "menu-toggle";
+  button.innerHTML = "☰";
+  button.type = "button";
+  button.onclick = () => {
+    menu.classList.toggle("show");
+  };
+
+  nav.appendChild(menu);
+  nav.appendChild(button);
+}
+
   const box = document.createElement("section");
   box.className = "info";
 
