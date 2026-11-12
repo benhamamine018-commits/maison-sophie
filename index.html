@@ -152,10 +152,24 @@ function createCard(group,index){
  return card;
 }
 
-groups.forEach(group=>{
- const area=document.getElementById(group.element);
- for(let i=0;i<group.count;i++)area.appendChild(createCard(group,i));
-});
+
+card.querySelector(".order").onclick=function(e){
+ e.preventDefault();
+
+ const size=card.querySelector(".size").value;
+ const type=card.querySelector(".type").value;
+ const payment=card.querySelector(".payment").value;
+
+ const message=lang==="ar"
+ ? `السلام عليكم، أريد طلب ${name}، المقاس ${size}، نوع الطلب ${type}، الدفع بتحويل CIH. أرجو إرسال تعليمات الدفع.`
+ : `Bonjour, je souhaite commander ${french}, taille ${size}, type ${type==="شراء"?"Achat":"Location"}, paiement par virement CIH. Merci de m'envoyer les instructions.`;
+
+ window.open(
+  "https://wa.me/"+phone+"?text="+encodeURIComponent(message),
+  "_blank"
+ );
+};
+
 
 let slide=0;
 const hero=document.getElementById("heroImage");
