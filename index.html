@@ -444,31 +444,4 @@ function route(){
  if(h==="#shop"||h.startsWith("#women")||h.startsWith("#men")||h.startsWith("#bridal")){
   document.getElementById("categoryFilter").value=
    h==="#women"?"women":h==="#men"?"men":h==="#bridal"?"bridal":"all";
-  renderShop();showPage("shop");return;
- }
- if(h==="#cart"){renderCart();showPage("cart");return}
- if(h==="#favorites"){renderFavorites();showPage("favorites");return}
- showPage("home");
-}
-function openProductWithoutHash(id){
- const p=products.find(x=>x.id===id);
- if(!p)return;
- openProduct(id);
-}
-window.addEventListener("hashchange",()=>{
- if(!location.hash.startsWith("#product-"))route();
-});
-let heroIndex=1;
-setInterval(()=>{
- heroIndex=heroIndex%30+1;
- let img=document.getElementById("heroImage");
- img.style.opacity=0;
- setTimeout(()=>{
-  img.src=`images/model-${String(heroIndex).padStart(2,"0")}-1.jpg`;
-  img.style.opacity=.7;
- },500);
-},5000);
-document.getElementById("cartCount").textContent=cart.length;
-</script>
-</body>
-</html>
+  render
